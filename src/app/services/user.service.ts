@@ -15,9 +15,12 @@ export class UserService {
   //Pacientes
   pacientes : Observable<Paciente[]>;
   pacienteCollection : AngularFirestoreCollection<Paciente>;
-    //Especialista
-    especialistas : Observable<Especialista[]>;
-    especialistaCollection : AngularFirestoreCollection<Especialista>;
+  //Especialista
+  especialistas : Observable<Especialista[]>;
+  especialistaCollection : AngularFirestoreCollection<Especialista>;
+  //Especialidades
+  especialidades : Observable<any[]>;
+  especialidadesCollection : AngularFirestoreCollection<any>;
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
     auth.authState.subscribe((user) => (this.logged= user));
@@ -27,6 +30,11 @@ export class UserService {
 
     this.especialistaCollection = firestore.collection<Especialista>('especialistas');
     this.especialistas = this.especialistaCollection.valueChanges({idField: 'id'});
+
+    this.especialidadesCollection = firestore.collection<Especialista>('especialidades');
+    this.especialidades = this.especialidadesCollection.valueChanges({idField: 'id'});
+
+
 
   }
 

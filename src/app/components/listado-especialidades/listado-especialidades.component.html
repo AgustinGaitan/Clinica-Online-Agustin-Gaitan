@@ -1,0 +1,12 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Especialidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let especialidad of especialidades">
+        <td scope="row" class="table-info">{{especialidad.nombre}}</td>
+      </tr>
+    </tbody>
+  </table>

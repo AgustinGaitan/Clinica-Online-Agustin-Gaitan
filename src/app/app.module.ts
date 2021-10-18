@@ -15,6 +15,7 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 
 import{ AngularFireModule } from '@angular/fire/compat';
 import { RegistroEspecialistaComponent } from './pages/registro-especialista/registro-especialista.component';
+import { ListadoEspecialidadesComponent } from './components/listado-especialidades/listado-especialidades.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegistroEspecialistaComponent } from './pages/registro-especialista/reg
     BienvenidaComponent,
     LoginComponent,
     ErrorComponent,
-    RegistroEspecialistaComponent
+    RegistroEspecialistaComponent,
+    ListadoEspecialidadesComponent
   ],
   imports: [
     BrowserModule,
