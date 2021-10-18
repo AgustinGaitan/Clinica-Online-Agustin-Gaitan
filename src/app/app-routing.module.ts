@@ -19,6 +19,8 @@ const routes: Routes = [{
     pathMatch:'full'
     
   },
+
+  { path: 'registro', loadChildren: () => import('./modules/registro/registro.module').then(m => m.RegistroModule) },
   {
     path:'**',
     component: ErrorComponent

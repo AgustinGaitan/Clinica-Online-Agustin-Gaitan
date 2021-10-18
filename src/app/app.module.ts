@@ -9,17 +9,18 @@ import { ErrorComponent } from './pages/error/error.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 
 //Angular
 
-import{ AngularFireModule } from '@angular/fire/compat'
+import{ AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
     AppComponent,
     BienvenidaComponent,
     LoginComponent,
-    ErrorComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +29,7 @@ import{ AngularFireModule } from '@angular/fire/compat'
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
