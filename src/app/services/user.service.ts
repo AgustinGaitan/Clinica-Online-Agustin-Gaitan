@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Especialista } from '../clases/especialista';
 import { Paciente } from '../clases/paciente';
 
 @Injectable({
@@ -14,12 +15,18 @@ export class UserService {
   //Pacientes
   pacientes : Observable<Paciente[]>;
   pacienteCollection : AngularFirestoreCollection<Paciente>;
+    //Especialista
+    especialistas : Observable<Especialista[]>;
+    especialistaCollection : AngularFirestoreCollection<Especialista>;
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
     auth.authState.subscribe((user) => (this.logged= user));
 
     this.pacienteCollection = firestore.collection<Paciente>('pacientes');
     this.pacientes = this.pacienteCollection.valueChanges({idField: 'id'});
+
+    this.especialistaCollection = firestore.collection<Especialista>('especialistas');
+    this.especialistas = this.especialistaCollection.valueChanges({idField: 'id'});
 
   }
 
@@ -33,4 +40,8 @@ export class UserService {
   RegistrarPaciente(paciente : Paciente){
     return this.pacienteCollection.add({...paciente});
   }
+  RegistrarEspecialista(especialista : Especialista){
+    return this.especialistaCollection.add({...especialista});
+  }
+
 }

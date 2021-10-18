@@ -14,13 +14,15 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 //Angular
 
 import{ AngularFireModule } from '@angular/fire/compat';
+import { RegistroEspecialistaComponent } from './pages/registro-especialista/registro-especialista.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BienvenidaComponent,
     LoginComponent,
-    ErrorComponent
+    ErrorComponent,
+    RegistroEspecialistaComponent
   ],
   imports: [
     BrowserModule,
