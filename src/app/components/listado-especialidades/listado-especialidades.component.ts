@@ -1,6 +1,7 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-listado-especialidades',
@@ -9,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ListadoEspecialidadesComponent implements OnInit {
 
+  @Output() especialidadSeleccionadaEmitter : EventEmitter<any> = new EventEmitter();
   especialidades : any[] = [];
 
   constructor(private userService : UserService) { 
@@ -20,6 +22,10 @@ export class ListadoEspecialidadesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  SeleccionarEspecialidad(especialidad : any){
+    this.especialidadSeleccionadaEmitter.emit(especialidad);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Especialista } from 'src/app/clases/especialista';
+import { FotoService } from 'src/app/services/foto.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,17 +12,18 @@ import { UserService } from 'src/app/services/user.service';
 export class RegistroEspecialistaComponent implements OnInit {
 
   formRegistro !: FormGroup;
+  especialidadSeleccionada : any;
+  formData : FormData = new FormData();
 
-  constructor(private fb : FormBuilder, private userService : UserService) {
+  constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService) {
  
     this.formRegistro = this.fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
-      edad: ['', Validators.required],
-      dni: ['', Validators.required],
-      obraSocial: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required, Validators.email],
+      edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
+      dni: ['', [Validators.required,Validators.min(1000000)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
 
     })
   }
@@ -58,12 +60,23 @@ export class RegistroEspecialistaComponent implements OnInit {
                                             this.getDni(),
                                             this.getEmail(),
                                             this.getPassword(),
-                                            this.getEspecialidad()
+                                            this.especialidadSeleccionada
                                             )
 
                                             
-    this.userService.RegistrarEspecialista(especialista);
+    
+    this.fotoService.SubirFoto(this.formData,especialista);
 
   }
 
+  MostrarEspecialidadSeleccionada(event :any){
+    this.especialidadSeleccionada = event.nombre;
+  }
+
+  SubirFoto(event : any){
+
+    this.formData.append('foto',event.target.files[0]);
+    
+
+  }
 }

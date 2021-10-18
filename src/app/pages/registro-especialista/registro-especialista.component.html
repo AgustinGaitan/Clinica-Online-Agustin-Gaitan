@@ -35,7 +35,7 @@
             </div> 
         </div>
         <div class="form-floating mb-3">
-            <input type="dni" formControlName="dni" class="form-control" name="dni">
+            <input type="number" formControlName="dni" class="form-control" name="dni">
             <label for="floatingInput">DNI</label>
             <div class='text-danger p-1' *ngIf="formRegistro.get('dni')?.touched && formRegistro.get('dni')?.errors?.required">
               Ingrese un dni.
@@ -46,12 +46,13 @@
         </div>
         <div class="form-floating mb-3">
          
-            <app-listado-especialidades></app-listado-especialidades>
+          <app-listado-especialidades (especialidadSeleccionadaEmitter)="MostrarEspecialidadSeleccionada($event)"></app-listado-especialidades>
            
           
         </div>
+        <label>Especialidad seleccionada: <br>{{especialidadSeleccionada}}</label>
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" name="email"  placeholder="name@example.com">
+          <input type="email" class="form-control" name="email" formControlName="email"  placeholder="name@example.com">
           <label for="floatingInput">Email</label>
           <div class='text-danger p-1' *ngIf="formRegistro.get('email')?.touched && formRegistro.get('email')?.errors?.required">
             Ingrese un email
@@ -61,25 +62,25 @@
           </div> 
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" name="password"  placeholder="Password">
-          <label for="floatingPassword">Password</label>
+          <input type="password" class="form-control" name="password" formControlName="password" placeholder="password">
+          <label for="floatingPassword">Contraseña</label>
           <div class='text-danger p-1' *ngIf="formRegistro.get('password')?.touched && formRegistro.get('password')?.errors?.required">
             Ingrese una contraseña.
           </div>
-          <div class='text-danger p-1' *ngIf="formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.errors?.minlength">
-              Ingrese un nombre valido.
+          <div class='text-danger p-1' *ngIf="formRegistro.get('password')?.touched && formRegistro.get('password')?.errors?.minlength">
+              Ingrese una contraseña valida.
           </div> 
         </div>
         <div class="form-floating mb-3">
-          <input type="file" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos">
+          <input type="file" (change)="SubirFoto($event)" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos">
           <label>Seleccione una imagen para su perfil</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">Registrarse</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formRegistro.invalid">Registrarse</button>
        
       </form> 
     </div>
     <div class="col-lg-7 text-center text-lg-start">
-      <h1 class="display-4 fw-bold lh-1 mb-3">Registro de paciente</h1>
+      <h1 class="display-4 fw-bold lh-1 mb-3">Registro de Especialista</h1>
       <p class="col-lg-10 fs-4"></p>
     </div>
   </div>

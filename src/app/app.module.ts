@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
-
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 //Angular
 
 import{ AngularFireModule } from '@angular/fire/compat';

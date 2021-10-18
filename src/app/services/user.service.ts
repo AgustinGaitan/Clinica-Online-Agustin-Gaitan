@@ -49,6 +49,7 @@ export class UserService {
     return this.pacienteCollection.add({...paciente});
   }
   RegistrarEspecialista(especialista : Especialista){
+           this.auth.createUserWithEmailAndPassword(especialista.email, especialista.password);
     return this.especialistaCollection.add({...especialista});
   }
 
