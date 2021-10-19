@@ -9,18 +9,52 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userSevice : UserService, private router : Router) { }
+
   email : string = "";
   password : string = "";
-  error : string = "";
+  loading : boolean = false;
+  
+
+  constructor(private userSevice : UserService, private router : Router) { }
 
   ngOnInit(): void {
   }
 
 
   Loguearse(){
+    this.loading = true;
+    
+    setTimeout(() => {
+     
+      this.userSevice.Login(this.email, this.password);
+      this.loading = false;
+    }, 2000);
+    
+  }
 
-    this.userSevice.Login(this.email, this.password);
+  LoguearsePaciente(){
+    this.email="paciente@paciente.com";
+    this.password="123123";
+   
+      this.Loguearse();
+  
+  }
+
+  LoguearseEspecialista(){
+
+    this.email="especialista@especialista.com";
+    this.password="12312";
  
+      this.Loguearse();
+  
+    
+  }
+
+  LoguearseAdministrador(){
+    this.email="administrador@administrador.com";
+    this.password="123123";
+    
+      this.Loguearse();
+   
   }
 }

@@ -16,8 +16,14 @@
           <label for="floatingPassword">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="Loguearse()">Iniciar sesión</button>
-        <small class="text-danger">{{error}}</small>
+       
+        <button class="w-100 btn btn-sm btn-secondary" type="submit" (click)="LoguearsePaciente()">Inicio rápido como paciente</button>
+        <button class="w-100 btn btn-sm btn-info" type="submit" (click)="LoguearseEspecialista()">Inicio rápido como especialista</button>
+        <button class="w-100 btn btn-sm btn-warning" type="submit" (click)="LoguearseAdministrador()">Inicio rápido como administrador</button>
+      
       </form> 
+
+      <img *ngIf="loading" style="margin-left: 1cm" src="../../../assets/images/spinner.gif" height="200px" width="300px">
     </div>
   </div>
 </div>

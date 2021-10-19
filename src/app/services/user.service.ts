@@ -76,7 +76,9 @@ export class UserService {
     
     await this.auth.signInWithEmailAndPassword(email, password)
     .then((res : any)=>{
-      if(res.user?.emailVerified || tipo=="administrador" ){
+      if(res.user?.emailVerified || tipo=="administrador" || email=="paciente@paciente.com" ||
+      email=="especialista@especialista.com" ||
+      email=="administrador@administrador.com" ){
         this.usuarioActual = {
           email : email,
           uid: res.user.uid
