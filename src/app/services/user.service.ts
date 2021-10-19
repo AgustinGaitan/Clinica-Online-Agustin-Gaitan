@@ -88,20 +88,31 @@ export class UserService {
           console.log("pacientes ", this.todosLosPacientes);
 
           for(let item of this.todosLosEspecialistas){
+
             if(email == item.email){
+              console.log("emai parametro ", email);
+              console.log("email del item ",item.email);
               tipo = "especialista";
               if(item.habilitado){
                 this.especialistaHabilitado = true;
+              }else{
+                this.especialistaHabilitado = false;
               }
+              break;
             }
           }
           for(let item of this.todosLosPacientes){
+
+            console.log("email del item en pacientes ",item.email);
             if(email == item.email){
               tipo = "paciente";
             }
           }
-          
+
+          console.log("tipo ", tipo);
+          console.log("habilitado " + this.especialistaHabilitado);
           if(tipo=="especialista"){
+         
             if(this.especialistaHabilitado){
 
               console.log(tipo);
@@ -130,7 +141,8 @@ export class UserService {
           confirmButtonText: 'Entendido.'
         });
       }
-    }).catch((error) => {
+    }).catch((error : any) => {
+
       Swal.fire({
         title: 'Error!',
         text: 'Alguna credencial es incorrecta.',
@@ -147,40 +159,13 @@ export class UserService {
     this.auth.createUserWithEmailAndPassword(paciente.email, paciente.password)
     .then((res) =>{
       res.user?.sendEmailVerification();
-      
-    }).catch((error)=>{
-      console.log(error);
-    });
 
-    Swal.fire({
-      title: 'Registrado!',
-      text: 'Registrado como paciente.',
-      icon: 'success',
-    });
-
-    setTimeout(() => {
-      if(this.usuarioActual != null){
-        this.router.navigateByUrl('/admin/usuarios');
-      }else{
-        this.router.navigateByUrl('/login');
-      }
-    }, 2000);
-    return this.pacienteCollection.add({...paciente});
-  }
-  RegistrarEspecialista(especialista : Especialista){
-
-      this.auth.createUserWithEmailAndPassword(especialista.email, especialista.password)
-      .then((res) =>{
-        res.user?.sendEmailVerification();
-      }).catch((error)=>{
-        console.log(error);
-      });;
-      
       Swal.fire({
         title: 'Registrado!',
-        text: 'Registrado como especialista.',
+        text: 'Registrado como paciente.',
         icon: 'success',
       });
+  
       setTimeout(() => {
         if(this.usuarioActual != null){
           this.router.navigateByUrl('/admin/usuarios');
@@ -188,19 +173,76 @@ export class UserService {
           this.router.navigateByUrl('/login');
         }
       }, 2000);
-    return this.especialistaCollection.add({...especialista});
+      return this.pacienteCollection.add({...paciente});
+      
+    }).catch((error)=>{
+      if(error.code="auth/email-already-exists"){
+        Swal.fire({
+          title: 'Error!',
+          text: 'El mail ya está siendo usado por otro usuario.',
+          icon: 'error',
+          confirmButtonText: 'Entendido.'
+        });
+      }
+    });
+
+   
+  }
+  RegistrarEspecialista(especialista : Especialista){
+
+      this.auth.createUserWithEmailAndPassword(especialista.email, especialista.password)
+      .then((res) =>{
+        res.user?.sendEmailVerification();
+        Swal.fire({
+          title: 'Registrado!',
+          text: 'Registrado como especialista.',
+          icon: 'success',
+        });
+        setTimeout(() => {
+          if(this.usuarioActual != null){
+            this.router.navigateByUrl('/admin/usuarios');
+          }else{
+            this.router.navigateByUrl('/login');
+          }
+        }, 2000);
+        return this.especialistaCollection.add({...especialista});
+
+      }).catch((error)=>{
+        if(error.code="auth/email-already-exists"){
+          Swal.fire({
+            title: 'Error!',
+            text: 'El mail ya está siendo usado por otro usuario.',
+            icon: 'error',
+            confirmButtonText: 'Entendido.'
+          });
+        }
+      });;
+      
   }
 
   RegistrarAdministrador(admin : Administrador){
 
-    this.auth.createUserWithEmailAndPassword(admin.email, admin.password);
-    
-    Swal.fire({
-      title: 'Registrado!',
-      text: 'Registrado como administrador.',
-      icon: 'success',
+    this.auth.createUserWithEmailAndPassword(admin.email, admin.password)
+    .then(()=>{
+      Swal.fire({
+        title: 'Registrado!',
+        text: 'Registrado como administrador.',
+        icon: 'success',
+      });
+      return this.administradorCollection.add({...admin}); 
+    })
+    .catch((error : any)=>{
+      if(error.code="auth/email-already-exists"){
+        Swal.fire({
+          title: 'Error!',
+          text: 'El mail ya está siendo usado por otro usuario.',
+          icon: 'error',
+          confirmButtonText: 'Entendido.'
+        });
+      }
     });
-    return this.administradorCollection.add({...admin});
+    
+ 
   }
 
   AgregarEspecialidad(especialidad : any){

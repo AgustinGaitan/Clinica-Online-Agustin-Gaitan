@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
   LoguearseEspecialista(){
 
     this.email="especialista@especialista.com";
-    this.password="12312";
+    this.password="123123";
  
       this.Loguearse();
   
