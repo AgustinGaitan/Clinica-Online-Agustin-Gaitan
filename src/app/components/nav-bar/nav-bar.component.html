@@ -7,7 +7,10 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="['/bienvenida']">Ir a la pagina principal</a>
+            <a class="nav-link active" aria-current="page" [routerLink]="['/bienvenida']">Ir a la pagina de bienvenida</a>
+          </li>
+          <li *ngIf="userService.usuarioActual != null" class="nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/principal']">Ir a la pagina principal</a>
           </li>
         </ul>
       </div>

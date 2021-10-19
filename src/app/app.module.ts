@@ -17,6 +17,10 @@ import{ AngularFireModule } from '@angular/fire/compat';
 import { RegistroEspecialistaComponent } from './pages/registro-especialista/registro-especialista.component';
 import { ListadoEspecialidadesComponent } from './components/listado-especialidades/listado-especialidades.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { PrincipalComponent } from './pages/principal/principal.component';
+import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.component';
+import { ListadoTodosUsuariosComponent } from './components/listado-todos-usuarios/listado-todos-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     ErrorComponent,
     RegistroEspecialistaComponent,
     ListadoEspecialidadesComponent,
-    NavBarComponent
+    NavBarComponent,
+    PrincipalComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     ReactiveFormsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

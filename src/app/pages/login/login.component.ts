@@ -20,17 +20,7 @@ export class LoginComponent implements OnInit {
 
   Loguearse(){
 
-    this.userSevice.Login(this.email, this.password)
-    .then(() =>{
-
-      console.log('Usuario logueado');
-      this.router.navigateByUrl('/bienvenida');
-    }).catch((error) =>{
-      if(error.code == "auth/user-not-found"){
-        this.error = "Usuario no encontrado."
-      }else{
-        this.error = "Datos incorrectos."
-      }
-    });
+    this.userSevice.Login(this.email, this.password);
+ 
   }
 }

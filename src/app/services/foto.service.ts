@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Administrador } from '../clases/administrador';
 import { Especialista } from '../clases/especialista';
 import { Paciente } from '../clases/paciente';
 import { UserService } from './user.service';
@@ -25,6 +26,22 @@ export class FotoService {
       console.log(data);
       console.log(especialista);
       this.userService.RegistrarEspecialista(especialista);
+     });
+  }
+
+  async SubirFotoAdministrador(formData : FormData, admin : Administrador){
+
+    const nombre = "foto-" + Date.now();
+    const filePath = "administradores/" + nombre;
+    const task = await this.storage.upload(filePath, formData.get('foto'));
+
+    const ref = this.storage.ref(filePath);
+     ref.getDownloadURL()
+     .subscribe((data)=>{
+      admin.foto = data;
+      console.log(data);
+      console.log(admin);
+      this.userService.RegistrarAdministrador(admin);
      });
   }
 

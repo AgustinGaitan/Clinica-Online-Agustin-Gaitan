@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BienvenidaComponent} from '../app/pages/bienvenida/bienvenida.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PrincipalComponent } from './pages/principal/principal.component';
 
 const routes: Routes = [{
 
@@ -13,6 +14,11 @@ const routes: Routes = [{
    path: 'login',
    component: LoginComponent
   },
+  { path: 'registro', loadChildren: () => import('./modules/registro/registro.module').then(m => m.RegistroModule) },
+  {
+    path: 'principal',
+    component:PrincipalComponent
+  },
   {
     path:'',
     redirectTo:'bienvenida',
@@ -20,7 +26,7 @@ const routes: Routes = [{
     
   },
 
-  { path: 'registro', loadChildren: () => import('./modules/registro/registro.module').then(m => m.RegistroModule) },
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   {
     path:'**',
     component: ErrorComponent
