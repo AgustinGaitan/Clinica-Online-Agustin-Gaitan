@@ -12,6 +12,7 @@ export class RegistroPacienteComponent implements OnInit {
 
    
   formRegistro !: FormGroup;
+  formData  : FormData = new FormData();
 
   constructor(private fb : FormBuilder, private userService : UserService) {
  
@@ -65,5 +66,12 @@ export class RegistroPacienteComponent implements OnInit {
                                             
     this.userService.RegistrarPaciente(paciente);
 
+  }
+
+  SubirFoto(event : any){
+
+    this.formData.append('foto',event.target.files[0]);
+    this.formData.append('foto',event.target.files[1]);
+    
   }
 }

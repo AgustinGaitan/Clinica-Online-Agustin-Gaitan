@@ -65,7 +65,7 @@ export class RegistroEspecialistaComponent implements OnInit {
 
                                             
     
-    this.fotoService.SubirFoto(this.formData,especialista);
+    this.fotoService.SubirFotoEspecialista(this.formData,especialista);
 
   }
 
