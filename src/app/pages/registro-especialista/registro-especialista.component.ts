@@ -20,10 +20,11 @@ export class RegistroEspecialistaComponent implements OnInit {
     this.formRegistro = this.fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
-      edad: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
-      dni: ['', [Validators.required,Validators.min(1000000)]],
+      edad: ['', [Validators.required, Validators.min(20), Validators.max(90)]],
+      dni: ['', [Validators.required,Validators.min(1000000), Validators.max(99999999)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      foto:['', Validators.required]
 
     })
   }

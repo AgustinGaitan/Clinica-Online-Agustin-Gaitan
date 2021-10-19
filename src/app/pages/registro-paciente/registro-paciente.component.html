@@ -31,7 +31,7 @@
             <div class='text-danger p-1' *ngIf="formRegistro.get('edad')?.touched && formRegistro.get('edad')?.errors?.required">
               Ingrese una edad
             </div>
-            <div class='text-danger p-1' *ngIf="formRegistro.get('edad')?.touched && formRegistro.get('edad')?.errors?.minlength">
+            <div class='text-danger p-1' *ngIf="formRegistro.get('edad')?.touched && formRegistro.get('edad')?.errors?.min && formRegistro.get('edad')?.errors?.max">
                 Ingrese una edad valida.
             </div> 
         </div>
@@ -41,7 +41,7 @@
             <div class='text-danger p-1' *ngIf="formRegistro.get('dni')?.touched && formRegistro.get('dni')?.errors?.required">
               Ingrese un dni.
             </div>
-            <div class='text-danger p-1' *ngIf="formRegistro.get('dni')?.touched && formRegistro.get('dni')?.errors?.minlength">
+            <div class='text-danger p-1' *ngIf="formRegistro.get('dni')?.touched && formRegistro.get('dni')?.errors?.min && formRegistro.get('dni')?.errors?.max">
                 Ingrese un dni válido.
             </div> 
         </div>
@@ -76,7 +76,7 @@
           </div> 
         </div>
         <div class="form-floating mb-3">
-          <input type="file" (change)="SubirFoto($event)" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos" multiple>
+          <input type="file" (change)="SubirFoto($event)" formControlName="fotos" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos" multiple>
           <label>Seleccione 2 (dos) imagenes para su perfil</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formRegistro.invalid">Registrarse</button>

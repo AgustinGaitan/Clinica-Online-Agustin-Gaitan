@@ -20,11 +20,12 @@ export class RegistroPacienteComponent implements OnInit {
     this.formRegistro = this.fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
-      edad: ['', Validators.required],
-      dni: ['', Validators.required],
+      edad: ['', [Validators.required, Validators.min(2), Validators.max(100)]],
+      dni: ['', [Validators.required,Validators.min(1000000), Validators.max(99999999)]],
       obraSocial: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      fotos:['', Validators.required]
 
     })
   }
