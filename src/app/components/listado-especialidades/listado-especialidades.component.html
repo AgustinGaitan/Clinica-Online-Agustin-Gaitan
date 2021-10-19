@@ -10,3 +10,10 @@
       </tr>
     </tbody>
   </table>
+      <form [formGroup]="formEspecialidad" (ngSubmit)="AgregarEspecialidad()">
+      <label>Agregar especialidad</label>
+      <input type="text" formControlName='especialidad'>
+      <button type="submit" [disabled]="formEspecialidad.invalid">Agregar</button>
+    
+      </form>
+

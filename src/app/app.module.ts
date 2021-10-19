@@ -16,6 +16,7 @@ import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import{ AngularFireModule } from '@angular/fire/compat';
 import { RegistroEspecialistaComponent } from './pages/registro-especialista/registro-especialista.component';
 import { ListadoEspecialidadesComponent } from './components/listado-especialidades/listado-especialidades.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListadoEspecialidadesComponent } from './components/listado-especialida
     LoginComponent,
     ErrorComponent,
     RegistroEspecialistaComponent,
-    ListadoEspecialidadesComponent
+    ListadoEspecialidadesComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

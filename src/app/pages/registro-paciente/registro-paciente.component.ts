@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Paciente } from 'src/app/clases/paciente';
+import { FotoService } from 'src/app/services/foto.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class RegistroPacienteComponent implements OnInit {
   formRegistro !: FormGroup;
   formData  : FormData = new FormData();
 
-  constructor(private fb : FormBuilder, private userService : UserService) {
+  constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService) {
  
     this.formRegistro = this.fb.group({
       nombre: ['', [Validators.required]],
@@ -22,8 +23,8 @@ export class RegistroPacienteComponent implements OnInit {
       edad: ['', Validators.required],
       dni: ['', Validators.required],
       obraSocial: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required, Validators.email],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
 
     })
   }
@@ -64,14 +65,14 @@ export class RegistroPacienteComponent implements OnInit {
                                             )
 
                                             
-    this.userService.RegistrarPaciente(paciente);
+    this.fotoService.SubirFotoPaciente(this.formData,paciente);
 
   }
 
   SubirFoto(event : any){
 
-    this.formData.append('foto',event.target.files[0]);
-    this.formData.append('foto',event.target.files[1]);
+    this.formData.append('foto',event.target.files[0], event.target.files[0].name);
+    this.formData.append('otraFoto',event.target.files[1], event.target.files[1].name);
     
   }
 }

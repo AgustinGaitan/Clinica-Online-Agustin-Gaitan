@@ -1,3 +1,4 @@
+
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
 
@@ -5,7 +6,7 @@
       <form [formGroup]="formRegistro" (ngSubmit)='Registrarse()' class="p-4 p-md-5 border rounded-3 bg-light"> 
         <div class="form-floating mb-3">
       
-            <input type="text" formControlName="nombre" class="form-control" name="nombre"  id="floatingInput">
+            <input type="text" formControlName="nombre" class="form-control" name="nombre"  >
             <label for="floatingInput">Nombre</label>
               <div class='text-danger p-1' *ngIf="formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.errors?.required">
                 Ingrese un nombre
@@ -15,7 +16,7 @@
               </div> 
         </div>
         <div class="form-floating mb-3">
-            <input type="text" formControlName="apellido" class="form-control" name="apellido"  id="floatingInput">
+            <input type="text" formControlName="apellido" class="form-control" name="apellido"  >
             <label for="floatingInput">Apellido</label>
             <div class='text-danger p-1' *ngIf="formRegistro.get('apellido')?.touched && formRegistro.get('apellido')?.errors?.required">
               Ingrese un apellido
@@ -25,7 +26,7 @@
             </div> 
         </div>
         <div class="form-floating mb-3">
-            <input type="number" formControlName="edad" class="form-control" name="edad" id="floatingInput">
+            <input type="number" formControlName="edad" class="form-control" name="edad" >
             <label for="floatingInput">Edad</label>
             <div class='text-danger p-1' *ngIf="formRegistro.get('edad')?.touched && formRegistro.get('edad')?.errors?.required">
               Ingrese una edad
@@ -35,7 +36,7 @@
             </div> 
         </div>
         <div class="form-floating mb-3">
-            <input type="dni" formControlName="dni" class="form-control" name="dni"  id="floatingInput">
+            <input type="number" formControlName="dni" class="form-control" name="dni"  >
             <label for="floatingInput">DNI</label>
             <div class='text-danger p-1' *ngIf="formRegistro.get('dni')?.touched && formRegistro.get('dni')?.errors?.required">
               Ingrese un dni.
@@ -45,7 +46,7 @@
             </div> 
         </div>
         <div class="form-floating mb-3">
-            <input type="text" formControlName="obraSocial" class="form-control" name="obraSocial"  id="floatingInput">
+            <input type="text" formControlName="obraSocial" class="form-control" name="obraSocial"  >
             <label for="floatingInput">Obra social</label>
             <div class='text-danger p-1' *ngIf="formRegistro.get('obraSocial')?.touched && formRegistro.get('obraSocial')?.errors?.required">
               Ingrese una obra social.
@@ -55,7 +56,7 @@
             </div> 
         </div>
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" name="email"  id="floatingInput" placeholder="name@example.com">
+          <input type="text" formControlName="email" class="form-control" name="email">
           <label for="floatingInput">Email</label>
           <div class='text-danger p-1' *ngIf="formRegistro.get('email')?.touched && formRegistro.get('email')?.errors?.required">
             Ingrese un email
@@ -65,20 +66,20 @@
           </div> 
         </div>
         <div class="form-floating mb-3">
-          <input type="password" class="form-control" name="password"  placeholder="Password">
+          <input type="password" formControlName="password" class="form-control" name="password"  placeholder="Password">
           <label for="floatingPassword">Password</label>
           <div class='text-danger p-1' *ngIf="formRegistro.get('password')?.touched && formRegistro.get('password')?.errors?.required">
             Ingrese una contraseña.
           </div>
-          <div class='text-danger p-1' *ngIf="formRegistro.get('nombre')?.touched && formRegistro.get('nombre')?.errors?.minlength">
+          <div class='text-danger p-1' *ngIf="formRegistro.get('password')?.touched && formRegistro.get('password')?.errors?.minlength">
               Ingrese un nombre valido.
           </div> 
         </div>
         <div class="form-floating mb-3">
-          <input type="file" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos" multiple>
+          <input type="file" (change)="SubirFoto($event)" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos" multiple>
           <label>Seleccione 2 (dos) imagenes para su perfil</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formRegistro.invalid" >Registrarse</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" >Registrarse</button>
        
       </form> 
     </div>

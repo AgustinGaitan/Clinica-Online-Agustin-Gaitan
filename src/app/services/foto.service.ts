@@ -15,7 +15,7 @@ export class FotoService {
   async SubirFotoEspecialista(formData : FormData, especialista : Especialista){
 
     const nombre = "foto-" + Date.now();
-    const filePath = nombre;
+    const filePath = "especialistas/" + nombre;
     const task = await this.storage.upload(filePath, formData.get('foto'));
 
     const ref = this.storage.ref(filePath);
@@ -30,17 +30,31 @@ export class FotoService {
 
   async SubirFotoPaciente(formData : FormData, paciente : Paciente){
 
+    let fotoUno = formData.get('foto');
+    let fotoDos = formData.get('otraFoto');
     const nombre = "foto-" + Date.now();
-    const filePath = nombre;
-    const task = await this.storage.upload(filePath, formData.get('foto'));
+    const filePath = "pacientes/" + nombre;
+    const filePathOtra = "pacientes/" + nombre + '-2';
+    await this.storage.upload(filePath, fotoUno);
+    await this.storage.upload(filePathOtra, fotoDos);
 
-    const ref = this.storage.ref(filePath);
+    const ref =  this.storage.ref(filePath);
+    const refDos = this.storage.ref(filePathOtra);
+
      ref.getDownloadURL()
-     .subscribe((data)=>{
-      paciente.fotos = data;
-      console.log(data);
-      console.log(paciente);
-      this.userService.RegistrarPaciente(paciente);
+     .subscribe((url1 : any)=>{
+      paciente.fotos.push(url1)
+
+       refDos.getDownloadURL()
+       .subscribe((url2 : any)=>{
+         paciente.fotos.push(url2);
+       
+         console.log(paciente);
+        this.userService.RegistrarPaciente(paciente);
+       })
+
      });
+
+
   }
 }

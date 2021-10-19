@@ -20,7 +20,7 @@ export class UserService {
   especialistaCollection : AngularFirestoreCollection<Especialista>;
   //Especialidades
   especialidades : Observable<any[]>;
-  especialidadesCollection : AngularFirestoreCollection<any>;
+  especialidadCollection : AngularFirestoreCollection<any>;
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
     auth.authState.subscribe((user) => (this.logged= user));
@@ -31,8 +31,8 @@ export class UserService {
     this.especialistaCollection = firestore.collection<Especialista>('especialistas');
     this.especialistas = this.especialistaCollection.valueChanges({idField: 'id'});
 
-    this.especialidadesCollection = firestore.collection<Especialista>('especialidades');
-    this.especialidades = this.especialidadesCollection.valueChanges({idField: 'id'});
+    this.especialidadCollection = firestore.collection<Especialista>('especialidades');
+    this.especialidades = this.especialidadCollection.valueChanges({idField: 'id'});
 
 
 
@@ -46,11 +46,21 @@ export class UserService {
   }
 
   RegistrarPaciente(paciente : Paciente){
+            this.auth.createUserWithEmailAndPassword(paciente.email, paciente.password);
     return this.pacienteCollection.add({...paciente});
   }
   RegistrarEspecialista(especialista : Especialista){
+
            this.auth.createUserWithEmailAndPassword(especialista.email, especialista.password);
     return this.especialistaCollection.add({...especialista});
+  }
+
+  AgregarEspecialidad(especialidad : any){
+    
+    let especialidadObj = {
+      nombre : especialidad
+    }
+    return this.especialidadCollection.add(especialidadObj);
   }
 
 }
