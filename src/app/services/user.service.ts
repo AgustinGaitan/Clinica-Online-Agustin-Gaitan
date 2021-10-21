@@ -40,8 +40,6 @@ export class UserService {
     this.pacienteCollection = firestore.collection<Paciente>('pacientes');
     this.pacientes = this.pacienteCollection.valueChanges({idField: 'id'});
 
-
-
     this.especialistaCollection = firestore.collection<Especialista>('especialistas');
     this.especialistas = this.especialistaCollection.valueChanges({idField: 'id'});
 
@@ -65,33 +63,33 @@ export class UserService {
 
   }
 
+ 
+
   async Login(email : string , password : string){
     
     let tipo : string = "";
     for(let item of this.todosLosAdmin){
       if(email == item.email){
+        this.usuarioActual = item;
         tipo = "administrador";
       }
     }
     
     await this.auth.signInWithEmailAndPassword(email, password)
     .then((res : any)=>{
+
+      
       if(res.user?.emailVerified || tipo=="administrador" || email=="paciente@paciente.com" ||
       email=="especialista@especialista.com" ||
       email=="administrador@administrador.com" ){
-        this.usuarioActual = {
-          email : email,
-          uid: res.user.uid
-        }
-       
-          console.log("especialistas ", this.todosLosEspecialistas);
-          console.log("pacientes ", this.todosLosPacientes);
+    
+ 
 
           for(let item of this.todosLosEspecialistas){
 
             if(email == item.email){
-              console.log("emai parametro ", email);
-              console.log("email del item ",item.email);
+
+              this.usuarioActual = item;
               tipo = "especialista";
               if(item.habilitado){
                 this.especialistaHabilitado = true;
@@ -103,19 +101,17 @@ export class UserService {
           }
           for(let item of this.todosLosPacientes){
 
-            console.log("email del item en pacientes ",item.email);
             if(email == item.email){
+              this.usuarioActual = item;
               tipo = "paciente";
             }
           }
 
-          console.log("tipo ", tipo);
-          console.log("habilitado " + this.especialistaHabilitado);
           if(tipo=="especialista"){
          
             if(this.especialistaHabilitado){
 
-              console.log(tipo);
+  
               this.usuarioActual.tipo = tipo;
               this.router.navigateByUrl('/principal');
 
@@ -128,7 +124,7 @@ export class UserService {
               });
             }
           }else{
-            console.log(tipo);
+    
             this.usuarioActual.tipo = tipo;
             this.router.navigateByUrl('/principal');
           }
@@ -173,6 +169,7 @@ export class UserService {
           this.router.navigateByUrl('/login');
         }
       }, 2000);
+      paciente.uid = res.user?.uid;
       return this.pacienteCollection.add({...paciente});
       
     }).catch((error)=>{
@@ -205,6 +202,7 @@ export class UserService {
             this.router.navigateByUrl('/login');
           }
         }, 2000);
+        especialista.uid = res.user?.uid;
         return this.especialistaCollection.add({...especialista});
 
       }).catch((error)=>{
@@ -223,12 +221,13 @@ export class UserService {
   RegistrarAdministrador(admin : Administrador){
 
     this.auth.createUserWithEmailAndPassword(admin.email, admin.password)
-    .then(()=>{
+    .then((res : any)=>{
       Swal.fire({
         title: 'Registrado!',
         text: 'Registrado como administrador.',
         icon: 'success',
       });
+      admin.uid = res.user?.uid;
       return this.administradorCollection.add({...admin}); 
     })
     .catch((error : any)=>{
@@ -259,6 +258,10 @@ export class UserService {
   }
   DeshabilitarEspecialista(especialista : any){
     this.especialistaCollection.doc(especialista.id).update({'habilitado' : false});
+  }
+
+  GetPaciente(){
+    
   }
 
 }

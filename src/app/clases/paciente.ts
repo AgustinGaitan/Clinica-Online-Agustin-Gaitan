@@ -7,6 +7,7 @@ export class Paciente extends Persona {
 
     fotos : string[] = [];
 
+
     constructor(nombreParam : string,
         apellidoParam : string,
         edadParam : number,

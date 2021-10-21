@@ -5,6 +5,7 @@ export class Especialista extends Persona {
     especialidad : string;
     foto ?: string;
     habilitado: boolean = false;
+ 
 
     constructor(nombreParam : string,
         apellidoParam : string,

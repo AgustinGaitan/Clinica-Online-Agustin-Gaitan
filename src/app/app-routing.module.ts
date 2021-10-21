@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {BienvenidaComponent} from '../app/pages/bienvenida/bienvenida.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
+import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 
 const routes: Routes = [{
@@ -19,14 +20,17 @@ const routes: Routes = [{
     path: 'principal',
     component:PrincipalComponent
   },
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
+  {
+    path:'mi-perfil',
+    component: MiPerfilComponent
+  },
   {
     path:'',
     redirectTo:'bienvenida',
     pathMatch:'full'
     
   },
-
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   {
     path:'**',
     component: ErrorComponent

@@ -4,6 +4,7 @@ export class Administrador extends Persona {
 
     foto ?: string;
 
+
     constructor(nombreParam : string,
         apellidoParam : string,
         edadParam : number,

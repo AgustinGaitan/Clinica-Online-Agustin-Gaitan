@@ -5,6 +5,7 @@ export abstract class Persona {
     dni : number;
     email : string;
     password : string;
+    uid ?: string;
     constructor(nombreParam : string,
                 apellidoParam : string,
                 edadParam : number,

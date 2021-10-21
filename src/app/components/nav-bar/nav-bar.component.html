@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
     <div class="container-fluid">
       <h1 class="navbar-brand">Clinica OnLine</h1>
+      <h1 *ngIf="userService.usuarioActual != undefined" class="navbar-brand">{{userService?.usuarioActual?.nombre}}</h1>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,7 +10,7 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" [routerLink]="['/bienvenida']">Ir a la pagina de bienvenida</a>
           </li>
-          <li *ngIf="userService.usuarioActual != null" class="nav-item">
+          <li *ngIf="userService.usuarioActual != undefined" class="nav-item">
             <a class="nav-link active" aria-current="page" [routerLink]="['/principal']">Ir a la pagina principal</a>
           </li>
         </ul>

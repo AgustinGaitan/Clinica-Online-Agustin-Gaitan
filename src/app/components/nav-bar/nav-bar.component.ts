@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -8,9 +8,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(public userService : UserService) { }
+  usuarioActual : any;
+  constructor(public userService : UserService) { 
+    
+    console.log("logueado", this.userService.logged);
+  }
 
   ngOnInit(): void {
+
   }
 
 }

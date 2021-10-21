@@ -21,6 +21,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.component';
 import { ListadoTodosUsuariosComponent } from './components/listado-todos-usuarios/listado-todos-usuarios.component';
+import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ListadoTodosUsuariosComponent } from './components/listado-todos-usuari
     ListadoEspecialidadesComponent,
     NavBarComponent,
     PrincipalComponent,
+    MiPerfilComponent,
   ],
   imports: [
     BrowserModule,
