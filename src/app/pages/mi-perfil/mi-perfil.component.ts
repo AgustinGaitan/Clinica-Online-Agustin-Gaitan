@@ -10,16 +10,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MiPerfilComponent implements OnInit {
 
-   //paciente : Paciente;
-  // especialista : Especialista;
+  
+ 
 
 
-  constructor(private userService : UserService) { 
-    for(let item of this.userService.todosLosPacientes){
-      if(this.userService.usuarioActual.uid == item.uid){
-         //this.paciente = item;
-      }
-    }
+  constructor(public userService : UserService) { 
+    
+
   }
 
   ngOnInit(): void {
