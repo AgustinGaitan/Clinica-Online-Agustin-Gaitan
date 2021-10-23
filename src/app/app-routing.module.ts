@@ -5,6 +5,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
+import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 
 const routes: Routes = [{
 
@@ -33,6 +34,10 @@ const routes: Routes = [{
   },
 
   { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule) },
+  {
+    path: 'solicitar-turno',
+    component: SolicitarTurnoComponent
+  },
   {
     path:'**',
     component: ErrorComponent

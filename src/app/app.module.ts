@@ -23,6 +23,8 @@ import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.co
 import { ListadoTodosUsuariosComponent } from './components/listado-todos-usuarios/listado-todos-usuarios.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.component';
+import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
+import { ListadoEspecialidadesSinFuncComponent } from './components/listado-especialidades-sin-func/listado-especialidades-sin-func.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.componen
     PrincipalComponent,
     MiPerfilComponent,
     MisHorariosComponent,
+    SolicitarTurnoComponent,
+    ListadoEspecialidadesSinFuncComponent
   ],
   imports: [
     BrowserModule,

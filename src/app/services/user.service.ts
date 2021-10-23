@@ -261,7 +261,7 @@ export class UserService {
   }
 
   AgregarDisponibilidadHoraria(especialista : any , horario : any[]){
-    this.especialistaCollection.doc(especialista.id).update({'horarios' : horario});
+    return this.especialistaCollection.doc(especialista.id).update({'horarios' : horario});
   }
 
 }

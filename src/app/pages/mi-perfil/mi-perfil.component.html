@@ -82,5 +82,5 @@
     </div>
 
    <div>
-     <app-mis-horarios></app-mis-horarios>
+     <app-mis-horarios *ngIf="userService.usuarioActual.tipo == 'especialista'"></app-mis-horarios>
    </div>
