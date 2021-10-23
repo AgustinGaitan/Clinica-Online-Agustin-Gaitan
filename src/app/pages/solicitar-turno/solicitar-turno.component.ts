@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SolicitarTurnoComponent implements OnInit {
 
   especialidadClickeada : any;
+  especialistaClickeado : any;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,5 +17,9 @@ export class SolicitarTurnoComponent implements OnInit {
   MostrarSeleccionado(event : any){
     this.especialidadClickeada = event;
     
+  }
+
+  MostrarEspecialistaSeleccionado(event : any){
+    this.especialistaClickeado = event;
   }
 }

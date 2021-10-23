@@ -25,6 +25,7 @@ import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
 import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.component';
 import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 import { ListadoEspecialidadesSinFuncComponent } from './components/listado-especialidades-sin-func/listado-especialidades-sin-func.component';
+import { ListadoEspecialistasFuncComponent } from './components/listado-especialistas-func/listado-especialistas-func.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ListadoEspecialidadesSinFuncComponent } from './components/listado-espe
     MiPerfilComponent,
     MisHorariosComponent,
     SolicitarTurnoComponent,
-    ListadoEspecialidadesSinFuncComponent
+    ListadoEspecialidadesSinFuncComponent,
+    ListadoEspecialistasFuncComponent
   ],
   imports: [
     BrowserModule,
