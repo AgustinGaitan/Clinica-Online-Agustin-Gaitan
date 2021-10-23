@@ -260,8 +260,8 @@ export class UserService {
     this.especialistaCollection.doc(especialista.id).update({'habilitado' : false});
   }
 
-  GetPaciente(){
-    
+  AgregarDisponibilidadHoraria(especialista : any , horario : any[]){
+    this.especialistaCollection.doc(especialista.id).update({'horarios' : horario});
   }
 
 }

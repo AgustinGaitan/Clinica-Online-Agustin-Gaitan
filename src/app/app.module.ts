@@ -22,6 +22,7 @@ import { PrincipalComponent } from './pages/principal/principal.component';
 import { AdminUsuariosComponent } from './pages/admin-usuarios/admin-usuarios.component';
 import { ListadoTodosUsuariosComponent } from './components/listado-todos-usuarios/listado-todos-usuarios.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
+import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
     NavBarComponent,
     PrincipalComponent,
     MiPerfilComponent,
+    MisHorariosComponent,
   ],
   imports: [
     BrowserModule,

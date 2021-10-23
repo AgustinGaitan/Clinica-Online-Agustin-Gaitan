@@ -2,10 +2,10 @@ import { Persona } from "./persona";
 
 export class Especialista extends Persona {
 
-    especialidad : string;
+    especialidad : string[];
     foto ?: string;
     habilitado: boolean = false;
- 
+    horarios ?: any[];
 
     constructor(nombreParam : string,
         apellidoParam : string,
@@ -13,7 +13,7 @@ export class Especialista extends Persona {
         dniParam : number,
         emailParam : string,
         passwordParam : string,
-        especialidadParam : string){
+        especialidadParam : string[]){
         super(nombreParam,apellidoParam,edadParam,dniParam,emailParam,passwordParam);
         this.especialidad = especialidadParam;
     }

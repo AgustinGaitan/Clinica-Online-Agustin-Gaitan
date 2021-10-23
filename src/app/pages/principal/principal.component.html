@@ -2,9 +2,6 @@
     <h2 class="pb-2 border-bottom">Página principal</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
       <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"/></svg>
-        </div>
         <div *ngIf="userService.usuarioActual.tipo=='administrador'">
           <h2>Sección Usuarios</h2>
           <p>Administre los usuarios.</p>
@@ -14,9 +11,6 @@
         </div>
       </div>
       <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-          <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"/></svg>
-        </div>
         <h2>Mi perfil</h2>
         <p>Vea sus datos</p>
         <button class="btn-success" [routerLink]="['/mi-perfil']"> Mi perfil</button>
@@ -34,3 +28,4 @@
       </div> -->
     </div>
   </div>
+</div>

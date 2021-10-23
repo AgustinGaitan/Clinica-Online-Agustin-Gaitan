@@ -51,7 +51,12 @@
            
           
         </div>
-        <label>Especialidad seleccionada: <br>{{especialidadSeleccionada}}</label>
+        <div class="form-floating mb-3">
+          <h6>Especialidades a ser agregadas</h6>
+          <div *ngFor="let item of especialidadSeleccionada">
+           <label >{{item}}</label>
+          </div>
+        </div>
         <div class="form-floating mb-3">
           <input type="email" class="form-control" name="email" formControlName="email"  placeholder="name@example.com">
           <label for="floatingInput">Email</label>

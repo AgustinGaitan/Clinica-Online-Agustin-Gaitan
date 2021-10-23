@@ -14,10 +14,17 @@
               <div class="card">
                 <div class="card-body">
                      <div class="col-sm-6">
-                  <h2 >Fotos</h2>
-           
+                  <h2 *ngIf="this.userService.usuarioActual.tipo == 'paciente' ; else foto">Fotos</h2>
+                  <ng-template #foto>
+                    <h2>Foto</h2>
+                  </ng-template>
                     <div class="d-flex d-wrap">
-                      <img *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
+                      <div *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
+                      <img  *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
+                      </div>
+                    <div *ngIf="this.userService.usuarioActual.tipo != 'paciente'">
+                      <img src={{userService.usuarioActual.foto}} width="150">
+                    <div>
                     </div>
                   </div>
               </div>
@@ -52,12 +59,17 @@
                     </div>
                   </div>
                   <hr>
-                  <div class="row">
+                  <div class="row" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
                     <div class="col-sm-3">
                       <h6 class="mb-0">Obra social</h6>
                     </div>
                     <div class="col-sm-9 text-secondary">
                       {{userService.usuarioActual.obraSocial}}
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="this.userService.usuarioActual.tipo == 'especialista'">
+                    <div class="col-sm-3">
+                      <button class="mb-0" [routerLink]="['/especialista/mis-horarios']">Mis horarios</button>
                     </div>
                   </div>
                   <hr>
@@ -68,3 +80,7 @@
 
         
     </div>
+
+   <div>
+     <app-mis-horarios></app-mis-horarios>
+   </div>

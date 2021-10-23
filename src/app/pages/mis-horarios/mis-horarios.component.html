@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="main-body" align="center">
+    
+          <!-- Breadcrumb -->
+          <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#"[routerLink]="['/mi-perfil']">Atrás</a></li>
+            </ol>
+          </nav>
+          <!-- /Breadcrumb -->
+          
+           
+                <div class="card col-6">
+                    <form [formGroup]="controles" (ngSubmit)="SeleccionarHorario()">
+                        <div class="card-body"> 
+                               Seleccionar horario
+                            <div class="row">
+
+                                <div class="card-body">
+                                   
+                            
+                                    <label>Dia</label>
+                                    <select formControlName="dia">
+                                        <option value="lunes">Lunes</option>
+                                        <option value="martes">Martes</option>
+                                        <option value="miercoles">Miercoles</option>
+                                        <option value="jueves">Jueves</option>
+                                        <option value="viernes">Viernes</option>
+                                        <option value="sabado">Sábado</option>
+                                    </select>
+                                </div>
+
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="card-body">
+                                    Horarios
+                                    <div class="btn-group" role="group">
+                                    <div class="col-12">
+                            
+                                        <input type="radio" formControlName="hora" value="8:00">8:00
+                                        <input type="radio" formControlName="hora" value="8:30">8:30
+                                        <input type="radio"formControlName="hora" value="9:00">9:00
+                                        <input type="radio"formControlName="hora" value="9:30">9:30
+                                        <input type="radio"formControlName="hora" value="10:00">10:00
+                                        <input type="radio"formControlName="hora" value="10:30">10:30
+                                        <input type="radio"formControlName="hora" value="11:00">11:00
+                                        <input type="radio"formControlName="hora" value="11:30">11:30
+                                        <input type="radio"formControlName="hora" value="12:00">12:30
+                                        <input type="radio"formControlName="hora" value="13:00">13:00
+                                        <input type="radio"formControlName="hora" value="13:30">13:30<br>
+                                        <!--<div *ngIf="sabado">-->
+                                            <input type="radio"formControlName="hora" value="14:00">14:00
+                                            <input type="radio"formControlName="hora" value="14:30">14:30
+                                            <input type="radio"formControlName="hora" value="15:00">15:00
+                                            <input type="radio"formControlName="hora" value="15:30">15:30
+                                            <input type="radio"formControlName="hora" value="16:00">16:00
+                                            <input type="radio"formControlName="hora" value="16:30">16:30
+                                            <input type="radio"formControlName="hora" value="17:00">17:00
+                                            <input type="radio"formControlName="hora" value="17:30">17:30
+                                            <input type="radio"formControlName="hora" value="18:00">18:00
+                                            <input type="radio"formControlName="hora" value="18:30">18:30
+                                        <!--</div>-->
+                                    </div>
+                                      </div>
+                                </div>
+                           
+                            </div>
+                  
+                            <button type="submit" class="btn-success">Seleccionar horario</button>
+                        </div>
+                    </form>        
+                 </div>
+            
+    </div>
+        
+</div>

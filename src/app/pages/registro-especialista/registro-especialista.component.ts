@@ -12,8 +12,10 @@ import { UserService } from 'src/app/services/user.service';
 export class RegistroEspecialistaComponent implements OnInit {
 
   formRegistro !: FormGroup;
-  especialidadSeleccionada : any;
+  especialidadSeleccionada : any[] = [];
   formData : FormData = new FormData();
+
+  
 
   constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService) {
  
@@ -71,7 +73,8 @@ export class RegistroEspecialistaComponent implements OnInit {
   }
 
   MostrarEspecialidadSeleccionada(event :any){
-    this.especialidadSeleccionada = event.nombre;
+    console.log(event);
+    this.especialidadSeleccionada.push(event);
   }
 
   SubirFoto(event : any){

@@ -5,7 +5,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let especialidad of especialidades" (click)="SeleccionarEspecialidad(especialidad)">
+      <tr *ngFor="let especialidad of especialidades" (click)="SeleccionarEspecialidad(especialidad.nombre)">
         <td scope="row" class="table-info">{{especialidad.nombre}}</td>
       </tr>
     </tbody>

@@ -31,6 +31,8 @@ const routes: Routes = [{
     pathMatch:'full'
     
   },
+
+  { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule) },
   {
     path:'**',
     component: ErrorComponent
