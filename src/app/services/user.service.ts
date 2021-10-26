@@ -270,7 +270,7 @@ export class UserService {
     return this.especialistaCollection.doc(especialista.id).update({'horarios' : horario});
   }
 
-  SetearTurno(){
-
+  SetearTurno(horario : any){
+    return this.turnoCollection.add({...horario});
   }
 }

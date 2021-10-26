@@ -9,11 +9,13 @@
         <h3>Seleccione un especialista</h3>
         <app-listado-especialistas-func *ngIf="mostrarListaEspecialistas" [especialidadAMostrar]="especialidadClickeada" (especialistaSeleccionadoEmitter)="MostrarEspecialistaSeleccionado($event)"></app-listado-especialistas-func>
         <h5 *ngIf="especialistaClickeado != undefined">{{especialistaClickeado.nombre}} , {{especialistaClickeado.apellido}}</h5>
-        <button type="button" class="btn btn-success" *ngIf="especialistaClickeado != undefined" (click)="PedirTurno()">Pedir turno</button>
         <div *ngIf="especialistaClickeado != undefined">
-            <div *ngFor="let horario of horariosMostrar">
-                <input type="radio" value={{horario}}>{{horario}}
+        <form [formGroup]="controles" (ngSubmit)="PedirTurno()">
+            <div *ngFor="let horario of fechasEspAMostrar">
+                <input type="radio" formControlName="horario" value={{horario}}>{{horario}}
             </div>
-        </div>
+            <button type="submit">Pedir turno</button>
+        </form>
+    </div>
     </div>
 </div>  

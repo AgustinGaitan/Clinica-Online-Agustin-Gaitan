@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';   
 
 @Pipe({
   name: 'fechaEsp'
@@ -8,7 +8,7 @@ export class FechaEspPipe implements PipeTransform {
   transform(arrayFechas: string[], dias : string[]) {
     let arrayRetorno = [];
     console.log(dias.includes('lunes'));
-
+    
     for(let item of arrayFechas){
 
       if(item.includes('Mon,') && this.Incluye(dias,'lunes')){
@@ -32,6 +32,9 @@ export class FechaEspPipe implements PipeTransform {
      
 
     }
+    arrayRetorno = this.Traducir(arrayRetorno);
+    arrayRetorno = this.AgregarHorario(arrayRetorno,dias);
+
     return arrayRetorno;
   }
 
@@ -43,6 +46,81 @@ export class FechaEspPipe implements PipeTransform {
       }
     }
     return false;
+
+  }
+
+  AgregarHorario(arrayDias : string[], horarios : string[]){
+    
+    let arrayRetorno : any[] = [];
+
+
+    //  arrayRetorno = arrayDias.map((item) =>{
+    for(let item of arrayDias){
+      for(let fecha of horarios){
+
+        if(fecha.includes('lunes') && item.includes('Lunes')){
+         arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }else if(fecha.includes('martes') && item.includes('Martes')){
+
+          arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }else if(fecha.includes('miercoles')&& item.includes('Miercoles')){
+
+          arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }else if(fecha.includes('jueves') && item.includes('Jueves')){
+
+          arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }else if(fecha.includes('viernes') && item.includes('Viernes')){
+          
+          arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }else if(fecha.includes('sabado') && item.includes('Sabado')){
+
+          arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }else if (fecha.includes('domingo') && item.includes('Domingo')){
+
+          arrayRetorno.push(item + ' ' + fecha.split(' ')[1]);
+        }
+      }
+    //   return [];
+    // });
+  }
+
+    return arrayRetorno;
+  }
+
+  Traducir(arrayFechas : string[]){
+    let arrayRetorno :any[] = [];
+      for(let item of arrayFechas){
+
+            if(item.includes('Jan')){
+          
+              arrayRetorno.push(item.replace('Jan','Enero'));
+            }else if(item.includes('Feb')){
+              arrayRetorno.push(item.replace('Feb','Febrero'));
+            }else if(item.includes('Mar')){
+              arrayRetorno.push(item.replace('Mar','Marzo'));
+        
+            }else if(item.includes('Ap')){
+              arrayRetorno.push(item.replace('Apr','Abril'));
+            }else if(item.includes('May')){
+              arrayRetorno.push(item.replace('May','Mayo'));
+            }else if(item.includes('Jun')){
+              arrayRetorno.push(item.replace('Jun','Junio'));
+            }else if(item.includes('Jul')){
+              arrayRetorno.push(item.replace('Jul','Julio'));
+            }else if(item.includes('Aug')){
+              arrayRetorno.push(item.replace('Aug','Agosto'));
+            }else if(item.includes('Sep')){
+              arrayRetorno.push(item.replace('Sep','Septiembre'));
+            }else if(item.includes('Oct')){
+              arrayRetorno.push(item.replace('Oct','Octubre'));
+            }else if(item.includes('Nov')){
+              arrayRetorno.push(item.replace('Nov','Noviembre'));
+            }else if(item.includes('Dec')){
+              arrayRetorno.push(item.replace('Dec','Diciembre'));
+            }
+      }
+
+      return arrayRetorno;
 
   }
 

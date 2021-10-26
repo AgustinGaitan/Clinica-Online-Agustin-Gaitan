@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { FechaEspPipe } from 'src/app/pipes/fecha-esp.pipe';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-solicitar-turno',
@@ -7,7 +9,8 @@ import { FechaEspPipe } from 'src/app/pipes/fecha-esp.pipe';
   styleUrls: ['./solicitar-turno.component.scss']
 })
 export class SolicitarTurnoComponent implements OnInit {
-
+  
+  controles !: FormGroup;
   especialidadClickeada : any;
   especialistaClickeado : any;
   mostrarListaEspecialistas : boolean = false;
@@ -18,8 +21,11 @@ export class SolicitarTurnoComponent implements OnInit {
   fecha = new Date();
   diasAMostrar : any[] = [];
 
-  constructor(private pipe : FechaEspPipe) {
+  constructor(private pipe : FechaEspPipe, private fb : FormBuilder, private userSerivce : UserService) {
 
+    this.controles = this.fb.group({
+      horario :['']
+    });
 
   }
 
@@ -52,6 +58,7 @@ export class SolicitarTurnoComponent implements OnInit {
       
     }
 
+
     this.fechasEspAMostrar = this.pipe.transform(this.fechasAMostrar, event.horarios);
     console.log(this.fechasEspAMostrar);
   
@@ -60,6 +67,14 @@ export class SolicitarTurnoComponent implements OnInit {
   }
 
   PedirTurno(){
-
+    
+    let horario  = {
+      horario: this.controles.get('horario')?.value,
+      paciente: this.userSerivce.usuarioActual.dni,
+      especialista: this.especialistaClickeado.dni
+    }
+    
+    console.log(horario); 
+    this.userSerivce.SetearTurno(horario);
   }
 }
