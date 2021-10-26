@@ -1,0 +1,15 @@
+<div>
+    
+    <label>Filtrar por:</label>
+    <button  type="button" class="btn btn-primary" (click)="FiltroEspecialidad()">Especialidad</button>
+    <button type="button" class="btn btn-warning" (click)="FiltroEspecialista()">Especialista</button>
+
+    <div *ngIf="mostrarFiltroEspecialista">
+        <button *ngFor="let especialista of userService.todosLosEspecialistas" >{{especialista.nombre}}</button>
+    </div>
+    <div *ngIf="mostrarFiltroEspecialidad">
+        <button *ngFor="let especialidad of userService.todasLasEspecialidades" (click)="ClickearEspecialidad($event)">{{especialidad.nombre}}</button>
+    </div>
+    
+    <app-lista-turnos [filtro]="especialidadFiltro" (turnoClickeadoEmitter)="SeleccionarTurno($event)"></app-lista-turnos>
+</div>

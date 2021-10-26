@@ -25,6 +25,7 @@ export class UserService {
   //Especialidades
   especialidades : Observable<any[]>;
   especialidadCollection : AngularFirestoreCollection<any>;
+  todasLasEspecialidades : any[] = [];
   //Admin
   todosLosAdmin : any;
   administradores : Observable<Administrador[]>;
@@ -35,6 +36,8 @@ export class UserService {
   //
   turnos : Observable<any[]>;
   turnoCollection : AngularFirestoreCollection<any>;
+  todosLosTurnos : any[] = [];
+
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
     auth.authState.subscribe((user) => (this.logged= user));
@@ -66,6 +69,14 @@ export class UserService {
     this.administradores.subscribe((data : any) =>{
       this.todosLosAdmin = data;
     })
+
+    this.especialidades.subscribe((data : any) =>{
+      this.todasLasEspecialidades = data;
+    })
+
+    this.turnos.subscribe((data : any)=>{
+      	this.todosLosTurnos = data;
+    });
 
   }
 

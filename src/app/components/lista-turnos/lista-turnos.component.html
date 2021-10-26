@@ -1,0 +1,17 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Fecha y hora </th>
+        <th scope="col">DNI del especialista</th>
+        <th scope="col">DNI del paciente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let turno of turnos" (click)="SeleccionarTurno(turno.nombre)">
+        <td scope="row" class="table-info">{{turno.horario}}</td>
+        <td scope="row" class="table-info">{{turno.especialista}}</td>
+        <td scope="row" class="table-info">{{turno.paciente}}</td>
+      </tr>
+    </tbody>
+  </table>
+

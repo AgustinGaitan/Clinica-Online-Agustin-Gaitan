@@ -8,6 +8,9 @@
           <button type="button" class="btn-success" [routerLink]="['/admin/usuarios']">
             Usuarios
           </button>
+          <h2>Turnos</h2>
+          <p>Vea los turnos.</p>
+          <button class="btn-success" [routerLink]="['/turnos']"> Turnos</button>
         </div>
       </div>
       <div class="feature col">
@@ -17,7 +20,7 @@
       </div>
       <div class="feature col" *ngIf="userService.usuarioActual.tipo != 'especialista'">
         <h2>Featured title</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+        <p>Solicite turno dependiendo de su necesidad, eligiendo hasta al especialista que desea.</p>
         <button class="btn-success" [routerLink]="['/solicitar-turno']"> Solicitar turno</button>
       </div>
     </div>

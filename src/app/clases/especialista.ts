@@ -16,6 +16,8 @@ export class Especialista extends Persona {
         especialidadParam : string[]){
         super(nombreParam,apellidoParam,edadParam,dniParam,emailParam,passwordParam);
         this.especialidad = especialidadParam;
+
+        this.horarios = [];
     }
     
 

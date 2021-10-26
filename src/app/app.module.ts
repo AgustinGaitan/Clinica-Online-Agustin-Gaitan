@@ -28,6 +28,8 @@ import { ListadoEspecialidadesSinFuncComponent } from './components/listado-espe
 import { ListadoEspecialistasFuncComponent } from './components/listado-especialistas-func/listado-especialistas-func.component';
 import { FechaEspPipe } from './pipes/fecha-esp.pipe';
 import { ListadoPacientesComponent } from './components/listado-pacientes/listado-pacientes.component';
+import { TurnosComponent } from './pages/turnos/turnos.component';
+import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ListadoPacientesComponent } from './components/listado-pacientes/listad
     ListadoEspecialidadesSinFuncComponent,
     ListadoEspecialistasFuncComponent,
     FechaEspPipe,
-    ListadoPacientesComponent
+    ListadoPacientesComponent,
+    TurnosComponent,
+    ListaTurnosComponent
   ],
   imports: [
     BrowserModule,
