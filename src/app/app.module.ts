@@ -26,6 +26,7 @@ import { MisHorariosComponent } from './pages/mis-horarios/mis-horarios.componen
 import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 import { ListadoEspecialidadesSinFuncComponent } from './components/listado-especialidades-sin-func/listado-especialidades-sin-func.component';
 import { ListadoEspecialistasFuncComponent } from './components/listado-especialistas-func/listado-especialistas-func.component';
+import { FechaEspPipe } from './pipes/fecha-esp.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ListadoEspecialistasFuncComponent } from './components/listado-especial
     MisHorariosComponent,
     SolicitarTurnoComponent,
     ListadoEspecialidadesSinFuncComponent,
-    ListadoEspecialistasFuncComponent
+    ListadoEspecialistasFuncComponent,
+    FechaEspPipe
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import { ListadoEspecialistasFuncComponent } from './components/listado-especial
     AngularFirestoreModule,
     SweetAlert2Module.forRoot()
   ],
-  providers: [],
+  providers: [FechaEspPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

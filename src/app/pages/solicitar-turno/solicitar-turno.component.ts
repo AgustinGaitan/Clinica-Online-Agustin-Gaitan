@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FechaEspPipe } from 'src/app/pipes/fecha-esp.pipe';
 
 @Component({
   selector: 'app-solicitar-turno',
@@ -12,10 +13,13 @@ export class SolicitarTurnoComponent implements OnInit {
   mostrarListaEspecialistas : boolean = false;
   horariosMostrar : any[] = [];
   fechasAMostrar : any[] = [];
-  posiblesTurnos : any;
-  constructor() {
-    let fecha = new Date();
-    console.log(fecha.getDay());
+  posiblesTurnos : any[] = [];
+  fechasEspAMostrar : any[] = [];
+  fecha = new Date();
+  diasAMostrar : any[] = [];
+
+  constructor(private pipe : FechaEspPipe) {
+
 
   }
 
@@ -31,25 +35,28 @@ export class SolicitarTurnoComponent implements OnInit {
   MostrarEspecialistaSeleccionado(event : any){
     this.especialistaClickeado = event;
     this.horariosMostrar = event.horarios;
-    let fechaPushear  = new Date().getDate();
-    //console.log(event.horarios);
+    
     let hoy = new Date();
-    let fecha = new Date();
+    let actual = new Date();
+    if(this.fechasAMostrar.length == 15){
+      this.fechasAMostrar = [];
+      hoy.setDate(actual.getDate());
+    }
     for(let i = 0 ; i < 15 ; i++){
 
-      fecha.setDate(hoy.getDate() + 1);
+      this.fecha.setDate(hoy.getDate() + 1);
       hoy.setDate(hoy.getDate() + 1);
-      this.fechasAMostrar.push(fecha.toUTCString());
-    }
-    console.log(this.fechasAMostrar);
-    // for(let dia of event.horarios){
+      this.fechasAMostrar.push(this.fecha.toUTCString().split(' ')[0] + 
+                               this.fecha.toUTCString().split(' ')[1] + ' ' +
+                               this.fecha.toUTCString().split(' ')[2]);
       
+    }
 
+    this.fechasEspAMostrar = this.pipe.transform(this.fechasAMostrar, event.horarios);
+    console.log(this.fechasEspAMostrar);
+  
+    
 
-    // }
-
-   
-       // this.mostrarListaEspecialistas = true;
   }
 
   PedirTurno(){
