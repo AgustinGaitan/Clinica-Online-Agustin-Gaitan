@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { FechaEspPipe } from 'src/app/pipes/fecha-esp.pipe';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-solicitar-turno',
@@ -13,6 +15,7 @@ export class SolicitarTurnoComponent implements OnInit {
   controles !: FormGroup;
   especialidadClickeada : any;
   especialistaClickeado : any;
+  pacienteSeleccionado : any;
   mostrarListaEspecialistas : boolean = false;
   horariosMostrar : any[] = [];
   fechasAMostrar : any[] = [];
@@ -21,7 +24,7 @@ export class SolicitarTurnoComponent implements OnInit {
   fecha = new Date();
   diasAMostrar : any[] = [];
 
-  constructor(private pipe : FechaEspPipe, private fb : FormBuilder, private userSerivce : UserService) {
+  constructor(private pipe : FechaEspPipe, private fb : FormBuilder, public userService : UserService, private router : Router) {
 
     this.controles = this.fb.group({
       horario :['']
@@ -67,14 +70,48 @@ export class SolicitarTurnoComponent implements OnInit {
   }
 
   PedirTurno(){
-    
-    let horario  = {
-      horario: this.controles.get('horario')?.value,
-      paciente: this.userSerivce.usuarioActual.dni,
-      especialista: this.especialistaClickeado.dni
+    let horario : any;
+    if(this.userService.usuarioActual.tipo == "paciente"){
+
+        horario = {
+        horario: this.controles.get('horario')?.value,
+        paciente: this.userService.usuarioActual.dni,
+        especialista: this.especialistaClickeado.dni
+      }
+    }else{
+      horario = {
+      
+        horario: this.controles.get('horario')?.value,
+        paciente: this.pacienteSeleccionado.dni,
+        especialista: this.especialistaClickeado.dni
+        
+      }
     }
     
     console.log(horario); 
-    this.userSerivce.SetearTurno(horario);
+    this.userService.SetearTurno(horario)
+    .then(()=>{
+      Swal.fire({
+        icon: 'success',
+        title:'Turno solicitado',
+        timer: 2000
+      }).then(()=>{
+        
+        this.router.navigateByUrl('/principal');
+      });
+    }).catch((error)=>{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text:'Error al solicitar el turno',
+        confirmButtonText:'Aceptar'
+      });
+
+    });
+  }
+
+  PacienteSeleccionado(event : any){
+    this.pacienteSeleccionado = event;
+    console.log("paciente selecconado en caso de que sea administrador ", event);
   }
 }
