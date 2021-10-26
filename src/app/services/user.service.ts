@@ -25,14 +25,16 @@ export class UserService {
   //Especialidades
   especialidades : Observable<any[]>;
   especialidadCollection : AngularFirestoreCollection<any>;
-  //
-    //Admin
-    todosLosAdmin : any;
-    administradores : Observable<Administrador[]>;
-    administradorCollection : AngularFirestoreCollection<Administrador>;
+  //Admin
+  todosLosAdmin : any;
+  administradores : Observable<Administrador[]>;
+  administradorCollection : AngularFirestoreCollection<Administrador>;
     //
   usuarioActual : any;
   especialistaHabilitado : boolean = false;
+  //
+  turnos : Observable<any[]>;
+  turnoCollection : AngularFirestoreCollection<any>;
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
     auth.authState.subscribe((user) => (this.logged= user));
@@ -48,6 +50,10 @@ export class UserService {
 
     this.administradorCollection = firestore.collection<Administrador>('administradores');
     this.administradores = this.administradorCollection.valueChanges({idField: 'id'});
+
+    
+    this.turnoCollection = firestore.collection<any>('turnos');
+    this.turnos = this.turnoCollection.valueChanges({idField: 'id'});
 
     this.especialistas.subscribe((data : any) =>{
       this.todosLosEspecialistas = data;
@@ -264,4 +270,7 @@ export class UserService {
     return this.especialistaCollection.doc(especialista.id).update({'horarios' : horario});
   }
 
+  SetearTurno(){
+
+  }
 }
