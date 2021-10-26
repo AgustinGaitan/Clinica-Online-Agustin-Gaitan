@@ -7,7 +7,7 @@
         <h5>{{especialidadClickeada}}</h5>
         <br>
         <h3>Seleccione un especialista</h3>
-        <app-listado-especialistas-func (especialistaSeleccionadoEmitter)="MostrarEspecialistaSeleccionado($event)"></app-listado-especialistas-func>
+        <app-listado-especialistas-func *ngIf="mostrarListaEspecialistas" [especialidadAMostrar]="especialidadClickeada" (especialistaSeleccionadoEmitter)="MostrarEspecialistaSeleccionado($event)"></app-listado-especialistas-func>
         <h5 *ngIf="especialistaClickeado != undefined">{{especialistaClickeado.nombre}} , {{especialistaClickeado.apellido}}</h5>
     </div>
 </div>  

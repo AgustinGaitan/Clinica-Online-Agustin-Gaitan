@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let especialista of userService.todosLosEspecialistas" (click)="SeleccionarEspecialista(especialista)">
+      <tr *ngFor="let especialista of arrayFiltrado" (click)="SeleccionarEspecialista(especialista)">
         <td scope="row" class="table-info">{{especialista.nombre}}</td>
         <td scope="row" class="table-info">{{especialista.apellido}}</td>
         <td scope="row" class="table-info">{{especialista.email}}</td>

@@ -19,7 +19,7 @@ export class UserService {
   pacientes : Observable<Paciente[]>;
   pacienteCollection : AngularFirestoreCollection<Paciente>;
   //Especialista
-  todosLosEspecialistas : any;
+  todosLosEspecialistas : any[] = [];
   especialistas : Observable<Especialista[]>;
   especialistaCollection : AngularFirestoreCollection<Especialista>;
   //Especialidades

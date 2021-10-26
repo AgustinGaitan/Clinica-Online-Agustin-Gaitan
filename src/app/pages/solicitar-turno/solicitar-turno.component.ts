@@ -9,6 +9,7 @@ export class SolicitarTurnoComponent implements OnInit {
 
   especialidadClickeada : any;
   especialistaClickeado : any;
+  mostrarListaEspecialistas : boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,10 +17,12 @@ export class SolicitarTurnoComponent implements OnInit {
 
   MostrarSeleccionado(event : any){
     this.especialidadClickeada = event;
-    
+    this.mostrarListaEspecialistas = true;
+   // console.log("clickeado ",  event);
   }
 
   MostrarEspecialistaSeleccionado(event : any){
     this.especialistaClickeado = event;
+   // this.mostrarListaEspecialistas = true;
   }
 }
