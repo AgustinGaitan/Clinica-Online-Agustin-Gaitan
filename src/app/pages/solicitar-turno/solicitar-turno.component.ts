@@ -77,7 +77,8 @@ export class SolicitarTurnoComponent implements OnInit {
         horario: this.controles.get('horario')?.value,
         paciente: this.userService.usuarioActual.dni,
         especialista: this.especialistaClickeado.dni,
-        especialidad: this.especialidadClickeada
+        especialidad: this.especialidadClickeada,
+        estado: 'pendiente'
       }
     }else{
       horario = {
@@ -85,7 +86,8 @@ export class SolicitarTurnoComponent implements OnInit {
         horario: this.controles.get('horario')?.value,
         paciente: this.pacienteSeleccionado.dni,
         especialista: this.especialistaClickeado.dni,
-        especialidad: this.especialidadClickeada
+        especialidad: this.especialidadClickeada,
+        estado: 'pendiente'
         
       }
     }

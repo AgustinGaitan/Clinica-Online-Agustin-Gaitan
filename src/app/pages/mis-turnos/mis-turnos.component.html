@@ -5,6 +5,8 @@
         <div class="feature col" *ngFor="let turno of turnosPaciente">
             <h2>{{turno.horario}}</h2>
             <p>Especialidad : {{turno.especialidad}}</p>
+            <p>Estado del turno : </p>
+            <p>estado </p>
             <button type="button" class="btn btn-danger" (click)="CancelarTurno(turno)">Cancelar turno</button><br>
             <button type="button" class="btn btn-info">Ver reseña</button><br>
             <button type="button" class="btn btn-info">Completar encuesta</button><br>
@@ -21,10 +23,18 @@
         <div class="feature col" *ngFor="let turno of turnosEspecialista">
             <h2>{{turno.horario}}</h2>
             <p>Especialidad : {{turno.especialidad}}</p>
-            <button type="button" class="btn btn-danger" (click)="CancelarTurno(turno)">Cancelar turno</button><br>
-            <button type="button" class="btn btn-danger" (click)="ModificarTurno(turno,'rechazado')">Rechazar turno</button><br>
-            <button type="button" class="btn btn-success"(click)="ModificarTurno(turno,'aceptado')">Aceptar turno</button><br>
-            <button type="button" class="btn btn-warning"(click)="ModificarTurno(turno,'finalizado')">Finalizar turno</button>
+            <p>Estado del turno : </p>
+            <span *ngIf="turno.estado == 'aceptado' " class="badge bg-success">{{turno.estado}}</span>
+            <span *ngIf="turno.estado == 'cancelado' " class="badge bg-danger">{{turno.estado}}</span>
+            <span *ngIf="turno.estado == 'rechazado'" class="badge bg-danger">{{turno.estado}}</span>
+            <span *ngIf="turno.estado == 'finalizado'" class="badge bg-info">{{turno.estado}}</span>
+            <span *ngIf="turno.estado == 'pendiente'" class="badge bg-dark">{{turno.estado}}</span>
+         
+
+            <button type="button" class="btn btn-danger" *ngIf="turno.estado=='pendiente'" (click)="CancelarTurno(turno)">Cancelar turno</button><br>
+            <button type="button" class="btn btn-danger" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'rechazado')">Rechazar turno</button><br>
+            <button type="button" class="btn btn-success"*ngIf="turno.estado=='pendiente'"(click)="ModificarTurno(turno,'aceptado')">Aceptar turno</button><br>
+            <button type="button" class="btn btn-warning" *ngIf="turno.estado=='aceptado'"(click)="ModificarTurno(turno,'finalizado')">Finalizar turno</button>
             <button type="button" class="btn btn-primary">Ver reseña</button>
         </div>
         </div>

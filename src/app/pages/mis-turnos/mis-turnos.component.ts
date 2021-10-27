@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-mis-turnos',
@@ -49,8 +50,18 @@ export class MisTurnosComponent implements OnInit {
 
   ModificarTurno(turno : any, accion : string){
 
-    this.userService.ModificarTurno(turno, accion );
-    this.RefrescarArrays();
+    this.userService.ModificarTurno(turno, accion )
+    .then(()=>{
+      // Swal.fire({
+      //   title: 'Exito',
+      //   text: 'Exito al cambiar el estado del turno',
+      //   icon : 'success'
+      // }).then(()=>{
+
+        
+      // });
+      this.RefrescarArrays();
+    });
     
   }
 
@@ -62,6 +73,9 @@ export class MisTurnosComponent implements OnInit {
           return turno;
         }
       });
+
+ 
+
     }else{
 
       this.turnosEspecialista = this.userService.todosLosTurnos.filter((turno)=>{
