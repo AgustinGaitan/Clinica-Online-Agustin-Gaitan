@@ -26,7 +26,8 @@ export class RegistroEspecialistaComponent implements OnInit {
       dni: ['', [Validators.required,Validators.min(1000000), Validators.max(99999999)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      foto:['', Validators.required]
+      foto:['', Validators.required],
+      captcha:[false,Validators.requiredTrue]
 
     })
   }

@@ -14,6 +14,7 @@ export class AdminUsuariosComponent implements OnInit {
    
   formRegistro !: FormGroup;
   formData  : FormData = new FormData();
+  mostrarRegistroAdmin = false;
 
   constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService) {
  
@@ -25,6 +26,7 @@ export class AdminUsuariosComponent implements OnInit {
       obraSocial: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
+      captcha:[false,Validators.requiredTrue]
 
     })
   }
@@ -69,5 +71,9 @@ export class AdminUsuariosComponent implements OnInit {
 
     this.formData.append('foto',event.target.files[0], event.target.files[0].name);
     
+  }
+
+  RegistrarAdmin(){
+    this.mostrarRegistroAdmin = true;
   }
 }

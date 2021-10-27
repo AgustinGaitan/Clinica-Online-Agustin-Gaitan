@@ -1,32 +1,61 @@
-<div class="container px-4 py-5" id="featured-3">
-    <h2 class="pb-2 border-bottom">Página principal</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
-      <div class="feature col">
-        <div *ngIf="userService.usuarioActual.tipo=='administrador'">
-          <h2>Sección Usuarios</h2>
-          <p>Administre los usuarios.</p>
-          <button type="button" class="btn-success" [routerLink]="['/admin/usuarios']">
-            Usuarios
-          </button>
-          <h2>Turnos</h2>
-          <p>Vea los turnos.</p>
-          <button class="btn-success" [routerLink]="['/turnos']"> Turnos</button>
+<div class="container px-4 py-5" id="featured-3" style="font-family: OldSansBlack;" >
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3" style="max-height: 5cm;">
+      <div *ngIf="userService.usuarioActual.tipo=='administrador'" class="col-sm">
+        <div  class="card">
+          <div class="card-body">
+          <h2 class="card-title">Sección Usuarios</h2>
+          <p class="card-text">
+            Administre los usuarios como administrador.
+          </p>
+            <button type="button" class="btn btn-success" [routerLink]="['/admin/usuarios']">
+              Usuarios
+            </button>
+          </div>
         </div>
       </div>
-      <div class="feature col">
-        <h2>Mi perfil</h2>
-        <p>Vea sus datos</p>
-        <button type="button" class="btn-success" [routerLink]="['/mi-perfil']"> Mi perfil</button>
+
+       
+        <div *ngIf="userService.usuarioActual.tipo=='administrador'" class="col-sm">
+          <div  class="card">
+              <div class="card-body">
+              <h2 class="card-title">Turnos</h2>
+              <p class="card-text">
+                Administre los turnos existentes como administrador.
+              </p>
+              <button class="btn btn-success" [routerLink]="['/turnos']"> Turnos</button>
+
+              </div>
+            </div>
+          </div>
+       
+      
+      
+      
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Mi perfil</h2>
+          <p class="card-text">Vea sus datos</p>
+          <button type="button" class="btn btn-success" [routerLink]="['/mi-perfil']"> Mi perfil</button>
+        </div>
       </div>
-      <div class="feature col" *ngIf="userService.usuarioActual.tipo !='administrador'">
-        <h2>Mis tunos</h2>
-        <p>Vea sus turnos</p>
-        <button type="button" class="btn-success" [routerLink]="['/mis-turnos']"> Mis turnos</button>
+      <div class="card" *ngIf="userService.usuarioActual.tipo !='administrador'">
+        <div class="card-body">
+        <h2 class="card-title">Mis turnos</h2>
+        <p class="card-text">Vea sus turnos</p>
+        <button type="button" class="btn btn-success" [routerLink]="['/mis-turnos']"> Mis turnos</button>
+        </div>
       </div>
-      <div class="feature col" *ngIf="userService.usuarioActual.tipo != 'especialista'">
-        <h2>Featured title</h2>
-        <p>Solicite turno dependiendo de su necesidad, eligiendo hasta al especialista que desea.</p>
-        <button class="btn-success" [routerLink]="['/solicitar-turno']"> Solicitar turno</button>
+      <div class="card" *ngIf="userService.usuarioActual.tipo != 'especialista'">
+      <div class="card-body">
+        <h2 class="card-title">Solicitar turno</h2>
+        <p class="card-text">Solicite turno dependiendo de su necesidad, eligiendo hasta al especialista que desea.</p>
+        <button class="btn btn-success" [routerLink]="['/solicitar-turno']"> Solicitar turno</button>
+      </div>
       </div>
     </div>
   </div>
+
+
+
+
+  

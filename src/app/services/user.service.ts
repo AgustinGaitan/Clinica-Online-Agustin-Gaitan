@@ -141,7 +141,7 @@ export class UserService {
             }else{
               Swal.fire({
                 title: 'Error!',
-                text: 'No verificaste el mail o el administrador no habilitó tu cuenta.',
+                text: 'El administrador no habilitó tu cuenta.',
                 icon: 'error',
                 confirmButtonText: 'Entendido.'
               });

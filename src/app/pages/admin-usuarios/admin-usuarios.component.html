@@ -1,8 +1,10 @@
-<app-listado-todos-usuarios></app-listado-todos-usuarios>
-<button type="button" class="btn btn-primary btn-lg" [routerLink]="['/registro/especialista']">Registrar Especialista</button>
-<button type="button" class="btn btn-primary btn-lg" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
-
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+<app-listado-todos-usuarios *ngIf="!mostrarRegistroAdmin"></app-listado-todos-usuarios>
+<div align="center">
+<button type="button" *ngIf="!mostrarRegistroAdmin" class="btn btn-primary btn-lg" [routerLink]="['/registro/especialista']">Registrar Especialista</button>
+<button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
+<button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg" (click)="RegistrarAdmin()">Registrar administrador</button>
+</div>
+<div *ngIf="mostrarRegistroAdmin" class="container col-xl-10 col-xxl-8 px-4 py-5" style="font-family: OldSansBlack;">
     <div class="row align-items-center g-lg-5 py-5">
 
     <div class="col-md-10 mx-auto col-lg-5">
@@ -68,9 +70,15 @@
               Ingrese un nombre valido.
           </div> 
         </div>
+        <label style="color:grey">Suba una imagene para su perfil</label>
         <div class="form-floating mb-3">
           <input type="file" (change)="SubirFoto($event)" class="form-control" name="fotos" accept="image/*" placeholder="Ingese sus fotos" multiple>
-          <label>Seleccione una imagen para su perfil</label>
+          
+        </div>
+        <div class="form-floating mb-3">
+          <label style="margin-left:1cm">Verifique que no es un robot</label>
+         
+          <input  type="checkbox" formControlName="captcha" style="height: 35px;width: 35px;">
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" >Registrar administrador</button>
        

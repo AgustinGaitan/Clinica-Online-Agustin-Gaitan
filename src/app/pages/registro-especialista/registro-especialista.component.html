@@ -1,7 +1,10 @@
 
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+<div class="container">
     <div class="row align-items-center g-lg-5 py-5">
-
+      <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-4 fw-bold lh-1 mb-3" style="font-family: OldSansBlack;">Registro de Especialista</h1>
+        <p class="col-lg-10 fs-4"></p>
+      </div>
     <div class="col-md-10 mx-auto col-lg-5">
       <form [formGroup]="formRegistro" (ngSubmit)='Registrarse()' class="p-4 p-md-5 border rounded-3 bg-light"> 
         <div class="form-floating mb-3">
@@ -77,18 +80,21 @@
               Ingrese una contraseña valida.
           </div> 
         </div>
+        <label style="color:grey">Seleccione una imagen para su perfil</label>
         <div class="form-floating mb-3">
-          <input type="file" (change)="SubirFoto($event)" class="form-control" formControlName="foto" name="fotos" accept="image/*" placeholder="Ingese sus fotos">
-          <label>Seleccione una imagen para su perfil</label>
+          <input type="file" (change)="SubirFoto($event)"  formControlName="foto" name="fotos" accept="image/*" placeholder="Ingese sus fotos">
+        
+        </div>
+        <div class="form-floating mb-3">
+          <label style="margin-left:1cm">Verifique que no es un robot</label>
+         
+          <input  type="checkbox" formControlName="captcha" style="height: 35px;width: 35px;">
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="formRegistro.invalid">Registrarse</button>
        
       </form> 
     </div>
-    <div class="col-lg-7 text-center text-lg-start">
-      <h1 class="display-4 fw-bold lh-1 mb-3">Registro de Especialista</h1>
-      <p class="col-lg-10 fs-4"></p>
-    </div>
+
   </div>
 </div>
 

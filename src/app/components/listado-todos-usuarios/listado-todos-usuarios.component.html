@@ -1,43 +1,49 @@
-<h1>Especialistas</h1>
-<table class="table">
- 
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Email</th>
-        <th scope="col">Especialidad</th>
-        <th scope="col">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let especialista of userService.todosLosEspecialistas">
-        <td scope="row" class="table-info">{{especialista.nombre}}</td>
-        <td scope="row" class="table-info">{{especialista.apellido}}</td>
-        <td scope="row" class="table-info">{{especialista.email}}</td>
-        <td scope="row" class="table-info" *ngFor="let especialidad of especialista.especialidad">{{especialidad}}</td>
-        <td *ngIf="especialista.habilitado" scope="row" class="table-info"><button class="btn-danger" (click)="DeshabilitarEspecialista(especialista)"> Deshabilitar </button></td>
-        <td *ngIf="!especialista.habilitado" scope="row" class="table-info"><button class="btn-success" (click)="HabilitarEspecialista(especialista)"> Habilitar </button></td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <h1>Especialistas</h1>
+  <table class="table table-light table-striped table-hover table-bordered">
+  
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Email</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let especialista of userService.todosLosEspecialistas">
+          <td scope="row" class="table-light">{{especialista.nombre}}</td>
+          <td scope="row" class="table-light">{{especialista.apellido}}</td>
+          <td scope="row" class="table-light">{{especialista.email}}</td>
+          <td scope="row" class="table-light" >
+            <ul *ngFor="let especialidad of especialista.especialidad">
+              <li>{{especialidad}}</li>
+            </ul>
+          </td>
+          <td *ngIf="especialista.habilitado" scope="row" class="table-light"><button class="btn-danger" (click)="DeshabilitarEspecialista(especialista)"> Deshabilitar </button></td>
+          <td *ngIf="!especialista.habilitado" scope="row" class="table-light"><button class="btn-success" (click)="HabilitarEspecialista(especialista)"> Habilitar </button></td>
+        </tr>
+      </tbody>
+    </table>
 
 
-  <h1>Pacientes</h1>
-<table class="table">
- 
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let paciente of userService.todosLosPacientes">
-        <td scope="row" class="table-info">{{paciente.nombre}}</td>
-        <td scope="row" class="table-info">{{paciente.apellido}}</td>
-        <td scope="row" class="table-info">{{paciente.email}}</td>
-      </tr>
-    </tbody>
-  </table>
+    <h1>Pacientes</h1>
+  <table class="table table-light table-striped table-hover table-bordered">
+  
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paciente of userService.todosLosPacientes">
+          <td scope="row" class="table-light">{{paciente.nombre}}</td>
+          <td scope="row" class="table-light">{{paciente.apellido}}</td>
+          <td scope="row" class="table-light">{{paciente.email}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

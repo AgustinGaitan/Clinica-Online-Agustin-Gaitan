@@ -1,33 +1,25 @@
 
-  <div class="container">
+  <div class="container" style="font-family: OldSansBlack;">
     <div class="main-body" align="center">
-    
-          <!-- Breadcrumb -->
-          <nav aria-label="breadcrumb" class="main-breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="#"[routerLink]="['/principal']">Atrás</a></li>
-            </ol>
-          </nav>
-          <!-- /Breadcrumb -->
           
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">
-                     <div class="col-sm-6">
-                  <h2 *ngIf="this.userService.usuarioActual.tipo == 'paciente' ; else foto">Fotos</h2>
-                  <ng-template #foto>
-                    <h2>Foto</h2>
-                  </ng-template>
-                    <div class="d-flex d-wrap">
-                      <div *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
-                      <img  *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
+            <div class="text-center">
+                    <h2 *ngIf="this.userService.usuarioActual.tipo == 'paciente' ; else foto">Fotos</h2>
+                    <ng-template #foto>
+                      <h2>Foto</h2>
+                    </ng-template>
+                      <div class="d-flex d-wrap">
+                        <div  class="text-center" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
+                        <img  *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
+                        </div>
+                      <div *ngIf="this.userService.usuarioActual.tipo != 'paciente'">
+                        <img src={{userService.usuarioActual.foto}} width="150">
+                      <div>
                       </div>
-                    <div *ngIf="this.userService.usuarioActual.tipo != 'paciente'">
-                      <img src={{userService.usuarioActual.foto}} width="150">
-                    <div>
                     </div>
-                  </div>
-              </div>
+                </div>
             </div>
             <div class="col-md-12">
               <div class="card mb-6">
@@ -58,8 +50,8 @@
                       {{userService.usuarioActual.dni}}
                     </div>
                   </div>
-                  <hr>
                   <div class="row" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
+                    <hr>
                     <div class="col-sm-3">
                       <h6 class="mb-0">Obra social</h6>
                     </div>
@@ -68,11 +60,18 @@
                     </div>
                   </div>
                   <div class="row" *ngIf="this.userService.usuarioActual.tipo == 'especialista'">
-                    <div class="col-sm-3">
-                      <button class="mb-0" [routerLink]="['/especialista/mis-horarios']">Mis horarios</button>
+                    <hr>
+                    <div class="col-sm-3 text-center" >
+                      <h6>Horarios del especialista</h6>
+                        <div class="col-sm-9 text-secondary">
+                        
+                        
+                        <ul *ngFor="let horario of this.userService.usuarioActual.horarios">
+                          <li>{{horario}}</li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                  <hr>
                 </div>
               </div>
             </div>

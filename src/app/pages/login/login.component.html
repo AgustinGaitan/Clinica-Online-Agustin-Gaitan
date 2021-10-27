@@ -1,10 +1,10 @@
 
-<div class="container col-xl-10 col-xxl-8 px-4 py-5">
+<div class="container col-xl-10 col-xxl-8 px-4 py-5" style="font-family: OldSansBlack; text-align: center;">
   <div class="row align-items-center g-lg-5 py-5">
-    <div class="col-lg-7 text-center text-lg-start">
+    
       <h1 class="display-4 fw-bold lh-1 mb-3">Inicio de sesión</h1>
-      <p class="col-lg-10 fs-4">Ingrese su e-mail y su contraseña</p>
-    </div>
+      <p class="fs-4">Ingrese su e-mail y su contraseña</p>
+      
     <div class="col-md-10 mx-auto col-lg-5">
       <form class="p-4 p-md-5 border rounded-3 bg-light"> 
         <div class="form-floating mb-3">
@@ -15,15 +15,15 @@
           <input type="password" class="form-control" name="password" [(ngModel)]="password" value={{password}} placeholder="Password">
           <label for="floatingPassword">Password</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="Loguearse()">Iniciar sesión</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="Loguearse()" >Iniciar sesión</button>
        
-        <button class="w-100 btn btn-sm btn-secondary" type="submit" (click)="LoguearsePaciente()">Inicio rápido como paciente</button>
+        <button class="w-100 btn btn-sm btn-secondary" type="submit" (click)="LoguearsePaciente()" >Inicio rápido como paciente</button>
         <button class="w-100 btn btn-sm btn-info" type="submit" (click)="LoguearseEspecialista()">Inicio rápido como especialista</button>
         <button class="w-100 btn btn-sm btn-warning" type="submit" (click)="LoguearseAdministrador()">Inicio rápido como administrador</button>
-      
+        <img *ngIf="loading" src="../../../assets/images/spinner.gif" height="100px" width="100px">
       </form> 
 
-      <img *ngIf="loading" style="margin-left: 1cm" src="../../../assets/images/spinner.gif" height="200px" width="300px">
+     
     </div>
   </div>
 </div>

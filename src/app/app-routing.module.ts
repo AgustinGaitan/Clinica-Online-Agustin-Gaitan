@@ -28,38 +28,34 @@ const routes: Routes = [{
   {
     path: 'principal',
     component:PrincipalComponent,
-    canActivate:[GeneralGuard]
+    //canActivate:[GeneralGuard]
   },
   { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
-    canActivate:[AdminGuard] },
+    //canActivate:[AdminGuard]
+  },
   {
     path:'mi-perfil',
     component: MiPerfilComponent,
-    canActivate: [GeneralGuard]
+    //canActivate: [GeneralGuard]
   },
   { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule),
-    canActivate:[EspecialistaGuard]},
+    //canActivate:[EspecialistaGuard]}
+  },
   {
     path: 'solicitar-turno',
     component: SolicitarTurnoComponent,
-    canActivate: [AdministradorPacienteGuard]
+    //canActivate: [AdministradorPacienteGuard]
 
   },
   {
     path:'turnos',
     component: TurnosComponent,
-    canActivate: [AdminGuard]
+    //canActivate: [AdminGuard]
   },
   {
     path:'mis-turnos',
     component: MisTurnosComponent,
-    canActivate:[EspecialistaPacienteGuard]
-  },
-  {
-    path:'',
-    redirectTo:'bienvenida',
-    pathMatch:'full'
-    
+    //canActivate:[EspecialistaPacienteGuard]
   },
   {
     path:'**',

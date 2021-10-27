@@ -1,6 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    background-image: url(assets/images/hospital.jpg);
+    background-image: url(assets/images/hospitaldif.jpg);
     background-size: 100%;
-    
+   
+}
+
+@font-face{
+    font-family: "OldSansBlack";
+    src:local("OldSansBlack"),url(../src/assets/fonts/OldSansBlack.ttf)format("truetype");
+
 }

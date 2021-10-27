@@ -25,9 +25,11 @@ export class RegistroPacienteComponent implements OnInit {
       obraSocial: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      fotos:['', Validators.required]
-
+      fotos:['', Validators.required],
+      captcha:[false,Validators.requiredTrue]
+      
     })
+    
   }
 
   ngOnInit(): void {

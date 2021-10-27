@@ -1,10 +1,27 @@
-
-<div class="px-4 py-5 my-5 text-center">
-    <img class="d-block mx-auto mb-4" src="../assets/images/clinica.png" alt="" width="72" height="70">
-    <h1 class="display-5 fw-bold">¿Cómo desea registrarse?</h1>
-    <div class="col-lg-6 mx-auto">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" [routerLink]="['/registro/paciente']">Paciente</button>
-        <button type="button" class="btn btn-outline-secondary btn-lg px-4" [routerLink]="['/registro/especialista']">Especialista</button>
+<div class="container-fluid"  style="font-family: OldSansBlack;">
+  <div class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="../assets/images/clinica.png" alt="" width="72" height="70">
+      <h1 class="display-5 fw-bold">¿Cómo desea registrarse?</h1>
       </div>
-    </div>
-
+      <div class="col-lg-6 mx-auto" style="margin-top: 1cm;">
+        <div class="row align-items-md-stretch">
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-white rounded-3" style="background-color:rgba(0, 0, 0, 0.705);">
+              <p>Registrate como paciente para poder sacar turnos, administrarlos y 
+                consultar horarios de los especialista.
+              </p>
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3" [routerLink]="['/registro/paciente']">Paciente</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="h-100 p-5 border rounded-3" style="background-color:rgba(255, 255, 255, 0.705)">
+              <p>Registrate como especialista, para poder establecer tus horarios de trabajo y 
+                administrar los turnos que los pacientes hayan sacado con vos.
+              </p>
+              <button type="button" class="btn btn-outline-secondary btn-lg px-4" [routerLink]="['/registro/especialista']">Especialista</button>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+</div>

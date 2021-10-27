@@ -1,5 +1,5 @@
-    
-    <div class="card col-8 text-center" align="center">
+<div class="container">    
+    <div class="col-8 text-center" align="center">
     <div class= "row">
         <div class="col-sm">
             <div *ngIf="userService.usuarioActual.tipo=='administrador'" >
@@ -11,21 +11,24 @@
         </div>
         <div class="col-sm">
             <app-listado-especialidades-sin-func  (especialidadSeleccionadaEmitter)="MostrarSeleccionado($event)"></app-listado-especialidades-sin-func>
-            <h5>{{especialidadClickeada}}</h5>
+            <h5>Especialidad seleccionada: {{especialidadClickeada}}</h5>
         </div>
             <br>
         <div class="col-sm">
             <app-listado-especialistas-func *ngIf="mostrarListaEspecialistas" [especialidadAMostrar]="especialidadClickeada" (especialistaSeleccionadoEmitter)="MostrarEspecialistaSeleccionado($event)"></app-listado-especialistas-func>
         </div>
-            <h5 *ngIf="especialistaClickeado != undefined">{{especialistaClickeado.nombre}} , {{especialistaClickeado.apellido}}</h5>
-            <div *ngIf="especialistaClickeado != undefined">
+        <div style="background-color: rgba(255, 255, 255, 0.678);" *ngIf="especialistaClickeado != undefined">
+            <h2>Horarios disponibles</h2>
+            <h5 >{{especialistaClickeado.nombre}} , {{especialistaClickeado.apellido}}</h5>
+            <div>
             <form [formGroup]="controles" (ngSubmit)="PedirTurno()">
                 <div *ngFor="let horario of fechasEspAMostrar">
                     <input type="radio" formControlName="horario" value={{horario}}>{{horario}}
                 </div>
                 <button type="submit">Pedir turno</button>
             </form>
+            </div>
         </div>
     </div>
     </div>
- 
+</div>

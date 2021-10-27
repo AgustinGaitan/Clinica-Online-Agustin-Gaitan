@@ -1,27 +1,30 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Fecha y hora </th>
-        <th scope="col">DNI del especialista</th>
-        <th scope="col">DNI del paciente</th>
-        <th scope="col">Estado del turno</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let turno of turnos" (click)="SeleccionarTurno(turno.nombre)">
-        <td scope="row" class="table-info">{{turno.horario}}</td>
-        <td scope="row" class="table-info">{{turno.especialista}}</td>
-        <td scope="row" class="table-info">{{turno.paciente}}</td>
-        
-        <td scope="row" class="table-info"><span 
-          [ngClass]="{'bg-success': turno.estado == 'aceptado',
-                      'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
-                      'bg-info' : turno.estado == 'finalizado',
-                      'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span></td>
-        
-        <td scope="row" class="table-info"><button type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')" >Cancelar turno</button>
-        </td>
+<div class="container">  
+  <table class="table table-light table-striped table-hover table-bordered" style="text-align: center;">
+      <thead>
+        <tr>
+          <th scope="col">Fecha y hora </th>
+          <th scope="col">DNI del especialista</th>
+          <th scope="col">DNI del paciente</th>
+          <th scope="col">Estado del turno</th>
+          <th scope="col">Acción</th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <tr *ngFor="let turno of turnos" (click)="SeleccionarTurno(turno.nombre)">
+          <td scope="row" class="table-light">{{turno.horario}}</td>
+          <td scope="row" class="table-light">{{turno.especialista}}</td>
+          <td scope="row" class="table-light">{{turno.paciente}}</td>
+          
+          <td scope="row" class="table-light"><span 
+            [ngClass]="{'bg-success': turno.estado == 'aceptado',
+                        'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
+                        'bg-info' : turno.estado == 'finalizado',
+                        'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span></td>
+          
+          <td scope="row" class="table-light"><button type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')" >Cancelar turno</button>
+          </td>
+          </tr>
+      </tbody>
+    </table>
+</div>
 

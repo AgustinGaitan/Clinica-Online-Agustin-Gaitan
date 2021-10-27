@@ -1,5 +1,5 @@
-<!-- <h1>Especialistas</h1>
-<table class="table">
+<h1>Especialistas</h1>
+<table class="table table-light table-striped table-hover table-bordered">
  
     <thead>
       <tr>
@@ -12,14 +12,18 @@
     <tbody>
       <tr *ngFor="let especialista of arrayFiltrado" (click)="SeleccionarEspecialista(especialista)">
         
-        <td  *ngIf="especialista.habilitado" scope="row" class="table-info">{{especialista.nombre}}</td>
-        <td  *ngIf="especialista.habilitado" scope="row" class="table-info">{{especialista.apellido}}</td>
-        <td  *ngIf="especialista.habilitado" scope="row" class="table-info">{{especialista.email}}</td>
-        <td scope="row" class="table-info" *ngFor="let especialidad of especialista.especialidad">{{especialidad}}</td>
+        <td  *ngIf="especialista.habilitado" scope="row" class="table-light">{{especialista.nombre}}</td>
+        <td  *ngIf="especialista.habilitado" scope="row" class="table-light">{{especialista.apellido}}</td>
+        <td  *ngIf="especialista.habilitado" scope="row" class="table-light">{{especialista.email}}</td>
+        <td  *ngIf="especialista.habilitado" scope="row" class="table-light" >
+          <ul *ngFor="let especialidad of especialista.especialidad">
+            <li>{{especialidad}}</li>
+          </ul>
+        </td>
      
       </tr>
     </tbody>
-</table> -->
+</table>
 
 <!-- <div class="container px-4 py-5" id="featured-3">
   <h2 class="pb-2 border-bottom">Especialistas</h2>
@@ -42,23 +46,33 @@
 
 
   
-      <div class="col-md-5 col-lg-4 order-md-last">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-primary">Especialistas</span>
+<!-- <div class="container">
+  <div class="row">
+        <h4>
+          Especialistas
         </h4>
-        <ul  *ngFor="let especialista of arrayFiltrado" class="list-group mb-3" >
-          <li class="list-group-item d-flex justify-content-between lh-sm" *ngIf="especialista.habilitado" (click)="SeleccionarEspecialista(especialista)">
-            <div>
-              <h2>{{especialista.nombre}}</h2>
-              <h2>{{especialista.apellido}}</h2>
-              <p>{{especialista.email}} </p>
-              <ul *ngFor="let especialidad of especialista.especialidad">
-                <li>{{especialidad}}</li>
-              </ul>
+        <div *ngFor="let especialista of arrayFiltrado" class="list-group mb-3">
+          <div class="card" *ngIf="especialista.habilitado" (click)="SeleccionarEspecialista(especialista)">
+            <div class="col">
+              <div class="col-sm">
+            <label>Nombre</label>
+                <h2>{{especialista.nombre}}</h2>
+                <label>Apellido</label>
+                <h2>{{especialista.apellido}}</h2>
+                <label>Email</label>
+                <p>{{especialista.email}} </p>
+                <label>Especialidades</label>
+                <ul *ngFor="let especialidad of especialista.especialidad">
+                  <li>{{especialidad}}</li>
+                </ul>
+              
+              <img  src={{especialista.foto}} width="50px" height="50px">
+              </div>
             </div>
-            <img  src={{especialista.foto}} width="50px" height="50px">
-          </li>
-          
-        </ul>
+          </div>
       </div>
+  </div>
+</div> -->
+
+
 
