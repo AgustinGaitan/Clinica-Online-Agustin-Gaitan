@@ -15,10 +15,20 @@
 
             <button type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>
             <button type="button" class="btn btn-info" *ngIf="turno.comentarioEspecialista != undefined" (click)="VerComentarioDelEspecialista(turno)" >Ver reseña</button><br>
-            <button type="button" class="btn btn-info" *ngIf="turno.estado == 'finalizado' && turno.comentarioEspeciaista != undefined" (click)="MostrarEncuesta()" >Completar encuesta</button><br>
-            <button type="button" class="btn btn-info" *ngIf="turno.estado == 'finalizado'" >Calificar atención</button>
+            <button type="button" class="btn btn-info" *ngIf="turno.estado == 'finalizado' && turno.comentarioEspecialista != undefined" (click)="MostrarEncuesta()" >Completar encuesta</button><br>
+            <button type="button" class="btn btn-info" *ngIf="turno.estado == 'finalizado'" (click)="MostrarCalificar(turno)" >Calificar atención</button>
+
         </div>
+       
         </div>
+    </div>
+</div>
+<div class="container px-4 py-5 card">
+    <div class="col-sm-12" *ngIf="mostrarCalificar">
+        <label class="form-label">¿Cómo fue la atención?</label><br>
+        <button type="button" class="btn btn-success" (click)="CalificarAtencion('excelente')" value="excelente">Excelente</button><br>
+        <button type="button" class="btn btn-warning" (click)="CalificarAtencion('normal')" value="normal">Normal</button><br>
+        <button type="button" class="btn btn-danger"  (click)="CalificarAtencion('pesima')" value="pesima">Pésima</button><br>
     </div>
 </div>
 
@@ -50,4 +60,4 @@
   <div class="container px-4 py-5 card" id="featured-3" *ngIf="comentario != '' && comentario!=undefined">
       {{comentario}}
   </div>
-  <app-encuesta *ngIf="mostrarEncuesta"></app-encuesta>
+  <app-encuesta (cerrarEmitter)="CerrarEncuesta($event)" *ngIf="mostrarEncuesta"></app-encuesta>

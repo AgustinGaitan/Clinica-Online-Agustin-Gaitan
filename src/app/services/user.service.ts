@@ -37,6 +37,9 @@ export class UserService {
   turnos : Observable<any[]>;
   turnoCollection : AngularFirestoreCollection<any>;
   todosLosTurnos : any[] = [];
+  //
+  encuestas : Observable<any[]>;
+  encuestaCollection : AngularFirestoreCollection<any>;
 
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
@@ -57,6 +60,9 @@ export class UserService {
     
     this.turnoCollection = firestore.collection<any>('turnos');
     this.turnos = this.turnoCollection.valueChanges({idField: 'id'});
+
+    this.encuestaCollection = firestore.collection<any>('encuestas');
+    this.encuestas = this.encuestaCollection.valueChanges({idField: 'id'});
 
     this.especialistas.subscribe((data : any) =>{
       this.todosLosEspecialistas = data;
@@ -303,5 +309,13 @@ export class UserService {
 
   ComentarioAdministrador(turno : any, comentario : any){
     return this.turnoCollection.doc(turno.id).update({'comentarioAdministrador' : comentario});
+  }
+
+  SubirEncuesta(encuesta : any){
+    return this.encuestaCollection.add({...encuesta});
+  }
+
+  Calificar(turno : any, calificacion : any){
+    return this.turnoCollection.doc(turno.id).update({'calificacion': calificacion})
   }
 }

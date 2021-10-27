@@ -11,5 +11,5 @@
         <button *ngFor="let especialidad of userService.todasLasEspecialidades" (click)="ClickearEspecialidad($event)">{{especialidad.nombre}}</button>
     </div>
     
-    <app-lista-turnos [filtro]="especialidadFiltro" (turnoClickeadoEmitter)="SeleccionarTurno($event)"></app-lista-turnos>
+    <app-lista-turnos  [filtro]="especialidadFiltro" (turnoClickeadoEmitter)="SeleccionarTurno($event)"></app-lista-turnos>
 </div>

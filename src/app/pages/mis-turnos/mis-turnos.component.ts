@@ -13,6 +13,8 @@ export class MisTurnosComponent implements OnInit {
   turnosEspecialista : any[] = [];
   mostrarEncuesta : any;
   comentario : any;
+  mostrarCalificar : boolean = false;
+  turnoACalificar : any;
 
   constructor(public userService : UserService) { 
     
@@ -120,5 +122,19 @@ export class MisTurnosComponent implements OnInit {
       })
     }
 
+  }
+
+  CerrarEncuesta(event : any){
+    this.mostrarEncuesta = event;
+  } 
+
+  MostrarCalificar(turno : any){
+    this.mostrarCalificar = true;
+    this.turnoACalificar = turno;
+  }
+
+  CalificarAtencion(calificacion : any){
+
+    this.userService.Calificar(this.turnoACalificar, calificacion);
   }
 }

@@ -1,1 +1,37 @@
-<p>encuesta works!</p>
+
+<div class="container card">
+    <div class="py-5 text-center">
+      <h2>Encuesta</h2>
+    </div>
+
+    <div class="row g-5">
+    
+      <div class="col-md-7 col-lg-8">
+        <form [formGroup]="controles" (ngSubmit)="MandarEncuesta()" class="needs-validation" novalidate>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                <label for="firstName" class="form-label">Comodidad</label>
+                <input type="range" formArrayName="comodidad" class="form-control" id="comodidad" placeholder="" required>
+
+                </div>
+
+                <div class="col-sm-6">
+                <label class="form-label">¿Volvería?</label>
+                <input type="checkbox" formControlName="volveria" required>
+
+                </div>
+
+                <div class="col-sm-12">
+                    <label class="form-label">¿Cómo fue la atención?</label><br>
+                    <input type="radio" formControlName="atencion" name="atencion" value="excelente" required>Excelente<br>
+                    <input type="radio" formControlName="atencion" name="atencion" value="normal" checked>Normal<br>
+                    <input type="radio" formControlName="atencion" name="atencion" value="pesima" required>Pésima<br>
+                </div>
+
+                
+            <button class="btn btn-success" type="submit">Finalizar encuesta</button>
+            </div>
+        </form>
+    </div>
+
+</div>
