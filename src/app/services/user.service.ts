@@ -292,4 +292,16 @@ export class UserService {
   ModificarTurno(turno : any, accion : string){
     return this.turnoCollection.doc(turno.id).update({'estado' : accion});
   }
+
+  ComentarioPaciente(turno : any, comentario : any){
+    return this.turnoCollection.doc(turno.id).update({'comentarioPaciente' : comentario});
+  }
+
+  ComentarioEspecialista(turno : any, comentario : any){
+    return this.turnoCollection.doc(turno.id).update({'comentarioEspecialista' : comentario});
+  }
+
+  ComentarioAdministrador(turno : any, comentario : any){
+    return this.turnoCollection.doc(turno.id).update({'comentarioAdministrador' : comentario});
+  }
 }

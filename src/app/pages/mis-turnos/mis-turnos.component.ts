@@ -11,6 +11,8 @@ export class MisTurnosComponent implements OnInit {
 
   turnosPaciente : any[] = [];
   turnosEspecialista : any[] = [];
+  mostrarEncuesta : any;
+  comentario : any;
 
   constructor(public userService : UserService) { 
     
@@ -38,20 +40,11 @@ export class MisTurnosComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  CancelarTurno(turno : any){
-
-    this.userService.BorrarTurno(turno).
-    then((data)=>{
-      let indice = this.turnosPaciente.indexOf(turno); 
-      this.turnosPaciente.splice(indice,1); 
-      //console.log('Eliminado');
-    })
-  }
 
   ModificarTurno(turno : any, accion : string){
 
     this.userService.ModificarTurno(turno, accion )
-    .then(()=>{
+    .then( async ()=>{
       // Swal.fire({
       //   title: 'Exito',
       //   text: 'Exito al cambiar el estado del turno',
@@ -60,6 +53,25 @@ export class MisTurnosComponent implements OnInit {
 
         
       // });
+      if(accion=='finalizado' || accion=='cancelado'){
+
+        const { value: text } = await Swal.fire({
+          input: 'textarea',
+          title: 'Reseña/Comentario',
+          inputPlaceholder: 'Deje su reseña acerca del turno',
+          inputAttributes: {
+            'aria-label': 'Escriba su reseña o comentario aquí...'
+          },
+        });
+        
+        if (this.userService.usuarioActual.tipo=='paciente') {
+          this.userService.ComentarioPaciente(turno,text);
+        }else if(this.userService.usuarioActual.tipo=='especialista'){
+          this.userService.ComentarioEspecialista(turno,text);
+        }else{
+          this.userService.ComentarioAdministrador(turno,text);
+        }
+      }
       this.RefrescarArrays();
     });
     
@@ -84,5 +96,29 @@ export class MisTurnosComponent implements OnInit {
         }
       });
     }
+  }
+
+  MostrarEncuesta(){
+    this.mostrarEncuesta = true;
+  }
+
+  VerComentarioDelEspecialista(turno : any){
+    this.comentario = turno.comentarioEspecialista;
+  }
+
+  VerComentarioDelPaciente(turno : any){
+    if(turno.comentarioPaciente != undefined && turno.comentarioPaciente != ''){
+
+      this.comentario = turno.comentarioPaciente;
+    }
+    else{
+      Swal.fire({
+        icon:'warning',
+        text: 'No hay comentarios del paciente en este turno',
+        title: 'Atención',
+        timer: 2000
+      })
+    }
+
   }
 }

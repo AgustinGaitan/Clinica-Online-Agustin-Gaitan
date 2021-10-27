@@ -4,6 +4,7 @@
         <th scope="col">Fecha y hora </th>
         <th scope="col">DNI del especialista</th>
         <th scope="col">DNI del paciente</th>
+        <th scope="col">Estado del turno</th>
       </tr>
     </thead>
     <tbody>
@@ -11,7 +12,16 @@
         <td scope="row" class="table-info">{{turno.horario}}</td>
         <td scope="row" class="table-info">{{turno.especialista}}</td>
         <td scope="row" class="table-info">{{turno.paciente}}</td>
-      </tr>
+        
+        <td scope="row" class="table-info"><span 
+          [ngClass]="{'bg-success': turno.estado == 'aceptado',
+                      'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
+                      'bg-info' : turno.estado == 'finalizado',
+                      'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span></td>
+        
+        <td scope="row" class="table-info"><button type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')" >Cancelar turno</button>
+        </td>
+        </tr>
     </tbody>
   </table>
 

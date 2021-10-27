@@ -31,6 +31,7 @@ import { ListadoPacientesComponent } from './components/listado-pacientes/listad
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.component';
 import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
     ListadoPacientesComponent,
     TurnosComponent,
     ListaTurnosComponent,
-    MisTurnosComponent
+    MisTurnosComponent,
+    EncuestaComponent
   ],
   imports: [
     BrowserModule,
