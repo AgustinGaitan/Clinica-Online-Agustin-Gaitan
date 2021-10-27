@@ -45,4 +45,12 @@ export class TurnosComponent implements OnInit {
     }
     console.log(this.especialidadFiltro);
   }
+
+  ClickearEspecialista(especialista : any){
+    this.especialidadFiltro = {
+      item : especialista.dni,
+      tipo:'especialista'
+    }
+    console.log(this.especialidadFiltro);
+  }
 }

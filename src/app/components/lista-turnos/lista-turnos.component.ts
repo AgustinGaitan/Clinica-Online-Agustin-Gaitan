@@ -21,6 +21,17 @@ export class ListaTurnosComponent implements OnInit {
           this.turnos.push(turno);
         }
       }
+    }else{
+      
+        
+        for(let turno of this.userService.todosLosTurnos){
+
+          if(turno.especialista == value.item){
+     
+            this.turnos.push(turno);
+          }
+        }
+       
     }
   }
   
