@@ -284,4 +284,12 @@ export class UserService {
   SetearTurno(horario : any){
     return this.turnoCollection.add({...horario});
   }
+
+  BorrarTurno(turno :any){
+    return this.turnoCollection.doc(turno.id).delete();
+  }
+
+  ModificarTurno(turno : any, accion : string){
+    return this.turnoCollection.doc(turno.id).update({'estado' : accion});
+  }
 }
