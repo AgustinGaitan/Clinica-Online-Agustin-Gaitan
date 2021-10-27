@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BienvenidaComponent} from '../app/pages/bienvenida/bienvenida.component';
+import { AdminGuard } from './guards/admin.guard';
+import { AdministradorPacienteGuard } from './guards/administrador-paciente.guard';
+import { EspecialistaPacienteGuard } from './guards/especialista-paciente.guard';
+import { EspecialistaGuard } from './guards/especialista.guard';
+import { GeneralGuard } from './guards/general.guard';
+import { PacienteGuard } from './guards/paciente.guard';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
@@ -21,25 +27,33 @@ const routes: Routes = [{
   { path: 'registro', loadChildren: () => import('./modules/registro/registro.module').then(m => m.RegistroModule) },
   {
     path: 'principal',
-    component:PrincipalComponent
+    component:PrincipalComponent,
+    canActivate:[GeneralGuard]
   },
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    canActivate:[AdminGuard] },
   {
     path:'mi-perfil',
-    component: MiPerfilComponent
+    component: MiPerfilComponent,
+    canActivate: [GeneralGuard]
   },
-  { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule) },
+  { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule),
+    canActivate:[EspecialistaGuard]},
   {
     path: 'solicitar-turno',
-    component: SolicitarTurnoComponent
+    component: SolicitarTurnoComponent,
+    canActivate: [AdministradorPacienteGuard]
+
   },
   {
     path:'turnos',
-    component: TurnosComponent
+    component: TurnosComponent,
+    canActivate: [AdminGuard]
   },
   {
     path:'mis-turnos',
-    component: MisTurnosComponent
+    component: MisTurnosComponent,
+    canActivate:[EspecialistaPacienteGuard]
   },
   {
     path:'',

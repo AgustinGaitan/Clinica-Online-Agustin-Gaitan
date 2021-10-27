@@ -6,6 +6,8 @@
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
         <th scope="col">Email</th>
+        <th scope="col">Especialidad</th>
+        <th scope="col">Acción</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +15,7 @@
         <td scope="row" class="table-info">{{especialista.nombre}}</td>
         <td scope="row" class="table-info">{{especialista.apellido}}</td>
         <td scope="row" class="table-info">{{especialista.email}}</td>
-        <td *ngFor="let especialidad of especialista.especialidad">{{especialidad}}</td>
+        <td scope="row" class="table-info" *ngFor="let especialidad of especialista.especialidad">{{especialidad}}</td>
         <td *ngIf="especialista.habilitado" scope="row" class="table-info"><button class="btn-danger" (click)="DeshabilitarEspecialista(especialista)"> Deshabilitar </button></td>
         <td *ngIf="!especialista.habilitado" scope="row" class="table-info"><button class="btn-success" (click)="HabilitarEspecialista(especialista)"> Habilitar </button></td>
       </tr>
