@@ -18,6 +18,11 @@
         <p>Vea sus datos</p>
         <button type="button" class="btn-success" [routerLink]="['/mi-perfil']"> Mi perfil</button>
       </div>
+      <div class="feature col" *ngIf="userService.usuarioActual.tipo !='administrador'">
+        <h2>Mis tunos</h2>
+        <p>Vea sus turnos</p>
+        <button type="button" class="btn-success" [routerLink]="['/mis-turnos']"> Mis turnos</button>
+      </div>
       <div class="feature col" *ngIf="userService.usuarioActual.tipo != 'especialista'">
         <h2>Featured title</h2>
         <p>Solicite turno dependiendo de su necesidad, eligiendo hasta al especialista que desea.</p>

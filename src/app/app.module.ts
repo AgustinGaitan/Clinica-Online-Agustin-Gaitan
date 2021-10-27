@@ -30,6 +30,7 @@ import { FechaEspPipe } from './pipes/fecha-esp.pipe';
 import { ListadoPacientesComponent } from './components/listado-pacientes/listado-pacientes.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.component';
+import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ListaTurnosComponent } from './components/lista-turnos/lista-turnos.com
     FechaEspPipe,
     ListadoPacientesComponent,
     TurnosComponent,
-    ListaTurnosComponent
+    ListaTurnosComponent,
+    MisTurnosComponent
   ],
   imports: [
     BrowserModule,

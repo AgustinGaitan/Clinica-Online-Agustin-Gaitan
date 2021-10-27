@@ -4,6 +4,7 @@ import {BienvenidaComponent} from '../app/pages/bienvenida/bienvenida.component'
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MiPerfilComponent } from './pages/mi-perfil/mi-perfil.component';
+import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 import { PrincipalComponent } from './pages/principal/principal.component';
 import { SolicitarTurnoComponent } from './pages/solicitar-turno/solicitar-turno.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
@@ -35,6 +36,10 @@ const routes: Routes = [{
   {
     path:'turnos',
     component: TurnosComponent
+  },
+  {
+    path:'mis-turnos',
+    component: MisTurnosComponent
   },
   {
     path:'',
