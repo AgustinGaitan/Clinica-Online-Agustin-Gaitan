@@ -92,6 +92,7 @@ export class UserService {
       console.log('deslogueado');
       this.router.navigateByUrl('/bienvenida');
       this.usuarioActual = undefined;
+      //console.log(data.user);
       
     });
   }
@@ -326,3 +327,17 @@ export class UserService {
     return this.turnoCollection.doc(turno.id).update({'calificacion': calificacion})
   }
 }
+
+
+//Botones de inicio rapido - FAV BUTTONS con la imagen del usuario (2 esp) ( 1 admin) (3pacientes) esquina inf derech
+//Tablas NO
+
+//Solicitar turno (botones para las especialidades con imagenes, si es especialidad
+//cada turno boton con horario dentro)
+/////registro : botones que sean fotos representando a los especialistas/pacientesgul [listo]
+
+
+//paciente2: pfq41953@boofx.com   paciente2
+//paciente3: kre77079@zwoho.com   paciente3
+
+//especialista2: fwy54513@cuoly.com   especialista2

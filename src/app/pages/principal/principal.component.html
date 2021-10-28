@@ -43,6 +43,7 @@
         <h2 class="card-title">Mis turnos</h2>
         <p class="card-text">Vea sus turnos</p>
         <button type="button" class="btn btn-success" [routerLink]="['/mis-turnos']"> Mis turnos</button>
+        <small *ngIf="userService.usuarioActual.horarios == []" style="color: red;">No posee turnos</small>
         </div>
       </div>
       <div class="card" *ngIf="userService.usuarioActual.tipo != 'especialista'">
