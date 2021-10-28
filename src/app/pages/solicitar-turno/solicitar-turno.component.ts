@@ -44,7 +44,6 @@ export class SolicitarTurnoComponent implements OnInit {
   MostrarEspecialistaSeleccionado(event : any){
     this.especialistaClickeado = event;
     this.horariosMostrar = event.horarios;
-    
     let hoy = new Date();
     let actual = new Date();
     if(this.fechasAMostrar.length == 15){

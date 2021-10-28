@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +13,7 @@ export class EncuestaComponent implements OnInit {
 
   controles !: FormGroup;
   @Output() cerrarEmitter : EventEmitter<any> = new EventEmitter();
-  constructor(private fb : FormBuilder, private userService : UserService) {
+  constructor(private fb : FormBuilder, private userService : UserService, private router : Router) {
 
     this.controles = this.fb.group({
       comodidad: ['', Validators.required],
@@ -54,6 +55,7 @@ export class EncuestaComponent implements OnInit {
         timer: 2000
       }).then(()=>{
         this.cerrarEmitter.emit(false);
+        this.router.navigateByUrl('/mis-turnos');
       });
     })
   }

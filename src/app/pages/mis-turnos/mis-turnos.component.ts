@@ -119,7 +119,7 @@ export class MisTurnosComponent implements OnInit {
         text: 'No hay comentarios del paciente en este turno',
         title: 'Atención',
         timer: 2000
-      })
+      });
     }
 
   }
@@ -134,7 +134,19 @@ export class MisTurnosComponent implements OnInit {
   }
 
   CalificarAtencion(calificacion : any){
+    
+    this.userService.Calificar(this.turnoACalificar, calificacion)
+    .then(()=>{
+      Swal.fire({
+        icon:'success',
+        text: 'Exito al calificar',
+        title: 'Atención',
+        timer: 2000,
+        timerProgressBar: true
+      }).then(()=>{
 
-    this.userService.Calificar(this.turnoACalificar, calificacion);
+        this.mostrarCalificar = false;
+      });
+    });
   }
 }

@@ -1,63 +1,76 @@
-<div class="container px-4 py-5" id="featured-3" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
+<div class="container" id="featured-3" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
     <h2 class="pb-2 border-bottom">Turnos del paciente</h2>
     <div class="card">
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="feature col" *ngFor="let turno of turnosPaciente">
             <h2>{{turno.horario}}</h2>
+            <hr>
             <p>Especialidad : {{turno.especialidad}}</p>
-            <p>Estado del turno : </p>
-            <p>Estado: </p>
+            <hr>
+            <p>Estado:
             <span 
             [ngClass]="{'bg-success': turno.estado == 'aceptado',
                         'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
                         'bg-info' : turno.estado == 'finalizado',
                         'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
-
-            <button type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>
-            <button type="button" class="btn btn-info" *ngIf="turno.comentarioEspecialista != undefined" (click)="VerComentarioDelEspecialista(turno)" >Ver reseña</button><br>
-            <button type="button" class="btn btn-info" *ngIf="turno.estado == 'finalizado' && turno.comentarioEspecialista != undefined" (click)="MostrarEncuesta()" >Completar encuesta</button><br>
-            <button type="button" class="btn btn-info" *ngIf="turno.estado == 'finalizado'" (click)="MostrarCalificar(turno)" >Calificar atención</button>
+                    </p>
+                        <hr>
+                    
+            <button type="button" class="btn btn-danger mx-1" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button>
+            <button type="button" class="btn btn-info mx-1" *ngIf="turno.comentarioEspecialista != undefined" (click)="VerComentarioDelEspecialista(turno)" >Ver reseña</button>
+            <button type="button" class="btn btn-info mx-1" *ngIf="turno.estado == 'finalizado' && turno.comentarioEspecialista != undefined" [routerLink]="['/encuesta']" >Completar encuesta</button>
+            <button type="button" class="btn btn-info mx-1" *ngIf="turno.estado == 'finalizado'" (click)="MostrarCalificar(turno)" >Calificar atención</button>
 
         </div>
        
         </div>
     </div>
 </div>
-<div class="container px-4 py-5 card">
+<div class="container text-center">
     <div class="col-sm-12" *ngIf="mostrarCalificar">
         <label class="form-label">¿Cómo fue la atención?</label><br>
-        <button type="button" class="btn btn-success" (click)="CalificarAtencion('excelente')" value="excelente">Excelente</button><br>
-        <button type="button" class="btn btn-warning" (click)="CalificarAtencion('normal')" value="normal">Normal</button><br>
-        <button type="button" class="btn btn-danger"  (click)="CalificarAtencion('pesima')" value="pesima">Pésima</button><br>
+        <button type="button" class="btn btn-success mx-1" (click)="CalificarAtencion('excelente')" value="excelente">Excelente</button>
+        <button type="button" class="btn btn-warning mx-1" (click)="CalificarAtencion('normal')" value="normal">Normal</button>
+        <button type="button" class="btn btn-danger mx-1"  (click)="CalificarAtencion('pesima')" value="pesima">Pésima</button>
     </div>
 </div>
 
-  <div class="container px-4 py-5" id="featured-3" *ngIf="this.userService.usuarioActual.tipo == 'especialista'">
+  <div class="container" id="featured-3" *ngIf="this.userService.usuarioActual.tipo == 'especialista'">
     <h2 class="pb-2 border-bottom">Turnos del especialista</h2>
     <div class="card">
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="feature col" *ngFor="let turno of turnosEspecialista">
             <h2>{{turno.horario}}</h2>
+            <hr>
             <p>Especialidad : {{turno.especialidad}}</p>
-            <p>Estado del turno : </p>
+            <hr>
+            <p>Estado del turno : 
             <span 
                 [ngClass]="{'bg-success': turno.estado == 'aceptado',
                             'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
                             'bg-info' : turno.estado == 'finalizado',
                             'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
-         
+                        </p>
+                    <hr>
 
-            <button type="button" class="btn btn-danger" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>
-            <button type="button" class="btn btn-danger" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'rechazado')">Rechazar turno</button><br>
-            <button type="button" class="btn btn-success"*ngIf="turno.estado=='pendiente'"(click)="ModificarTurno(turno,'aceptado')">Aceptar turno</button><br>
-            <button type="button" class="btn btn-warning" *ngIf="turno.estado=='aceptado'"(click)="ModificarTurno(turno,'finalizado')">Finalizar turno</button>
-            <button type="button" class="btn btn-primary" (click)="VerComentarioDelPaciente(turno)">Ver reseña</button>
+            <button type="button" class="btn btn-danger mx-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>
+            <button type="button" class="btn btn-danger mx-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'rechazado')">Rechazar turno</button><br>
+            <button type="button" class="btn btn-success mx-1"*ngIf="turno.estado=='pendiente'"(click)="ModificarTurno(turno,'aceptado')">Aceptar turno</button><br>
+            <button type="button" class="btn btn-warning mx-1" *ngIf="turno.estado=='aceptado'"(click)="ModificarTurno(turno,'finalizado')">Finalizar turno</button>
+            <button type="button" class="btn btn-primary mx-1" (click)="VerComentarioDelPaciente(turno)">Ver reseña</button>
         </div>
         </div>
     </div>
   </div>
 
-  <div class="container px-4 py-5 card" id="featured-3" *ngIf="comentario != '' && comentario!=undefined">
-      {{comentario}}
+  <div class="container text-center" id="featured-3" *ngIf="comentario != '' && comentario!=undefined">
+      <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Reseña/comentario</h2>
+            <textarea class="card-text" style="resize: none;" readonly>{{comentario}}</textarea>
+          </div>
+      </div>
   </div>
-  <app-encuesta (cerrarEmitter)="CerrarEncuesta($event)" *ngIf="mostrarEncuesta"></app-encuesta>
+    <div class="container">
+    <app-encuesta (cerrarEmitter)="CerrarEncuesta($event)" *ngIf="mostrarEncuesta"></app-encuesta>
+    </div>

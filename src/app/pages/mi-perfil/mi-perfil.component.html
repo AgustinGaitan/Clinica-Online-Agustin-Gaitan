@@ -10,9 +10,9 @@
                     <ng-template #foto>
                       <h2>Foto</h2>
                     </ng-template>
-                      <div class="d-flex d-wrap">
+                      <div class="d-flex d-wrap align-items-center">
                         <div  class="text-center" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
-                        <img  *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
+                        <img *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
                         </div>
                       <div *ngIf="this.userService.usuarioActual.tipo != 'paciente'">
                         <img src={{userService.usuarioActual.foto}} width="150">

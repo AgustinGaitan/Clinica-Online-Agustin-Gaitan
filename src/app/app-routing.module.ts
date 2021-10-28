@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BienvenidaComponent} from '../app/pages/bienvenida/bienvenida.component';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AdministradorPacienteGuard } from './guards/administrador-paciente.guard';
 import { EspecialistaPacienteGuard } from './guards/especialista-paciente.guard';
@@ -28,34 +29,38 @@ const routes: Routes = [{
   {
     path: 'principal',
     component:PrincipalComponent,
-    //canActivate:[GeneralGuard]
+    canActivate:[GeneralGuard]
   },
   { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
-    //canActivate:[AdminGuard]
+    canActivate:[AdminGuard]
   },
   {
     path:'mi-perfil',
     component: MiPerfilComponent,
-    //canActivate: [GeneralGuard]
+    canActivate: [GeneralGuard]
   },
   { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule),
-    //canActivate:[EspecialistaGuard]}
+    canActivate:[EspecialistaGuard]
   },
   {
     path: 'solicitar-turno',
     component: SolicitarTurnoComponent,
-    //canActivate: [AdministradorPacienteGuard]
+    canActivate: [AdministradorPacienteGuard]
 
   },
   {
     path:'turnos',
     component: TurnosComponent,
-    //canActivate: [AdminGuard]
+    canActivate: [AdminGuard]
   },
   {
     path:'mis-turnos',
     component: MisTurnosComponent,
-    //canActivate:[EspecialistaPacienteGuard]
+    canActivate:[EspecialistaPacienteGuard]
+  },
+  {
+    path:'encuesta',
+    component:EncuestaComponent
   },
   {
     path:'**',

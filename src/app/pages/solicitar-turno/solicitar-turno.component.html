@@ -1,4 +1,4 @@
-<div class="container">    
+<!-- <div class="container">    
     <div class="col-8 text-center" align="center">
     <div class= "row">
         <div class="col-sm">
@@ -31,4 +31,67 @@
         </div>
     </div>
     </div>
-</div>
+</div> -->
+
+<div class="container">
+    <div class="p-5 mb-4 bg-light rounded-3" *ngIf="userService.usuarioActual.tipo=='administrador'">
+        <div class="row">
+            <div class="col-6">
+                <h1>Seleccione un paciente</h1>
+                <app-listado-pacientes (pacienteClickeadoEmitter)="PacienteSeleccionado($event)">
+                </app-listado-pacientes>
+            </div>
+            <div class="col-3" *ngIf="pacienteSeleccionado != undefined">
+                <div class="card">
+                    <div class="card-body row">
+                        <h2 class="card-title">{{pacienteSeleccionado?.nombre}}</h2>
+                        <p class="card-text">
+                            {{pacienteSeleccionado?.apellido}}
+                        </p>
+
+                        <div *ngFor="let foto of pacienteSeleccionado?.fotos">
+                            <img  src={{foto}} width="60px" height="60px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+        <div class="row align-items-md-stretch" *ngIf="pacienteSeleccionado != undefined || userService.usuarioActual.tipo != 'administrador'">
+            <div class="col-md-6">
+                <div class="h-100 p-5 text-white bg-dark rounded-3">
+                    <app-listado-especialidades-sin-func (especialidadSeleccionadaEmitter)="MostrarSeleccionado($event)">
+                    </app-listado-especialidades-sin-func>
+                    <h5>Especialidad seleccionada: {{especialidadClickeada}}</h5>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="h-100 p-5 bg-light border rounded-3" *ngIf="especialidadClickeada != undefined">
+                    <app-listado-especialistas-func *ngIf="mostrarListaEspecialistas"
+                        [especialidadAMostrar]="especialidadClickeada"
+                        (especialistaSeleccionadoEmitter)="MostrarEspecialistaSeleccionado($event)">
+                    </app-listado-especialistas-func>
+                </div>
+            </div>
+        </div>
+        <div class="p-5 mb-4 bg-light rounded-3 text-center" *ngIf="especialistaClickeado != undefined">
+
+            <div style="background-color: rgba(255, 255, 255, 0.678);">
+                <h2>Horarios disponibles</h2>
+                <h5>{{especialistaClickeado.nombre}} , {{especialistaClickeado.apellido}}</h5>
+                <div>
+                    <form [formGroup]="controles" (ngSubmit)="PedirTurno()">
+                        <div *ngFor="let horario of fechasEspAMostrar">
+                            <input type="radio" formControlName="horario" value={{horario}}>{{horario}}
+                        </div>
+                        <button type="submit">Pedir turno</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    

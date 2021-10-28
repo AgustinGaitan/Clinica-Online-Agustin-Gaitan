@@ -1,8 +1,8 @@
 <app-listado-todos-usuarios *ngIf="!mostrarRegistroAdmin"></app-listado-todos-usuarios>
 <div align="center">
-<button type="button" *ngIf="!mostrarRegistroAdmin" class="btn btn-primary btn-lg" [routerLink]="['/registro/especialista']">Registrar Especialista</button>
-<button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
-<button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg" (click)="RegistrarAdmin()">Registrar administrador</button>
+<button type="button" *ngIf="!mostrarRegistroAdmin" class="btn btn-primary btn-lg mx-1" [routerLink]="['/registro/especialista']">Registrar Especialista</button>
+<button type="button"*ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
+<button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" (click)="RegistrarAdmin()">Registrar administrador</button>
 </div>
 <div *ngIf="mostrarRegistroAdmin" class="container col-xl-10 col-xxl-8 px-4 py-5" style="font-family: OldSansBlack;">
     <div class="row align-items-center g-lg-5 py-5">
