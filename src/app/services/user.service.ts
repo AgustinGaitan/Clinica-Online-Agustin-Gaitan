@@ -87,7 +87,14 @@ export class UserService {
   }
 
  
-
+  Logout(){
+    this.auth.signOut().then((data : any)=>{
+      console.log('deslogueado');
+      this.router.navigateByUrl('/bienvenida');
+      this.usuarioActual = undefined;
+      
+    });
+  }
   async Login(email : string , password : string){
     
     let tipo : string = "";

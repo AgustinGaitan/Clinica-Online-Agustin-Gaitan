@@ -18,4 +18,7 @@ export class NavBarComponent implements OnInit {
 
   }
 
+  CerrarSesion(){
+    this.userService.Logout();
+  }
 }
