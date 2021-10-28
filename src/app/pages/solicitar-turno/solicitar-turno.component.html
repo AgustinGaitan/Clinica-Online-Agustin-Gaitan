@@ -34,28 +34,13 @@
 </div> -->
 
 <div class="container">
-    <div class="p-5 mb-4 bg-light rounded-3" *ngIf="userService.usuarioActual.tipo=='administrador'">
-        <div class="row">
-            <div class="col-6">
+    <div *ngIf="userService.usuarioActual.tipo=='administrador'">
+       
+    
                 <h1>Seleccione un paciente</h1>
                 <app-listado-pacientes (pacienteClickeadoEmitter)="PacienteSeleccionado($event)">
                 </app-listado-pacientes>
-            </div>
-            <div class="col-3" *ngIf="pacienteSeleccionado != undefined">
-                <div class="card">
-                    <div class="card-body row">
-                        <h2 class="card-title">{{pacienteSeleccionado?.nombre}}</h2>
-                        <p class="card-text">
-                            {{pacienteSeleccionado?.apellido}}
-                        </p>
-
-                        <div *ngFor="let foto of pacienteSeleccionado?.fotos">
-                            <img  src={{foto}} width="60px" height="60px">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
 
 
     </div>

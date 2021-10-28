@@ -1,3 +1,35 @@
-button{
-    margin-top: 10px;
+
+.float-cont{
+    position:fixed;
+    display: flex;
+    gap: 15px;
+    bottom:40px;
+    right:40px;
+
+} 
+
+.float-contEsp{
+  position:fixed;
+  display: flex;
+  gap: 15px;
+  bottom:105px;
+  right:40px;
+
+}
+.float-contAdmin{
+  position:fixed;
+  display: flex;
+  gap: 15px;
+  bottom:170px;
+  right:40px;
+
+}
+
+.float-button{
+  position: relative;
+  width:60px;
+    height:60px;
+  box-shadow: 2px 4px 3px #999;
+  border-radius:50px;
+  overflow: hidden;
 }

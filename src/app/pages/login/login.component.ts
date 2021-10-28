@@ -13,9 +13,39 @@ export class LoginComponent implements OnInit {
   email : string = "";
   password : string = "";
   loading : boolean = false;
+  pacientesDePrueba : any;
+  especialistasDePrueba : any;
+  administradoresDePrueba : any;
   
 
-  constructor(private userSevice : UserService, private router : Router) { }
+  constructor(private userSevice : UserService, private router : Router) {
+    this.userSevice.pacientes
+    .subscribe((data)=>{
+      this.pacientesDePrueba = data.filter((paciente : any)=>{
+        return paciente.prueba == true;
+        
+      });
+      console.log(this.pacientesDePrueba);
+    });
+
+    this.userSevice.especialistas
+    .subscribe((data)=>{
+      this.especialistasDePrueba = data.filter((especialista : any)=>{
+        return especialista.prueba == true;
+        
+      });
+      console.log(this.especialistasDePrueba);
+    });
+
+    this.userSevice.administradores
+    .subscribe((data)=>{
+      this.administradoresDePrueba = data.filter((admin : any)=>{
+        return admin.prueba == true;
+        
+      });
+      console.log(this.administradoresDePrueba);
+    });
+  }
 
   ngOnInit(): void {
   }
@@ -32,11 +62,11 @@ export class LoginComponent implements OnInit {
     
   }
 
-  LoguearsePaciente(){
-    this.email="paciente@paciente.com";
-    this.password="123123";
+  LoguearseUsuario(email : string, password : string){
+    this.email= email;
+    this.password=password;
    
-      this.Loguearse();
+    this.Loguearse();
   
   }
 

@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 export class ListadoPacientesComponent implements OnInit {
 
   @Output() pacienteClickeadoEmitter : EventEmitter<any> = new EventEmitter();
+  cambiarColor : boolean = false;
   
   constructor(public user : UserService) {
 
@@ -20,5 +21,6 @@ export class ListadoPacientesComponent implements OnInit {
 
   SeleccionarPaciente(paciente : any){
     this.pacienteClickeadoEmitter.emit(paciente);
+    this.cambiarColor = true;
   }
 }

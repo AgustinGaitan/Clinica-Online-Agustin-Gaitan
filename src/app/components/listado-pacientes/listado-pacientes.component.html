@@ -1,20 +1,15 @@
 <h1>Pacientes</h1>
-<table class="table-light table-striped table-hover table-bordered">
- 
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Email</th>
-        <th scope="col">DNI</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let paciente of user.todosLosPacientes" (click)="SeleccionarPaciente(paciente)">
-        <td scope="row" class="table-light">{{paciente.nombre}}</td>
-        <td scope="row" class="table-light">{{paciente.apellido}}</td>
-        <td scope="row" class="table-light">{{paciente.email}}</td>
-        <td scope="row" class="table-light">{{paciente.dni}}</td>
-      </tr>
-    </tbody>
-</table>
+<div class="row justify-content-around" style="column-gap: 25px; row-gap: 25px;">
+  <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let paciente of user.todosLosPacientes" 
+  [ngClass]="{'bg-success' : cambiarColor == true}" (click)="SeleccionarPaciente(paciente)">
+    <div class="col-3" *ngFor="let foto of paciente.fotos">
+      <img [src]="foto" width="100%">
+    </div>
+    <div class="col-6">
+      <h6>{{paciente.nombre}}</h6>
+      <h6>{{paciente.apellido}}</h6>
+      <h6>{{paciente.dni}}</h6>
+      <p>{{paciente.email}}</p>
+    </div>
+  </div>
+</div>

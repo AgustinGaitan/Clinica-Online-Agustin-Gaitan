@@ -16,12 +16,24 @@
           <label for="floatingPassword">Password</label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="Loguearse()" >Iniciar sesión</button>
-       
-        <button class="w-100 btn btn-sm btn-secondary" type="submit" (click)="LoguearsePaciente()" >Inicio rápido como paciente</button>
-        <button class="w-100 btn btn-sm btn-info" type="submit" (click)="LoguearseEspecialista()">Inicio rápido como especialista</button>
-        <button class="w-100 btn btn-sm btn-warning" type="submit" (click)="LoguearseAdministrador()">Inicio rápido como administrador</button>
-        <img *ngIf="loading" src="../../../assets/images/spinner.gif" height="100px" width="100px">
       </form> 
+        <div class="float-cont">
+          <button class="float-button" *ngFor="let paciente of pacientesDePrueba">
+            <img [src]="paciente.fotos[0]" width="45px" (click)="LoguearseUsuario(paciente.email, paciente.password)">
+          </button>
+        </div>
+        <div class="float-contEsp">
+          <button class="float-button" *ngFor="let especialista of especialistasDePrueba">
+            <img [src]="especialista.foto" width="45px" (click)="LoguearseUsuario(especialista.email, especialista.password)">
+          </button>
+        </div>
+        <div class="float-contAdmin">
+          <button class="float-button" *ngFor="let administrador of administradoresDePrueba">
+            <img [src]="administrador.foto" width="45px" (click)="LoguearseUsuario(administrador.email, administrador.password)">
+          </button>
+        </div>
+        <img *ngIf="loading" src="../../../assets/images/spinner.gif" height="100px" width="100px">
+     
 
      
     </div>
