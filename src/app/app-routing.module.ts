@@ -63,6 +63,11 @@ const routes: Routes = [{
     component:EncuestaComponent
   },
   {
+    path: '',
+    redirectTo:'bienvenida',
+    pathMatch:'full'
+  },
+  {
     path:'**',
     component: ErrorComponent
   }
