@@ -278,7 +278,8 @@ export class UserService {
   AgregarEspecialidad(especialidad : any){
     
     let especialidadObj = {
-      nombre : especialidad
+      nombre : especialidad,
+      foto : 'https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/especialidades%2Fespecialidaddefault.png?alt=media&token=356e7a4c-77be-4831-bee0-ba81cec8a8cf'
     }
     return this.especialidadCollection.add(especialidadObj);
   }

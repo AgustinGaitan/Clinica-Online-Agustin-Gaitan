@@ -1,0 +1,17 @@
+.float-cont{
+    //position:fixed;
+    display: flex;
+    gap: 15px;
+    bottom:40px;
+    
+
+} 
+
+.float-button{
+  position: relative;
+  width:60px;
+    height:60px;
+  box-shadow: 2px 4px 3px #999;
+  border-radius:50px;
+  overflow: hidden;
+}

@@ -68,21 +68,21 @@ export class SolicitarTurnoComponent implements OnInit {
 
   }
 
-  PedirTurno(){
-    let horario : any;
+  PedirTurno(horario : any){
+    let turno : any;
     if(this.userService.usuarioActual.tipo == "paciente"){
 
-        horario = {
-        horario: this.controles.get('horario')?.value,
+        turno = {
+        horario: horario,
         paciente: this.userService.usuarioActual.dni,
         especialista: this.especialistaClickeado.dni,
         especialidad: this.especialidadClickeada,
         estado: 'pendiente'
       }
     }else{
-      horario = {
+      turno = {
       
-        horario: this.controles.get('horario')?.value,
+        horario:  horario,
         paciente: this.pacienteSeleccionado.dni,
         especialista: this.especialistaClickeado.dni,
         especialidad: this.especialidadClickeada,
@@ -91,8 +91,8 @@ export class SolicitarTurnoComponent implements OnInit {
       }
     }
     
-    console.log(horario); 
-    this.userService.SetearTurno(horario)
+    console.log(turno); 
+    this.userService.SetearTurno(turno)
     .then(()=>{
       Swal.fire({
         icon: 'success',
