@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {BienvenidaComponent} from '../app/pages/bienvenida/bienvenida.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { HistorialMedicoComponent } from './components/historial-medico/historial-medico.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AdministradorPacienteGuard } from './guards/administrador-paciente.guard';
 import { EspecialistaPacienteGuard } from './guards/especialista-paciente.guard';
@@ -40,7 +41,7 @@ const routes: Routes = [{
     canActivate: [GeneralGuard]
   },
   { path: 'especialista', loadChildren: () => import('./modules/especialista/especialista.module').then(m => m.EspecialistaModule),
-    canActivate:[EspecialistaGuard]
+    //canActivate:[EspecialistaGuard]
   },
   {
     path: 'solicitar-turno',
@@ -60,7 +61,8 @@ const routes: Routes = [{
   },
   {
     path:'encuesta',
-    component:EncuestaComponent
+    component:EncuestaComponent,
+    canActivate:[EspecialistaPacienteGuard]
   },
   {
     path: '',

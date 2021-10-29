@@ -1,0 +1,26 @@
+<div class="row justify-content-around " style="column-gap: 25px; row-gap: 25px;">
+    <div class="col-12 col-md-6 row bg-light rounded text-center">
+        <h1>Historia clínica</h1>
+        <form [formGroup]="controles" (ngSubmit)="EnviarHistorial()">
+            <div class="col-12">
+                <div class="col-md-6">
+                    <label>Altura (en cm)</label>
+                    <input formControlName="altura" class="form-" type="number">
+                </div>
+                <div class="col-md-6">
+                    <label>Peso</label>
+                    <input formControlName="peso" type="number">
+                </div>
+                <div class="col-md-6">
+                    <label>Temperatura</label>
+                    <input formControlName="temperatura" type="number" >
+                </div>
+                <div class="col-md-6">
+                    <label>Presion</label>
+                    <input formControlName="presion" type="number">
+                </div>
+                <button class="btn btn-success" type="submit">Enviar historia clínica</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -16,7 +17,7 @@ export class MisTurnosComponent implements OnInit {
   mostrarCalificar : boolean = false;
   turnoACalificar : any;
 
-  constructor(public userService : UserService) { 
+  constructor(public userService : UserService, private router : Router) { 
     
     if(this.userService.usuarioActual.tipo == 'paciente'){
 
@@ -68,8 +69,12 @@ export class MisTurnosComponent implements OnInit {
         
         if (this.userService.usuarioActual.tipo=='paciente') {
           this.userService.ComentarioPaciente(turno,text);
+       
         }else if(this.userService.usuarioActual.tipo=='especialista'){
-          this.userService.ComentarioEspecialista(turno,text);
+          this.userService.ComentarioEspecialista(turno,text) 
+          .then(()=>{
+            this.router.navigateByUrl('/especialista/historial-clinico');
+          });;
         }else{
           this.userService.ComentarioAdministrador(turno,text);
         }
