@@ -16,6 +16,8 @@ export class MisTurnosComponent implements OnInit {
   comentario : any;
   mostrarCalificar : boolean = false;
   turnoACalificar : any;
+  turnoHistorial : any;
+  mostrarHistorial : boolean = false;
 
   constructor(public userService : UserService, private router : Router) { 
     
@@ -73,7 +75,8 @@ export class MisTurnosComponent implements OnInit {
         }else if(this.userService.usuarioActual.tipo=='especialista'){
           this.userService.ComentarioEspecialista(turno,text) 
           .then(()=>{
-            this.router.navigateByUrl('/especialista/historial-clinico');
+            this.turnoHistorial = turno;
+            this.mostrarHistorial = true;
           });;
         }else{
           this.userService.ComentarioAdministrador(turno,text);

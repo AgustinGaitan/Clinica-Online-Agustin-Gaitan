@@ -8,10 +8,6 @@ const routes: Routes = [{ path: '', component: EspecialistaComponent },
 {
   path:'mis-horarios',
   component: MisHorariosComponent
-},
-{
-  path:'historial-clinico',
-  component:HistorialMedicoComponent
 }
 ];
 

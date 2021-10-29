@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-historial-medico',
@@ -8,8 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class HistorialMedicoComponent implements OnInit {
 
+
+  @Input() turno : any;
+  pacienteDelHistorial : any;
   controles !: FormGroup
-  constructor(private fb : FormBuilder) { 
+  constructor(private fb : FormBuilder, public userService : UserService) { 
     this.controles = this.fb.group({
       altura:['',Validators.required],
       peso:['',Validators.required],
@@ -21,7 +25,18 @@ export class HistorialMedicoComponent implements OnInit {
       datoDosNom:['',Validators.required],
       datoTres:['',Validators.required],
       datoTresNom:['',Validators.required]
-    })
+    });
+    this.userService.pacientes
+    .subscribe((data)=>{
+      for(let item of data){
+        if(item.dni == this.turno.paciente){
+          this.pacienteDelHistorial = item;
+          console.log(this.pacienteDelHistorial);
+          break;
+        }
+      }
+    });
+
   }
 
   ngOnInit(): void {
