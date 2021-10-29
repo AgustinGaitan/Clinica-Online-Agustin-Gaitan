@@ -2,7 +2,7 @@
   <div class="container" style="font-family: OldSansBlack;">
     <div class="main-body" align="center">
           
-            <div class="col-sm-12">
+            <div class="col-sm-6">
               <div class="card">
                 <div class="card-body">
             <div class="text-center">
@@ -10,7 +10,7 @@
                     <ng-template #foto>
                       <h2>Foto</h2>
                     </ng-template>
-                      <div class="d-flex d-wrap align-items-center">
+                      <div >
                         <div  class="text-center" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
                         <img *ngFor="let foto of userService.usuarioActual.fotos" src={{foto}} width="150">
                         </div>
@@ -78,8 +78,11 @@
           </div>
 
         
+      </div>
     </div>
-
+    <div class="col-sm-6 card" *ngIf="this.userService.usuarioActual.tipo == 'paciente'" >
+      <h1>Historia clínica</h1>>
+    </div>
    <div>
      <app-mis-horarios *ngIf="userService.usuarioActual.tipo == 'especialista'"></app-mis-horarios>
    </div>
