@@ -327,6 +327,10 @@ export class UserService {
   Calificar(turno : any, calificacion : any){
     return this.turnoCollection.doc(turno.id).update({'calificacion': calificacion})
   }
+
+  SubirHistorialClinico(){
+    
+  }
 }
 
 
