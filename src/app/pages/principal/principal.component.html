@@ -53,6 +53,13 @@
         <button class="btn btn-success" [routerLink]="['/solicitar-turno']"> Solicitar turno</button>
       </div>
       </div>
+      <div class="card" *ngIf="userService.usuarioActual.tipo == 'especialista'">
+        <div class="card-body">
+          <h2 class="card-title">Pacientes</h2>
+          <p class="card-text">Vea a los pacientes que atendió y sus historiales médicos</p>
+          <button class="btn btn-success" [routerLink]="['/especialista/mis-pacientes']">Ver mis pacientes</button>
+        </div>
+        </div>
     </div>
   </div>
 

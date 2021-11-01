@@ -65,7 +65,10 @@
           </div>
       </div>
   </div>
-  <div *ngIf="turnoHistorial"class="container text-center jello-horizontal">
-    <app-historial-medico [turno]="turnoHistorial"></app-historial-medico>
+  <div *ngIf="mostrarHistorial" class="container text-center jello-horizontal">
+    <app-historial-medico 
+    [turno]="turnoHistorial"
+    (cerrarEmitter)="RecibirOutput($event)"
+    ></app-historial-medico>
   </div>
 </div>

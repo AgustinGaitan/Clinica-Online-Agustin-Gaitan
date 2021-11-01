@@ -18,6 +18,7 @@ export class MisTurnosComponent implements OnInit {
   turnoACalificar : any;
   turnoHistorial : any;
   mostrarHistorial : boolean = false;
+ 
 
   constructor(public userService : UserService, private router : Router) { 
     
@@ -156,5 +157,9 @@ export class MisTurnosComponent implements OnInit {
         this.mostrarCalificar = false;
       });
     });
+  }
+
+  RecibirOutput(event : any){
+    this.mostrarHistorial = event;
   }
 }

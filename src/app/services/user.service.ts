@@ -328,9 +328,14 @@ export class UserService {
     return this.turnoCollection.doc(turno.id).update({'calificacion': calificacion})
   }
 
-  SubirHistorialClinico(turno : any, paciente : any, historial : any){
-    this.turnoCollection.doc(turno.id).update({historialMedico: historial});
-    this.pacienteCollection.doc(paciente.id).update({historialMedico: historial});
+  SubirHistorialClinico(turno : any, paciente : any, historialTurno : any, historialPaciente : any){
+    this.turnoCollection.doc(turno.id).update({historialMedico: historialTurno});
+    this.pacienteCollection.doc(paciente.id).update({historialMedico: historialPaciente});
+  }
+
+  GetHistorialMedico(paciente : any){
+    return this.pacienteCollection.doc(paciente.id).valueChanges({idField : 'id'});
+
   }
 }
 

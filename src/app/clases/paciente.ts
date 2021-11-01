@@ -4,7 +4,7 @@ import { Persona } from "./persona";
 export class Paciente extends Persona {
 
     obraSocial : string;
-    historialMedico ?: string;
+    historialMedico ?: any[];
     fotos : string[] = [];
 
 

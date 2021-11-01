@@ -80,8 +80,12 @@
         
       </div>
     </div>
-    <div class="col-sm-6 card" *ngIf="this.userService.usuarioActual.tipo == 'paciente'" >
-      <h1>Historia clínica</h1>>
+    <div class="col-sm-6 card" *ngIf="this.userService.usuarioActual.tipo == 'paciente' && this.userService.usuarioActual.historialMedico" >
+      <h1>Historia clínica</h1>
+      <div *ngFor="let historial of this.userService.usuarioActual.historialMedico" class="col-12">
+        <label *ngFor="let item of historial | keyvalue">{{item.value}}</label>
+      
+      </div>
     </div>
    <div>
      <app-mis-horarios *ngIf="userService.usuarioActual.tipo == 'especialista'"></app-mis-horarios>

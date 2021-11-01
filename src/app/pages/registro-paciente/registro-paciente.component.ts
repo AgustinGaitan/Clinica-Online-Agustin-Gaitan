@@ -67,6 +67,7 @@ export class RegistroPacienteComponent implements OnInit {
                                             this.getObraSocial()
                                             )
 
+    paciente.historialMedico = [];
                                             
     this.fotoService.SubirFotoPaciente(this.formData,paciente);
 
