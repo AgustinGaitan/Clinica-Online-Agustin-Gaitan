@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-historial-medico',
@@ -42,7 +43,26 @@ export class HistorialMedicoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   EnviarHistorial(){
 
+    let historial : any = {
+      altura : this.controles.get('altura')?.value,
+      peso: this.controles.get('peso')?.value,
+      temperatura: this.controles.get('controles')?.value,
+      presion: this.controles.get('presion')?.value,
+
+    }
+
+
+    this.userService.SubirHistorialClinico(this.turno,this.pacienteDelHistorial,historial);
+
+    Swal.fire({
+      title:'Historial medico realizado con exito',
+      icon: 'success',
+      timer: 3000,
+      timerProgressBar : true
+    });
+   
   }
 }
