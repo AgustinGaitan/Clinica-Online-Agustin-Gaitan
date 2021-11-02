@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     background-image: url(assets/images/hospitaldif.jpg);
-    background-size: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    //background-size: 100%;
    
 }
 
