@@ -8,8 +8,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MiPerfilComponent implements OnInit {
 
+  mostrarHistorial : boolean = false;
   
- 
 
 
   constructor(public userService : UserService) { 
@@ -18,6 +18,10 @@ export class MiPerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  MostrarHistorial(){
+    this.mostrarHistorial = true;
   }
 
 }

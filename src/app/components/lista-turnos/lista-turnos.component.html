@@ -1,4 +1,4 @@
-<div class="container">  
+<!-- <div class="container">  
   <table class="table table-light table-striped table-hover table-bordered" style="text-align: center;">
       <thead>
         <tr>
@@ -26,7 +26,26 @@
           </tr>
       </tbody>
     </table>
-</div>
+</div> -->
 
+<h1>Turnos</h1>
+<div class="row justify-content-around" style="column-gap: 25px; row-gap: 25px;">
+  <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnos" (click)="SeleccionarTurno(turno.nombre)">
+    <div class="col-6">
+      <h6>{{turno.horario}}</h6>
+      <h6>{{turno.especialista}}</h6>
+      <h6>{{turno.paciente}}</h6>
+      
+    </div>
+    <div class="col-6">
+      <span style="margin-top: 5px;"
+            [ngClass]="{'bg-success': turno.estado == 'aceptado',
+                        'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
+                        'bg-info' : turno.estado == 'finalizado',
+                        'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
+      <button style="margin-top: 5px;" type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')" >Cancelar turno</button>
+    </div>
+  </div>
+</div>
 
 

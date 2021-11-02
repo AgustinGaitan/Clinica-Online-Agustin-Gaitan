@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="font-family: OldSansBlack;">
   <!-- <h1>Especialistas</h1>
   <table class="table table-light table-striped table-hover table-bordered">
   
@@ -55,7 +55,18 @@
           <h6>{{paciente.apellido}}</h6>
           <h6>{{paciente.dni}}</h6>
           <p>{{paciente.email}}</p>
+          <button class="btn btn-info" (click)="VerHistorial(paciente)">Ver historial</button>
+
         </div>
+      </div>
+      <div *ngIf="verHistorial" class="col-sm-12 card" style="margin-left : 8cm">
+        <h1>Historia clínica</h1>
+        <div *ngFor="let historial of pacienteHistorial" class="col-12">
+          <div *ngFor="let item of historial | keyvalue">
+              <label>{{item.key}} : {{item.value}}</label>
+          </div>
+          <hr>
+      </div>
       </div>
     </div>
 </div>
