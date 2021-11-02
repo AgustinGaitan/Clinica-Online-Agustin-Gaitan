@@ -18,7 +18,12 @@ export class MisTurnosComponent implements OnInit {
   turnoACalificar : any;
   turnoHistorial : any;
   mostrarHistorial : boolean = false;
- 
+
+  turnosFiltradosEsp : any[] = [];
+  turnosFiltradosPac : any[] = [];
+
+  filtro : any;
+  log : any;
 
   constructor(public userService : UserService, private router : Router) { 
     
@@ -162,4 +167,30 @@ export class MisTurnosComponent implements OnInit {
   RecibirOutput(event : any){
     this.mostrarHistorial = event;
   }
+
+  Filtrar(){
+   
+    this.turnosFiltradosPac = [];
+    if(this.userService.usuarioActual.tipo == 'paciente'){
+      for(let turno of this.turnosPaciente){
+
+        Object.entries(turno).forEach(item => {
+          //console.log(item)
+          for(let atributo in item){
+            if(atributo.toString().includes(this.filtro)){
+
+              if(!this.turnosPaciente.includes(turno)){
+
+                this.turnosFiltradosPac.push(turno);
+              }
+              console.log(this.turnosFiltradosPac);
+            }
+            break
+          }
+        });
+      }
+    }
+   
+  }
+
 }

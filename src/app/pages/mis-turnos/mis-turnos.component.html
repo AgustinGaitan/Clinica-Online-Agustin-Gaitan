@@ -1,13 +1,17 @@
 
-<div class="container text-center bounce-top" style="font-family: OldSansBlack;">
-    <h1>Mis turnos</h1>
+<div class="container  bounce-top" style="font-family: OldSansBlack;">
+
+    <h1 class="text-center">Mis turnos</h1>
+    <div>
+        <label> Filtrar </label>
+        <input type="text" [(ngModel)]="filtro"  (ngModelChange)="Filtrar()">
+    </div>
     <div class="row justify-content-around" style="column-gap: 5px; row-gap: 10px;" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
     <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnosPaciente">
         <div class="col-6">
             <h6>{{turno.nombre}}</h6>
         <h6>{{turno.horario}}</h6>
         <h6>{{turno.especialidad}}</h6>
-        <p>{{turno.estado}}</p>
         <span 
         [ngClass]="{'bg-success': turno.estado == 'aceptado',
                     'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
@@ -15,23 +19,22 @@
                     'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
         </div>
         <div class="col-6">
-            <button type="button" class="btn btn-danger mx-1" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button>
-            <button type="button" class="btn btn-info mx-1" *ngIf="turno.comentarioEspecialista != undefined" (click)="VerComentarioDelEspecialista(turno)" >Ver reseña</button>
-            <button type="button" class="btn btn-info mx-1" *ngIf="turno.estado == 'finalizado' && turno.comentarioEspecialista != undefined" [routerLink]="['/encuesta']" >Completar encuesta</button>
-            <button type="button" class="btn btn-info mx-1" *ngIf="turno.estado == 'finalizado'" (click)="MostrarCalificar(turno)" >Calificar atención</button>
+            <button type="button" class="btn btn-danger my-1" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button>
+            <button type="button" class="btn btn-info my-1" *ngIf="turno.comentarioEspecialista != undefined" (click)="VerComentarioDelEspecialista(turno)" >Ver reseña</button>
+            <button type="button" class="btn btn-info my-1" *ngIf="turno.estado == 'finalizado' && turno.comentarioEspecialista != undefined" [routerLink]="['/encuesta']" >Completar encuesta</button>
+            <button type="button" class="btn btn-info my-1" *ngIf="turno.estado == 'finalizado'" (click)="MostrarCalificar(turno)" >Calificar atención</button>
 
         </div>
     </div>
     </div>
 
     <div class="row justify-content-around bounce-top" style="column-gap: 5px; row-gap: 10px;" *ngIf="this.userService.usuarioActual.tipo == 'especialista'">
-        <h1>Turnos del especialista</h1>
+        <h1 class="text-center"> Turnos del especialista</h1>
     <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnosEspecialista">
         <div class="col-6">
             <h6>{{turno.nombre}}</h6>
         <h6>{{turno.horario}}</h6>
         <h6>{{turno.especialidad}}</h6>
-        <p>{{turno.estado}}</p>
         <span 
         [ngClass]="{'bg-success': turno.estado == 'aceptado',
                     'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
@@ -39,11 +42,11 @@
                     'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
         </div>
         <div class="col-6">
-            <button type="button" class="btn btn-danger mx-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>
-            <button type="button" class="btn btn-danger mx-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'rechazado')">Rechazar turno</button><br>
-            <button type="button" class="btn btn-success mx-1"*ngIf="turno.estado=='pendiente'"(click)="ModificarTurno(turno,'aceptado')">Aceptar turno</button><br>
-            <button type="button" class="btn btn-warning mx-1" *ngIf="turno.estado=='aceptado'"(click)="ModificarTurno(turno,'finalizado')">Finalizar turno</button>
-            <button type="button" class="btn btn-primary mx-1" (click)="VerComentarioDelPaciente(turno)">Ver reseña</button>
+            <button type="button" class="btn btn-danger my-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>
+            <button type="button" class="btn btn-danger my-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'rechazado')">Rechazar turno</button><br>
+            <button type="button" class="btn btn-success my-1"*ngIf="turno.estado=='pendiente'"(click)="ModificarTurno(turno,'aceptado')">Aceptar turno</button><br>
+            <button type="button" class="btn btn-warning my-1" *ngIf="turno.estado=='aceptado'"(click)="ModificarTurno(turno,'finalizado')">Finalizar turno</button>
+            <button type="button" class="btn btn-primary my-1" (click)="VerComentarioDelPaciente(turno)">Ver reseña</button>
 
         </div>
     </div>

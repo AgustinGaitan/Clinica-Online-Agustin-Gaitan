@@ -7,7 +7,7 @@ import { BienvenidaComponent } from './pages/bienvenida/bienvenida.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment.prod';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage';
@@ -56,8 +56,7 @@ import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pac
     ListaTurnosComponent,
     MisTurnosComponent,
     EncuestaComponent,
-    HistorialMedicoComponent,
-    SeccionPacientesComponent
+    HistorialMedicoComponent
   ],
   imports: [
     BrowserModule,
