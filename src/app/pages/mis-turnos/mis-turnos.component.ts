@@ -172,25 +172,46 @@ export class MisTurnosComponent implements OnInit {
    
     this.turnosFiltradosPac = [];
     if(this.userService.usuarioActual.tipo == 'paciente'){
-      for(let turno of this.turnosPaciente){
 
-        Object.entries(turno).forEach(item => {
-          //console.log(item)
-          for(let atributo in item){
-            if(atributo.toString().includes(this.filtro)){
+      // this.turnosFiltradosPac = this.turnosPaciente.filter((turnos) =>{
 
-              if(!this.turnosPaciente.includes(turno)){
-
-                this.turnosFiltradosPac.push(turno);
-              }
-              console.log(this.turnosFiltradosPac);
-            }
-            break
-          }
-        });
-      }
+      //   Object.entries(turno).forEach(item => {
+      //     //         //console.log(item)
+      //     //         for(let atributo in item){
+      //     //           if(atributo.toString().includes(this.filtro)){
+    
+      //     //             this.turnosFiltradosPac.push(turno);
+                      
+      //     //             console.log(this.turnosFiltradosPac);
+      //     //             break;
+      //     //           }
+      //   });
+      // });
     }
    
   }
 
 }
+
+
+
+      // for(let turno of this.turnosPaciente){
+
+      //   if(!this.turnosFiltradosPac.includes(turno)){
+
+      //       Object.entries(turno).forEach(item => {
+      //         //console.log(item)
+      //         for(let atributo in item){
+      //           if(atributo.toString().includes(this.filtro)){
+
+      //             this.turnosFiltradosPac.push(turno);
+                  
+      //             console.log(this.turnosFiltradosPac);
+      //             break;
+      //           }
+                
+      //         }
+      //       });
+
+      //   }
+      // }  
