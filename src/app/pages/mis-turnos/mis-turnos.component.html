@@ -4,10 +4,10 @@
     <h1 class="text-center">Mis turnos</h1>
     <div>
         <label> Filtrar </label>
-        <input type="text" [(ngModel)]="filtro"  (ngModelChange)="Filtrar()">
+        <input type="text" [(ngModel)]="filtro" (ngModelChange)="Filtrar()">
     </div>
     <div class="row justify-content-around" style="column-gap: 5px; row-gap: 10px;" *ngIf="this.userService.usuarioActual.tipo == 'paciente'">
-    <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnosPaciente">
+    <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnosFiltrados">
         <div class="col-6">
             <h6>{{turno.nombre}}</h6>
         <h6>{{turno.horario}}</h6>
@@ -30,7 +30,7 @@
 
     <div class="row justify-content-around bounce-top" style="column-gap: 5px; row-gap: 10px;" *ngIf="this.userService.usuarioActual.tipo == 'especialista'">
         <h1 class="text-center"> Turnos del especialista</h1>
-    <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnosEspecialista">
+    <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnosFiltrados">
         <div class="col-6">
             <h6>{{turno.nombre}}</h6>
         <h6>{{turno.horario}}</h6>

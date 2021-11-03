@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         return paciente.prueba == true;
         
       });
-      console.log(this.pacientesDePrueba);
+      
     });
 
     this.userSevice.especialistas
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
         return especialista.prueba == true;
         
       });
-      console.log(this.especialistasDePrueba);
+      
     });
 
     this.userSevice.administradores
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         return admin.prueba == true;
         
       });
-      console.log(this.administradoresDePrueba);
+      
     });
   }
 

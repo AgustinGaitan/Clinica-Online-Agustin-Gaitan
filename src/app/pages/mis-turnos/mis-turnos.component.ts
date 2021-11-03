@@ -19,8 +19,8 @@ export class MisTurnosComponent implements OnInit {
   turnoHistorial : any;
   mostrarHistorial : boolean = false;
 
-  turnosFiltradosEsp : any[] = [];
-  turnosFiltradosPac : any[] = [];
+  turnosFiltrados : any[] = [];
+ 
 
   filtro : any;
   log : any;
@@ -34,6 +34,8 @@ export class MisTurnosComponent implements OnInit {
           return turno;
         }
       });
+
+      this.turnosFiltrados = this.turnosPaciente;
     }else{
 
       this.turnosEspecialista = this.userService.todosLosTurnos.filter((turno)=>{
@@ -41,6 +43,8 @@ export class MisTurnosComponent implements OnInit {
           return turno;
         }
       });
+      
+      this.turnosFiltrados = this.turnosEspecialista;
     }
 
       
@@ -169,28 +173,76 @@ export class MisTurnosComponent implements OnInit {
   }
 
   Filtrar(){
-   
-    this.turnosFiltradosPac = [];
+    
+    
+    this.turnosFiltrados = [];
     if(this.userService.usuarioActual.tipo == 'paciente'){
 
-      // this.turnosFiltradosPac = this.turnosPaciente.filter((turnos) =>{
+       this.turnosFiltrados = this.turnosPaciente.filter((turno) =>{
 
-      //   Object.entries(turno).forEach(item => {
-      //     //         //console.log(item)
-      //     //         for(let atributo in item){
-      //     //           if(atributo.toString().includes(this.filtro)){
-    
-      //     //             this.turnosFiltradosPac.push(turno);
-                      
-      //     //             console.log(this.turnosFiltradosPac);
-      //     //             break;
-      //     //           }
-      //   });
-      // });
+          if(this.Verificar(turno,this.filtro)){
+            return turno;
+          }
+       });
+    }else{
+      this.turnosFiltrados = this.turnosEspecialista.filter((turno) =>{
+
+        if(this.Verificar(turno,this.filtro)){
+          return turno;
+        }
+     });
     }
+    console.log('filtrados: ', this.turnosFiltrados);
    
   }
 
+  Verificar(obj : any, dato : string){
+
+    let retorno : boolean = false;
+    
+    if(obj?.comentarioEspecialista){
+      if(obj.comentarioEspecialista.includes(dato)){
+        retorno = true;
+      }
+      
+    }
+    if(obj?.comentarioPaciente){
+      if(obj.comentarioPaciente.toLowerCase().includes(dato)){
+        retorno = true
+      }
+      
+    }
+    if(obj?.especialidad.toLowerCase().includes(dato)){
+      retorno = true
+    }
+    if(obj?.especialista.toString().toLowerCase().includes(dato)){
+      retorno = true
+    }
+    if(obj?.horario.toLowerCase().includes(dato)){
+      retorno = true
+    }
+    if(obj?.paciente.toString().toLowerCase().includes(dato)){
+      retorno = true
+    }
+    if(obj?.estado.toLowerCase().includes(dato)){
+      retorno = true
+    }
+    if(obj?.historialMedico){
+      
+      Object.entries(obj?.historialMedico).forEach((atributo : any)=>{
+
+        for(let item of atributo){
+          if(item.toString().toLowerCase().includes(dato)){
+            retorno = true;
+            break;
+          }
+          
+        }
+        
+      });
+    }
+    return retorno;
+  }
 }
 
 
