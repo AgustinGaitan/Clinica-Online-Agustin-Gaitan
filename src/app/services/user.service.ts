@@ -352,3 +352,14 @@ export class UserService {
 //paciente3: kre77079@zwoho.com   paciente3
 
 //especialista2: fwy54513@cuoly.com   especialista2
+
+/*
+Seccion paciente *esp* mostrar usuarios con fav button, imagen, nombre
+al seleccionar, se muestran los detalles de los turnos (fecha, hora, especialidad)
+otro boton que permite ver la reseña de cada consulta (las dos (especialista)/)
+
+Seccion usuarios : fav button (con foto del usuario y nombre) descarga un
+excel con los turnos, fecha y hora del especialista con quien lo tomo
+
+
+*/

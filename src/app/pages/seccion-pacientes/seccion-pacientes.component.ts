@@ -8,7 +8,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SeccionPacientesComponent implements OnInit {
 
-  turnosMostrar : any[] = [];
+  turnoMostrar : any;
   pacientesMostrar : any[] = [];
   historialMedico : any;
 
@@ -24,6 +24,15 @@ export class SeccionPacientesComponent implements OnInit {
                 if(turno.paciente == paciente.dni && !this.pacientesMostrar.includes(paciente)){
                   this.pacientesMostrar.push(paciente);
                   console.log("pacientes a mostrar " ,this.pacientesMostrar);
+
+                  for(let turno of this.userService.todosLosTurnos){
+                    for(let paciente of this.pacientesMostrar){
+                      if(turno.paciente == paciente.dni){
+                        paciente.turno = turno;
+                      }
+                    }
+                  }
+                  console.log(this.pacientesMostrar);
                 }
               }
             
@@ -42,5 +51,7 @@ export class SeccionPacientesComponent implements OnInit {
   VerHistorial(paciente : any){
     console.log(paciente);
     this.historialMedico = paciente.historialMedico;
+    this.turnoMostrar = paciente.turno;
+
   }
 }

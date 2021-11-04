@@ -1,37 +1,33 @@
-<div class="container  text-center " align="center" style="font-family: OldSansBlack;">
-    <div class=" bounce-top">
-        <h1>Mis turnos completados</h1>
-        <div class="row justify-content-around" style="column-gap: 5px; row-gap: 10px;">
-            <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let paciente of pacientesMostrar">
-                <div class="col-md-12">
-                    <label>Nombre: </label>
+<div class="container col-12 text-center " align="center" style="font-family: OldSansBlack;">  
+        <h1>Mis pacientes</h1>
+    <div class="row justify-content-around" style="column-gap: 5px; row-gap: 10px;">
+        <div *ngFor="let paciente of pacientesMostrar">
+            <div class="col-md-6 row">
                     <h6>{{paciente.nombre}}</h6>
-                    <label>Apellido: </label>
-                    <h6>{{paciente.apellido}}</h6>
-                    <label>DNI: </label>
-                    <h6>{{paciente.dni}}</h6>
-                    <button type="button" class="btn btn-success mx-1" (click)="VerHistorial(paciente)">Ver historial
-                        médico</button>
+                <div class="float-cont">
+                        <button class="float-button" (click)="VerHistorial(paciente)">
+                            <img [src]="paciente.fotos[0]" width="45px">
+                        </button>
                 </div>
-
-
-
             </div>
         </div>
     </div>
-
-    <div *ngIf="historialMedico" class="col-sm-6 card" style="margin-left : 8cm">
-        <div>
-            <h1>Historia clínica</h1>
-            <div *ngFor="let historial of historialMedico" class="col-12">
-                <div *ngFor="let item of historial | keyvalue">
-                    <label>{{item.key}} : {{item.value}}</label>
-
-                </div>
-                <hr>
-
+    <div class="col-10 card  bounce-top" *ngIf="historialMedico">    
+            <div *ngIf="historialMedico" class="col-md-6" style="margin-left : 8cm">
+                    <h1>Historia clínica</h1>
+                    <div *ngFor="let historial of historialMedico">
+                        <div *ngFor="let item of historial | keyvalue">
+                            <label>{{item.key}} : {{item.value}}</label>
+                        </div>
+                        <hr>
+                    </div>
             </div>
-        </div>
+            <div *ngIf="historialMedico" class="col-md-6" style="margin-left : 8cm">
+                    <h1>Informacion del turno</h1>
+                    <div *ngFor="let item of turnoMostrar | keyvalue">
+                        <label *ngIf="item.key != 'id'">{{item.key}} : {{item.value}}</label>
+                    </div>
+                    <hr>
+            </div>
     </div>
-
 </div>
