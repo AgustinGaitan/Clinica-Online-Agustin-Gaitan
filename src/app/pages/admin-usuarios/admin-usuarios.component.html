@@ -5,6 +5,13 @@
 <button type="button" class="btn btn-success btn-lg mx-1" (click)="Excel()">Generar Excel</button>
 </div>
 <app-listado-todos-usuarios *ngIf="!mostrarRegistroAdmin"></app-listado-todos-usuarios>
+<div #informe>
+  <canvas style="height: 100px;width: 100px;" baseChart
+            [data]="chart.primero.pieChartData"
+            [labels]="chart.primero.pieChartLabels"
+            [chartType]="chart.primero.pieChartType">
+    </canvas>
+</div>
 <div align="center">
 </div>
 <div *ngIf="mostrarRegistroAdmin" class="container col-xl-10 col-xxl-8 px-4 py-5" style="font-family: OldSansBlack;">
@@ -91,5 +98,8 @@
       <h1 class="display-4 fw-bold lh-1 mb-3" >Registro de Admninistrador</h1>
       <p class="col-lg-10 fs-4"></p>
     </div>
+
+
+
   </div>
 </div>

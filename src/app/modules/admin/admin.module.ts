@@ -7,6 +7,7 @@ import { AdminUsuariosComponent } from 'src/app/pages/admin-usuarios/admin-usuar
 import { ListadoTodosUsuariosComponent } from 'src/app/components/listado-todos-usuarios/listado-todos-usuarios.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarcadoDirective } from 'src/app/directives/marcado.directive';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -21,7 +22,8 @@ import { MarcadoDirective } from 'src/app/directives/marcado.directive';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ]
 })
 export class AdminModule { }

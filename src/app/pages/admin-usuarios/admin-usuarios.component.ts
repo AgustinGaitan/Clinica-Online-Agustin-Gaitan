@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Administrador } from 'src/app/clases/administrador';
 import { FotoService } from 'src/app/services/foto.service';
@@ -14,15 +14,17 @@ const ExcelJS = require('exceljs');
 })
 export class AdminUsuariosComponent implements OnInit {
 
-   
+  @ViewChild('informe', {static: true}) el!: ElementRef<HTMLImageElement>;
   formRegistro !: FormGroup;
   formData  : FormData = new FormData();
   mostrarRegistroAdmin = false;
-  
-  
+  arrayTurnosPorDia : any[] = [];
+  ctx: any;
+  ctx1: any;
+  chart: any = null;
 
   constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService) {
- 
+    
     this.formRegistro = this.fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
@@ -34,7 +36,19 @@ export class AdminUsuariosComponent implements OnInit {
       captcha:[false,Validators.requiredTrue]
 
     });
+
+    this.cargarTurnosDia();
+    this.generateChart();
+   
   }
+
+  // ngAfterViewInit(){
+  //   this.ctx = document.getElementById('myChart') as any;
+  //   this.ctx1 = this.ctx.getContext('2d');
+  //   //console.log(likes, url, arrayDatos, this.contador);
+   
+  // }
+
 
   ngOnInit(): void {
   }
@@ -115,7 +129,94 @@ export class AdminUsuariosComponent implements OnInit {
   }
 
   Pdf(){
-    
+
+  }
+
+  cargarTurnosDia(){
+    let cantidad = 0;
+    let flag;
+
+    for(let turno of this.userService.todosLosTurnos)
+    {
+      flag = false;
+      let objeto = {
+        dia: turno.horario.split(' ')[0] + ' ' +turno.horario.split(' ')[1],
+        cantidad: 1,
+      }
+
+      for(let item of this.arrayTurnosPorDia)
+      {
+        if(item.dia === turno.horario.split(' ')[0] + ' ' +turno.horario.split(' ')[1])
+        {
+          flag = true;
+          item.cantidad++;
+        }
+      }
+
+      if(!flag)
+      {
+        this.arrayTurnosPorDia.push(objeto);
+      }
+    }
+
+    console.log(this.arrayTurnosPorDia);
+
+  }
+
+  // downloadPdf(){
+  //   html2canvas(this.el.nativeElement).then((canvas)=>{
+  //     const imgData = canvas.toDataURL('image/jpeg');
+  //     const pdf = new jsPDF({
+  //       orientation: 'portrait',
+  //     });
+  //     const imageProps = pdf.getImageProperties(imgData);
+  //     const pdfw = pdf.internal.pageSize.getWidth();
+  //     const pdfh = (imageProps.height* pdfw)/ imageProps.width;
+
+  //     pdf.addImage(imgData, 'PNG', 0, 0, pdfw, pdfh);
+  //     pdf.save('informes.pdf');
+  //   })
+  // }
+
+  generateChart(){
+
+    let dias  = this.arrayTurnosPorDia.map((turno : any)=>{ return turno.dia});
+    let cantidad  = this.arrayTurnosPorDia.map((turno : any)=>{ return turno.cantidad});
+
+    this.chart = {
+      primero:{
+        pieChartLabels: dias,
+        pieChartData: cantidad,
+        pieChartType: 'pie',
+      }/*,
+      segundo:{
+        pieChartLabels: ['excelente', 'bien', 'pesimo'],
+        pieChartData: [
+          this.obtenerCantidad(encuestas,'excelente','trato'), 
+          this.obtenerCantidad(encuestas,'bien','trato'),
+          this.obtenerCantidad(encuestas,'pesimo','trato')
+        ],
+        pieChartType: 'pie',
+      },
+      tercero:{
+        pieChartLabels: ['Si', 'no'],
+        pieChartData: [
+          this.obtenerCantidad(encuestas,true,'visitar'), 
+          this.obtenerCantidad(encuestas,false,'visitar'),
+        ],
+        pieChartType: 'pie',
+      },
+      cuarto:{
+        pieChartLabels: ['Cocteles', 'Postres', 'Ambos', 'Ninguno'],
+        pieChartData: [
+          this.obtenerCantidad(encuestas,'cocteles','productoConsumido'), 
+          this.obtenerCantidad(encuestas,'postres','productoConsumido'),
+          this.obtenerCantidad(encuestas,'ambos','productoConsumido'),
+          this.obtenerCantidad(encuestas,'ninguno','productoConsumido'),
+        ],
+        pieChartType: 'pie',
+      },*/
+    }
   }
 
 

@@ -35,7 +35,8 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { HistorialMedicoComponent } from './components/historial-medico/historial-medico.component';
 import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
 import { MarcadoDirective } from './directives/marcado.directive';
-import { EstadosDirective } from './directives/estados.directive';
+import { EstadosDirective } from './directives/estados.directive'
+
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { EstadosDirective } from './directives/estados.directive';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+  
   ],
   providers: [FechaEspPipe],
   bootstrap: [AppComponent]
