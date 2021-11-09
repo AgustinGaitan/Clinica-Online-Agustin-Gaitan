@@ -77,7 +77,8 @@ export class SolicitarTurnoComponent implements OnInit {
         paciente: this.userService.usuarioActual.dni,
         especialista: this.especialistaClickeado.dni,
         especialidad: this.especialidadClickeada,
-        estado: 'pendiente'
+        estado: 'pendiente',
+        tiempo : Date.now()
       }
     }else{
       turno = {
@@ -86,8 +87,8 @@ export class SolicitarTurnoComponent implements OnInit {
         paciente: this.pacienteSeleccionado.dni,
         especialista: this.especialistaClickeado.dni,
         especialidad: this.especialidadClickeada,
-        estado: 'pendiente'
-        
+        estado: 'pendiente',
+        tiempo : Date.now()
       }
     }
     

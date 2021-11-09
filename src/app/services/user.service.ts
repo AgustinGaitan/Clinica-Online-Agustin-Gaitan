@@ -40,6 +40,13 @@ export class UserService {
   //
   encuestas : Observable<any[]>;
   encuestaCollection : AngularFirestoreCollection<any>;
+  //Log de logins
+  
+  logCollection : AngularFirestoreCollection<any>;
+  turnosPorEspCollection : AngularFirestoreCollection<any>;
+  turnosPorDiaCollection : AngularFirestoreCollection<any>;
+  turnosSolicitadosCollection : AngularFirestoreCollection<any>;
+  turnosFinalizadosCollection : AngularFirestoreCollection<any>;
 
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
@@ -64,21 +71,27 @@ export class UserService {
     this.encuestaCollection = firestore.collection<any>('encuestas');
     this.encuestas = this.encuestaCollection.valueChanges({idField: 'id'});
 
+    this.logCollection = firestore.collection<any>('logs');
+    this.turnosPorEspCollection = firestore.collection<any>('turnosPorEsp');
+    this.turnosPorDiaCollection = firestore.collection<any>('turnosPorDia');
+    this.turnosSolicitadosCollection = firestore.collection<any>('turnosSolicitados');
+    this.turnosFinalizadosCollection = firestore.collection<any>('turnosFinalizados');
+
     this.especialistas.subscribe((data : any) =>{
       this.todosLosEspecialistas = data;
-    })
+    });
 
     this.pacientes.subscribe((data : any) =>{
       this.todosLosPacientes = data;
-    })
+    });
 
     this.administradores.subscribe((data : any) =>{
       this.todosLosAdmin = data;
-    })
+    });
 
     this.especialidades.subscribe((data : any) =>{
       this.todasLasEspecialidades = data;
-    })
+    });
 
     this.turnos.subscribe((data : any)=>{
       	this.todosLosTurnos = data;
@@ -144,6 +157,7 @@ export class UserService {
 
   
               this.usuarioActual.tipo = tipo;
+              this.EnviarLog(this.usuarioActual);
               this.router.navigateByUrl('/principal');
 
             }else{
@@ -157,6 +171,7 @@ export class UserService {
           }else{
     
             this.usuarioActual.tipo = tipo;
+            this.EnviarLog(this.usuarioActual);
             this.router.navigateByUrl('/principal');
           }
       
@@ -336,6 +351,22 @@ export class UserService {
   GetHistorialMedico(paciente : any){
     return this.pacienteCollection.doc(paciente.id).valueChanges({idField : 'id'});
 
+  }
+
+  EnviarLog(usuario : any){
+
+    let fecha = new Date();
+    let log = {
+      usuario : usuario.email,
+      hora: fecha.getHours(),
+      dia: fecha.toLocaleDateString()
+    }
+
+    this.logCollection.add({...log});
+  }
+  SetearTurnoEnElDia(){
+    
+    
   }
 }
 

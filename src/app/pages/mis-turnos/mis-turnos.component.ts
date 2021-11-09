@@ -35,7 +35,10 @@ export class MisTurnosComponent implements OnInit {
         }
       });
 
-      this.turnosFiltrados = this.turnosPaciente;
+      this.turnosFiltrados = this.turnosPaciente.sort((a : any, b : any) =>{
+        return b.tiempo - a.tiempo;
+      });
+
     }else{
 
       this.turnosEspecialista = this.userService.todosLosTurnos.filter((turno)=>{
@@ -44,7 +47,9 @@ export class MisTurnosComponent implements OnInit {
         }
       });
       
-      this.turnosFiltrados = this.turnosEspecialista;
+      this.turnosFiltrados = this.turnosEspecialista.sort((a : any, b : any) =>{
+        return b.tiempo - a.tiempo;
+      });
     }
 
       
@@ -60,14 +65,7 @@ export class MisTurnosComponent implements OnInit {
 
     this.userService.ModificarTurno(turno, accion )
     .then( async ()=>{
-      // Swal.fire({
-      //   title: 'Exito',
-      //   text: 'Exito al cambiar el estado del turno',
-      //   icon : 'success'
-      // }).then(()=>{
 
-        
-      // });
       if(accion=='finalizado' || accion=='cancelado'){
 
         const { value: text } = await Swal.fire({
@@ -92,7 +90,15 @@ export class MisTurnosComponent implements OnInit {
           this.userService.ComentarioAdministrador(turno,text);
         }
       }
-      this.RefrescarArrays();
+      Swal.fire({
+        title:'Exito',
+        text: 'Turno modificado con éxito',
+        icon : 'success',
+        timer : 2000,
+        timerProgressBar: true
+      }).then(()=>{
+        this.RefrescarArrays();
+      });
     });
     
   }
@@ -106,7 +112,9 @@ export class MisTurnosComponent implements OnInit {
         }
       });
 
- 
+      this.turnosFiltrados = this.turnosPaciente.sort((a : any, b : any) =>{
+        return b.tiempo - a.tiempo;
+      });
 
     }else{
 
@@ -115,7 +123,12 @@ export class MisTurnosComponent implements OnInit {
           return turno;
         }
       });
+      
+      this.turnosFiltrados = this.turnosEspecialista.sort((a : any, b : any) =>{
+        return b.tiempo - a.tiempo;
+      });
     }
+
   }
 
   MostrarEncuesta(){
@@ -176,6 +189,7 @@ export class MisTurnosComponent implements OnInit {
     
     
     this.turnosFiltrados = [];
+
     if(this.userService.usuarioActual.tipo == 'paciente'){
 
        this.turnosFiltrados = this.turnosPaciente.filter((turno) =>{
@@ -244,26 +258,3 @@ export class MisTurnosComponent implements OnInit {
     return retorno;
   }
 }
-
-
-
-      // for(let turno of this.turnosPaciente){
-
-      //   if(!this.turnosFiltradosPac.includes(turno)){
-
-      //       Object.entries(turno).forEach(item => {
-      //         //console.log(item)
-      //         for(let atributo in item){
-      //           if(atributo.toString().includes(this.filtro)){
-
-      //             this.turnosFiltradosPac.push(turno);
-                  
-      //             console.log(this.turnosFiltradosPac);
-      //             break;
-      //           }
-                
-      //         }
-      //       });
-
-      //   }
-      // }  
