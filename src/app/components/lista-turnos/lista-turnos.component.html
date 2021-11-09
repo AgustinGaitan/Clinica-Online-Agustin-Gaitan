@@ -38,11 +38,7 @@
       
     </div>
     <div class="col-6">
-      <span style="margin-top: 5px;"
-            [ngClass]="{'bg-success': turno.estado == 'aceptado',
-                        'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
-                        'bg-info' : turno.estado == 'finalizado',
-                        'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
+      <span [appEstados]='turno.estado' style="margin-top: 5px; color: white">{{turno.estado}}</span>
       <button style="margin-top: 5px;" type="button" class="btn btn-danger" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')" >Cancelar turno</button>
     </div>
   </div>

@@ -34,6 +34,8 @@ import { MisTurnosComponent } from './pages/mis-turnos/mis-turnos.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { HistorialMedicoComponent } from './components/historial-medico/historial-medico.component';
 import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
+import { MarcadoDirective } from './directives/marcado.directive';
+import { EstadosDirective } from './directives/estados.directive';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pac
     ListaTurnosComponent,
     MisTurnosComponent,
     EncuestaComponent,
-    HistorialMedicoComponent
+    HistorialMedicoComponent,
+    EstadosDirective,
   ],
   imports: [
     BrowserModule,

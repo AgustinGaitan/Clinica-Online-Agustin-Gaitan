@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { AdminUsuariosComponent } from 'src/app/pages/admin-usuarios/admin-usuarios.component';
 import { ListadoTodosUsuariosComponent } from 'src/app/components/listado-todos-usuarios/listado-todos-usuarios.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MarcadoDirective } from 'src/app/directives/marcado.directive';
 
 
 
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AdminComponent,
     AdminUsuariosComponent,
     ListadoTodosUsuariosComponent,
+    MarcadoDirective
   ],
   imports: [
     CommonModule,

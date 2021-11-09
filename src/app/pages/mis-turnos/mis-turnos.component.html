@@ -12,11 +12,7 @@
             <h6>{{turno.nombre}}</h6>
         <h6>{{turno.horario}}</h6>
         <h6>{{turno.especialidad}}</h6>
-        <span 
-        [ngClass]="{'bg-success': turno.estado == 'aceptado',
-                    'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
-                    'bg-info' : turno.estado == 'finalizado',
-                    'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
+        <span [appEstados]='turno.estado' style="margin-top: 5px; color: white">{{turno.estado}}</span>
         </div>
         <div class="col-6">
             <button type="button" class="btn btn-danger my-1" *ngIf="turno.estado == 'pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button>
@@ -35,11 +31,7 @@
             <h6>{{turno.nombre}}</h6>
         <h6>{{turno.horario}}</h6>
         <h6>{{turno.especialidad}}</h6>
-        <span 
-        [ngClass]="{'bg-success': turno.estado == 'aceptado',
-                    'bg-danger': turno.estado == 'cancelado' || turno.estado == 'rechazado',
-                    'bg-info' : turno.estado == 'finalizado',
-                    'bg-dark' : turno.estado == 'pendiente'}" class="badge">{{turno.estado}}</span>
+        <span [appEstados]='turno.estado' style="margin-top: 5px; color: white">{{turno.estado}}</span>
         </div>
         <div class="col-6">
             <button type="button" class="btn btn-danger my-1" *ngIf="turno.estado=='pendiente'" (click)="ModificarTurno(turno,'cancelado')">Cancelar turno</button><br>

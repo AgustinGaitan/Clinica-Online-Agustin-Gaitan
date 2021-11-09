@@ -16,11 +16,11 @@
     </div>
   </div>
 
-  <h1 style="margin-top: 2cm;">Pacientes</h1>
+  <h1   style="margin-top: 2cm;">Pacientes</h1>
   <div  class="float-cont">
   <div *ngFor="let paciente of userService.todosLosPacientes">
     <div class='col-2'>
-    <button class="float-button" (click)="ExcelTurnos(paciente)">
+    <button appMarcado class="float-button" (click)="ExcelTurnos(paciente)">
       <img [src]="paciente.fotos[0]" width="100%">
     </button>
   </div>
