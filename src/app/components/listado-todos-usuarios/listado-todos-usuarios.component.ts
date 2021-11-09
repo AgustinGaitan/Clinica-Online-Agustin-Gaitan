@@ -17,6 +17,7 @@ export class ListadoTodosUsuariosComponent implements OnInit {
   pacienteHistorial : any;
   constructor(public userService : UserService) {
 
+    
 
   }
 

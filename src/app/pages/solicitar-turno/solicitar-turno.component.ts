@@ -101,6 +101,7 @@ export class SolicitarTurnoComponent implements OnInit {
         timer: 2000
       }).then(()=>{
         
+        
         this.router.navigateByUrl('/principal');
       });
     }).catch((error)=>{

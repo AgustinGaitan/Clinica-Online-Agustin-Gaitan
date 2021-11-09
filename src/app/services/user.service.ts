@@ -44,7 +44,11 @@ export class UserService {
   
   logCollection : AngularFirestoreCollection<any>;
   turnosPorEspCollection : AngularFirestoreCollection<any>;
+  
+
   turnosPorDiaCollection : AngularFirestoreCollection<any>;
+  turnosPorDia : Observable<any[]>;
+
   turnosSolicitadosCollection : AngularFirestoreCollection<any>;
   turnosFinalizadosCollection : AngularFirestoreCollection<any>;
 
@@ -74,6 +78,7 @@ export class UserService {
     this.logCollection = firestore.collection<any>('logs');
     this.turnosPorEspCollection = firestore.collection<any>('turnosPorEsp');
     this.turnosPorDiaCollection = firestore.collection<any>('turnosPorDia');
+    this.turnosPorDia = this.turnosPorDiaCollection.valueChanges({idField: 'id'});
     this.turnosSolicitadosCollection = firestore.collection<any>('turnosSolicitados');
     this.turnosFinalizadosCollection = firestore.collection<any>('turnosFinalizados');
 
@@ -366,7 +371,8 @@ export class UserService {
   }
   SetearTurnoEnElDia(){
     
-    
+
+
   }
 }
 

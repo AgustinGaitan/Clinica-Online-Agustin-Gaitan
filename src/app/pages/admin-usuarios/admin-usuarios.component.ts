@@ -33,7 +33,7 @@ export class AdminUsuariosComponent implements OnInit {
       password: ['', Validators.required],
       captcha:[false,Validators.requiredTrue]
 
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -112,6 +112,10 @@ export class AdminUsuariosComponent implements OnInit {
       let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       fileSaver.saveAs(blob, nombre + '.xlsx');
     });
+  }
+
+  Pdf(){
+    
   }
 
 
