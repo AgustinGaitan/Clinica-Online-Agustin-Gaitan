@@ -1,17 +1,18 @@
-<div class="container col-12 text-center " align="center" style="font-family: OldSansBlack;">  
+<div class="container" align="center" style="font-family: OldSansBlack;">  
         <h1>Mis pacientes</h1>
-    <div class="row justify-content-around" style="column-gap: 5px; row-gap: 10px;">
-        <div *ngFor="let paciente of pacientesMostrar">
-            <div class="col-md-6 row">
+    <div class="row" style="column-gap: 5px; row-gap: 10px;">
+        <div  class="col-2" *ngFor="let paciente of pacientesMostrar">
+           
                     <h6>{{paciente.nombre}}</h6>
                 <div class="float-cont">
                         <button class="float-button" (click)="VerHistorial(paciente)">
                             <img [src]="paciente.fotos[0]" width="45px">
                         </button>
                 </div>
-            </div>
+      
         </div>
     </div>
+
     <div class="col-10 card  bounce-top" *ngIf="historialMedico">    
             <div *ngIf="historialMedico" class="col-md-6" style="margin-left : 8cm">
                     <h1>Historia clínica</h1>
@@ -25,7 +26,7 @@
             <div *ngIf="historialMedico" class="col-md-6" style="margin-left : 8cm">
                     <h1>Informacion del turno</h1>
                     <div *ngFor="let item of turnoMostrar | keyvalue">
-                        <label *ngIf="item.key != 'id'">{{item.key}} : {{item.value}}</label>
+                        <label *ngIf="item.key != 'id' && item.key != 'historialMedico'">{{item.key}} : {{item.value}}</label>
                     </div>
                     <hr>
             </div>

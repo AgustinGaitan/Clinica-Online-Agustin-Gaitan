@@ -5,3 +5,33 @@ th{
 img {
     border-radius: 50%;
   }
+
+
+  .float-cont{
+    //position:fixed;
+    display: flex;
+    gap: 15px;
+    bottom:40px;
+    
+
+} 
+
+.float-button{
+  position: relative;
+  width:80px;
+    height:80px;
+  box-shadow: 2px 4px 3px #999;
+  border-radius:50px;
+  overflow: hidden;
+}
+
+.floatEsp{
+    position: relative;
+    width:80x;
+    height:80x;
+    box-shadow: 2px 4px 3px #999;
+    border-radius:50px;
+    overflow: hidden;
+    border: 5px solid red;
+    border-radius: 50px;
+}

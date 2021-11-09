@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Especialista } from 'src/app/clases/especialista';
 import { UserService } from 'src/app/services/user.service';
 import Swal from 'sweetalert2';
+import { Workbook } from 'exceljs';
+import * as fileSaver from 'file-saver';
+const ExcelJS = require('exceljs');
 
 @Component({
   selector: 'app-listado-todos-usuarios',
@@ -52,5 +55,46 @@ export class ListadoTodosUsuariosComponent implements OnInit {
     
 
   }
+
+  ExcelTurnos(paciente : any){
+
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet('Turno');
+    let turnosAGuardar : any[] = [];
+
+    for(let turno of this.userService.todosLosTurnos){
+      if(turno.paciente == paciente.dni){
+        turnosAGuardar.push(turno);
+      }
+    }
+    
+    for(let especialista of this.userService.todosLosEspecialistas){
+      for(let turno of turnosAGuardar){
+        if(turno.especialista == especialista.dni){
+          turno.especialista = especialista.nombre;
+        }
+      }
+    }
+    
+    console.log(turnosAGuardar);
+    let header = ["Fecha y hora", "Especialista"];
+    let headerRow = sheet.addRow(header);
+
+
+    for(let turno of turnosAGuardar){
+      let fila = [turno.horario, turno.especialista];
+
+      sheet.addRow(fila);
+    }
+
+
+    let nombre = `Clinica OnLine - Turnos de ${paciente.nombre} `;
+
+    workbook.xlsx.writeBuffer().then((data : any) => {
+      let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fileSaver.saveAs(blob, nombre + '.xlsx');
+    });
+  }
+
 
 }
