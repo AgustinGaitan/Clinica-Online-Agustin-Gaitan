@@ -41,16 +41,11 @@ export class UserService {
   encuestas : Observable<any[]>;
   encuestaCollection : AngularFirestoreCollection<any>;
   //Log de logins
-  
+  logs : Observable<any[]>;
   logCollection : AngularFirestoreCollection<any>;
-  turnosPorEspCollection : AngularFirestoreCollection<any>;
+  todosLosLogs : any[] = [];
   
-
-  turnosPorDiaCollection : AngularFirestoreCollection<any>;
-  turnosPorDia : Observable<any[]>;
-
-  turnosSolicitadosCollection : AngularFirestoreCollection<any>;
-  turnosFinalizadosCollection : AngularFirestoreCollection<any>;
+  
 
 
   constructor(private auth : AngularFireAuth, private router : Router, private firestore : AngularFirestore) { 
@@ -76,11 +71,11 @@ export class UserService {
     this.encuestas = this.encuestaCollection.valueChanges({idField: 'id'});
 
     this.logCollection = firestore.collection<any>('logs');
-    this.turnosPorEspCollection = firestore.collection<any>('turnosPorEsp');
-    this.turnosPorDiaCollection = firestore.collection<any>('turnosPorDia');
-    this.turnosPorDia = this.turnosPorDiaCollection.valueChanges({idField: 'id'});
-    this.turnosSolicitadosCollection = firestore.collection<any>('turnosSolicitados');
-    this.turnosFinalizadosCollection = firestore.collection<any>('turnosFinalizados');
+    this.logs = this.logCollection.valueChanges({idField : 'id'});
+    this.logs.subscribe((data : any)=>{
+
+      this.todosLosLogs = data;
+    })
 
     this.especialistas.subscribe((data : any) =>{
       this.todosLosEspecialistas = data;
@@ -363,7 +358,7 @@ export class UserService {
     let fecha = new Date();
     let log = {
       usuario : usuario.email,
-      hora: fecha.getHours(),
+      hora: ` ${fecha.getHours()}:${fecha.getMinutes()}`,
       dia: fecha.toLocaleDateString()
     }
 

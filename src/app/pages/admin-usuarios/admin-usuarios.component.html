@@ -2,8 +2,9 @@
 <button type="button" *ngIf="!mostrarRegistroAdmin" class="btn btn-primary btn-lg mx-1" [routerLink]="['/registro/especialista']">Registrar Especialista</button>
 <button type="button"*ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
 <button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" (click)="RegistrarAdmin()">Registrar administrador</button>
-<button type="button" class="btn btn-success btn-lg mx-1" (click)="Excel()">Generar Excel</button>
-<button type="button" class="btn btn-success btn-lg mx-1" (click)="Pdf()">Generar PDF</button>
+<button type="button" class="btn btn-success btn-lg mx-1" (click)="Excel()">Generar Excel Usuarios</button>
+<button type="button" class="btn btn-success btn-lg mx-1" (click)="ExcelLogs()">Generar Excel de Logs</button>
+<button type="button" class="btn btn-success btn-lg mx-1" (click)="Pdf()">Generar PDF de gráficos</button>
 <button type="button" class="btn btn-info btn-lg mx-1" (click)="Graficos()">Mostrar Graficos</button>
 </div>
 <app-listado-todos-usuarios *ngIf="!mostrarRegistroAdmin"></app-listado-todos-usuarios>

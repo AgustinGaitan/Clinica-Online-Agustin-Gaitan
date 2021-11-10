@@ -140,6 +140,27 @@ export class AdminUsuariosComponent implements OnInit {
     });
   }
 
+  ExcelLogs(){
+
+    const workbook = new ExcelJS.Workbook();
+    const sheet = workbook.addWorksheet('Logs');
+    let header = ["Día", "Hora", "Usuario"];
+    let headerRow = sheet.addRow(header);
+
+    for(let log of this.userService.todosLosLogs){
+      let fila = [log.dia, log.hora, log.usuario];
+
+      sheet.addRow(fila);
+    }
+
+    let nombre = 'Clinica OnLine - Logs';
+
+    workbook.xlsx.writeBuffer().then((data : any) => {
+      let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      fileSaver.saveAs(blob, nombre + '.xlsx');
+    });
+  }
+
   CargarTurnosDia(){
     
     let flag;
