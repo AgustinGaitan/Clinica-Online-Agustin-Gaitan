@@ -3,30 +3,92 @@
 <button type="button"*ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
 <button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" (click)="RegistrarAdmin()">Registrar administrador</button>
 <button type="button" class="btn btn-success btn-lg mx-1" (click)="Excel()">Generar Excel</button>
+<button type="button" class="btn btn-success btn-lg mx-1" (click)="Pdf()">Generar PDF</button>
 <button type="button" class="btn btn-info btn-lg mx-1" (click)="Graficos()">Mostrar Graficos</button>
 </div>
 <app-listado-todos-usuarios *ngIf="!mostrarRegistroAdmin"></app-listado-todos-usuarios>
-    <div #informe >
-      <div *ngIf="mostrarGraficos" class="card col-6 container">
-        <h2 class="text-center">Turnos por día</h2>
+    <div #informe class="text-center" >
+      <div *ngIf="mostrarGraficos" class="card col-3 container">
+        <h4 class="text-center">Cantidad de turnos por día</h4>
+    
+          <table class="table table-dark table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Dia</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let turno of arrayTurnosPorDia">
+                <td>{{turno.dia}}</td>
+                <td>{{turno.cantidad}}</td>
+              </tr>
+            </tbody>
+            </table>
+     
+       
         <canvas style="height: 100px;width: 100px;" baseChart
                   [data]="chart.primero.pieChartData"
                   [labels]="chart.primero.pieChartLabels"
                   [chartType]="chart.primero.pieChartType">
         </canvas>
-        <h2 class="text-center">Turnos por especialidad</h2>
+        <h4 class="text-center">Cantidad de turnos por especialidad</h4>
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Especialidad</th>
+              <th scope="col">Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let turno of arrayTurnosPorEsp">
+              <td>{{turno.especialidad}}</td>
+              <td>{{turno.cantidad}}</td>
+            </tr>
+          </tbody>
+        </table>
         <canvas style="height: 100px;width: 100px;" baseChart
           [data]="chart.segundo.pieChartData"
           [labels]="chart.segundo.pieChartLabels"
           [chartType]="chart.segundo.pieChartType">
         </canvas>
-        <h2 class="text-center">Turnos por especialista</h2>
+        
+        <h4 class="text-center">Cantidad de turnos por especialista</h4>
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Especialista</th>
+              <th scope="col">Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let turno of arrayTurnosPorDoc">
+              <td>{{turno.especialista}}</td>
+              <td>{{turno.cantidad}}</td>
+            </tr>
+          </tbody>
+        </table>
         <canvas style="height: 100px;width: 100px;" baseChart
         [data]="chart.tercero.pieChartData"
         [labels]="chart.tercero.pieChartLabels"
         [chartType]="chart.tercero.pieChartType">
         </canvas>
-        <h2 class="text-center">Turnos por especialista (finalizados)</h2>
+        <h4 class="text-center">Cantidad de turnos por especialista (finalizados)</h4>
+
+        <table class="table table-dark table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Especialista</th>
+              <th scope="col">Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let turno of arrayTurnosFinalizadosDoc">
+              <td>{{turno.especialista}}</td>
+              <td>{{turno.cantidad}}</td>
+            </tr>
+          </tbody>
+        </table>
         <canvas style="height: 100px;width: 100px;" baseChart
         [data]="chart.cuarto.pieChartData"
         [labels]="chart.cuarto.pieChartLabels"

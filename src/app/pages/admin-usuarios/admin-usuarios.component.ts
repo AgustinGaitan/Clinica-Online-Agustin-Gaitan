@@ -6,6 +6,8 @@ import { UserService } from 'src/app/services/user.service';
 import { Workbook } from 'exceljs';
 import * as fileSaver from 'file-saver';
 import { ObtenerNombrePipe } from 'src/app/pipes/obtener-nombre.pipe';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 const ExcelJS = require('exceljs');
 
 @Component({
@@ -15,7 +17,7 @@ const ExcelJS = require('exceljs');
 })
 export class AdminUsuariosComponent implements OnInit {
 
-  @ViewChild('informe', {static: true}) el!: ElementRef<HTMLImageElement>;
+  @ViewChild('informe', {static: true}) element!: ElementRef<HTMLImageElement>;
   formRegistro !: FormGroup;
   formData  : FormData = new FormData();
   mostrarRegistroAdmin = false;
@@ -23,8 +25,7 @@ export class AdminUsuariosComponent implements OnInit {
   arrayTurnosPorEsp : any[] = [];
   arrayTurnosPorDoc : any[] = [];
   arrayTurnosFinalizadosDoc : any[] = [];
-  ctx: any;
-  ctx1: any;
+
   chart: any = null;
   mostrarGraficos : boolean = false;
 
@@ -137,10 +138,6 @@ export class AdminUsuariosComponent implements OnInit {
       let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
       fileSaver.saveAs(blob, nombre + '.xlsx');
     });
-  }
-
-  Pdf(){
-
   }
 
   CargarTurnosDia(){
@@ -269,20 +266,20 @@ export class AdminUsuariosComponent implements OnInit {
     console.log('arrayTurnosFinalizadosDoc' , this.arrayTurnosFinalizadosDoc);
   }
 
-  // downloadPdf(){
-  //   html2canvas(this.el.nativeElement).then((canvas)=>{
-  //     const imgData = canvas.toDataURL('image/jpeg');
-  //     const pdf = new jsPDF({
-  //       orientation: 'portrait',
-  //     });
-  //     const imageProps = pdf.getImageProperties(imgData);
-  //     const pdfw = pdf.internal.pageSize.getWidth();
-  //     const pdfh = (imageProps.height* pdfw)/ imageProps.width;
+  Pdf(){
+    html2canvas(this.element.nativeElement).then((canvas)=>{
+      const imgData = canvas.toDataURL('image/jpeg');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+      });
+      const imageProps = pdf.getImageProperties(imgData);
+      const pdfw = pdf.internal.pageSize.getWidth();
+      const pdfh = (imageProps.height* pdfw)/ imageProps.width;
 
-  //     pdf.addImage(imgData, 'PNG', 0, 0, pdfw, pdfh);
-  //     pdf.save('informes.pdf');
-  //   })
-  // }
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfw, pdfh);
+      pdf.save('graficos.pdf');
+    })
+  }
 
   ActualizarGrafico(){
 
