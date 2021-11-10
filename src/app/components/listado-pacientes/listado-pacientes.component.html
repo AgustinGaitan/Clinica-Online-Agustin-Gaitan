@@ -1,13 +1,13 @@
 <h1>Pacientes</h1>
 <div class="row justify-content-around" style="column-gap: 25px; row-gap: 25px;">
   <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let paciente of user.todosLosPacientes" 
-  [ngClass]="{'bg-success' : cambiarColor == true}" (click)="SeleccionarPaciente(paciente)">
+  [ngClass]="{'bg-success' : cambiarColor == true}"  (click)="SeleccionarPaciente(paciente)">
     <div class="col-3" *ngFor="let foto of paciente.fotos">
       <img [src]="foto" width="100%">
     </div>
     <div class="col-6">
-      <h6>{{paciente.nombre}}</h6>
-      <h6>{{paciente.apellido}}</h6>
+      <h6>{{paciente.nombre | titlecase}}</h6>
+      <h6>{{paciente.apellid | titlecase}}</h6>
       <h6>{{paciente.dni}}</h6>
       <p>{{paciente.email}}</p>
     </div>

@@ -30,7 +30,7 @@
 
 <h1>Turnos</h1>
 <div class="row justify-content-around" style="column-gap: 25px; row-gap: 25px;">
-  <div class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnos" (click)="SeleccionarTurno(turno.nombre)">
+  <div [appHabilitarDeshabilitar]='turno.estado' class="col-12 col-md-4 row bg-light rounded" *ngFor="let turno of turnos" (click)="SeleccionarTurno(turno.nombre)">
     <div class="col-6">
       <h6>{{turno.horario}}</h6>
       <h6>{{turno.especialista}}</h6>

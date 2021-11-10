@@ -11,7 +11,7 @@
           <img [src]="especialista.foto" width="80px"> </button>
         </div>
         <div class="col-2" >
-          <h6>{{especialista.nombre}}</h6>
+          <h6>{{especialista.nombre | titlecase}}</h6>
         </div>
     </div>
   </div>
@@ -26,7 +26,7 @@
   </div>
   <div class='col-2'>
     
-    <h6>{{paciente.nombre}}</h6>
+    <h6>{{paciente.nombre | titlecase}}</h6>
   </div>
     <div class="col-2">
     <button class="btn btn-info" (click)="VerHistorial(paciente)">Ver historial</button>

@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarcadoDirective } from 'src/app/directives/marcado.directive';
 import { ChartsModule } from 'ng2-charts';
 import { ObtenerNombrePipe } from 'src/app/pipes/obtener-nombre.pipe';
+import { HabilitarDeshabilitarDirective } from 'src/app/directives/habilitar-deshabilitar.directive';
 
 
 

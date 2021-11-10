@@ -36,7 +36,8 @@ import { HistorialMedicoComponent } from './components/historial-medico/historia
 import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
 import { MarcadoDirective } from './directives/marcado.directive';
 import { EstadosDirective } from './directives/estados.directive';
-import { ObtenerNombrePipe } from './pipes/obtener-nombre.pipe'
+import { ObtenerNombrePipe } from './pipes/obtener-nombre.pipe';
+import { HabilitarDeshabilitarDirective } from './directives/habilitar-deshabilitar.directive'
 
 
 @NgModule({
@@ -63,6 +64,8 @@ import { ObtenerNombrePipe } from './pipes/obtener-nombre.pipe'
     HistorialMedicoComponent,
     EstadosDirective,
     ObtenerNombrePipe,
+    HabilitarDeshabilitarDirective
+    
   ],
   imports: [
     BrowserModule,
