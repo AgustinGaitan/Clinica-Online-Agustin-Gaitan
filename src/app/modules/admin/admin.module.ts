@@ -8,6 +8,7 @@ import { ListadoTodosUsuariosComponent } from 'src/app/components/listado-todos-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MarcadoDirective } from 'src/app/directives/marcado.directive';
 import { ChartsModule } from 'ng2-charts';
+import { ObtenerNombrePipe } from 'src/app/pipes/obtener-nombre.pipe';
 
 
 
@@ -24,6 +25,7 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     FormsModule,
     ChartsModule
-  ]
+  ],
+  providers: [ObtenerNombrePipe],
 })
 export class AdminModule { }

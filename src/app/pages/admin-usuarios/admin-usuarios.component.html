@@ -3,15 +3,37 @@
 <button type="button"*ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" [routerLink]="['/registro/paciente']">Registrar Paciente</button>
 <button type="button" *ngIf="!mostrarRegistroAdmin"class="btn btn-primary btn-lg mx-1" (click)="RegistrarAdmin()">Registrar administrador</button>
 <button type="button" class="btn btn-success btn-lg mx-1" (click)="Excel()">Generar Excel</button>
+<button type="button" class="btn btn-info btn-lg mx-1" (click)="Graficos()">Mostrar Graficos</button>
 </div>
 <app-listado-todos-usuarios *ngIf="!mostrarRegistroAdmin"></app-listado-todos-usuarios>
-<div #informe>
-  <canvas style="height: 100px;width: 100px;" baseChart
-            [data]="chart.primero.pieChartData"
-            [labels]="chart.primero.pieChartLabels"
-            [chartType]="chart.primero.pieChartType">
-    </canvas>
-</div>
+    <div #informe >
+      <div *ngIf="mostrarGraficos" class="card col-6 container">
+        <h2 class="text-center">Turnos por día</h2>
+        <canvas style="height: 100px;width: 100px;" baseChart
+                  [data]="chart.primero.pieChartData"
+                  [labels]="chart.primero.pieChartLabels"
+                  [chartType]="chart.primero.pieChartType">
+        </canvas>
+        <h2 class="text-center">Turnos por especialidad</h2>
+        <canvas style="height: 100px;width: 100px;" baseChart
+          [data]="chart.segundo.pieChartData"
+          [labels]="chart.segundo.pieChartLabels"
+          [chartType]="chart.segundo.pieChartType">
+        </canvas>
+        <h2 class="text-center">Turnos por especialista</h2>
+        <canvas style="height: 100px;width: 100px;" baseChart
+        [data]="chart.tercero.pieChartData"
+        [labels]="chart.tercero.pieChartLabels"
+        [chartType]="chart.tercero.pieChartType">
+        </canvas>
+        <h2 class="text-center">Turnos por especialista (finalizados)</h2>
+        <canvas style="height: 100px;width: 100px;" baseChart
+        [data]="chart.cuarto.pieChartData"
+        [labels]="chart.cuarto.pieChartLabels"
+        [chartType]="chart.cuarto.pieChartType">
+        </canvas>
+      </div>
+    </div>
 <div align="center">
 </div>
 <div *ngIf="mostrarRegistroAdmin" class="container col-xl-10 col-xxl-8 px-4 py-5" style="font-family: OldSansBlack;">

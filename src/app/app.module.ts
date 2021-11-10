@@ -35,7 +35,8 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { HistorialMedicoComponent } from './components/historial-medico/historial-medico.component';
 import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pacientes.component';
 import { MarcadoDirective } from './directives/marcado.directive';
-import { EstadosDirective } from './directives/estados.directive'
+import { EstadosDirective } from './directives/estados.directive';
+import { ObtenerNombrePipe } from './pipes/obtener-nombre.pipe'
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { EstadosDirective } from './directives/estados.directive'
     EncuestaComponent,
     HistorialMedicoComponent,
     EstadosDirective,
+    ObtenerNombrePipe,
   ],
   imports: [
     BrowserModule,

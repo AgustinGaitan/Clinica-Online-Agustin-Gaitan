@@ -5,6 +5,7 @@ import { FotoService } from 'src/app/services/foto.service';
 import { UserService } from 'src/app/services/user.service';
 import { Workbook } from 'exceljs';
 import * as fileSaver from 'file-saver';
+import { ObtenerNombrePipe } from 'src/app/pipes/obtener-nombre.pipe';
 const ExcelJS = require('exceljs');
 
 @Component({
@@ -19,11 +20,16 @@ export class AdminUsuariosComponent implements OnInit {
   formData  : FormData = new FormData();
   mostrarRegistroAdmin = false;
   arrayTurnosPorDia : any[] = [];
+  arrayTurnosPorEsp : any[] = [];
+  arrayTurnosPorDoc : any[] = [];
+  arrayTurnosFinalizadosDoc : any[] = [];
   ctx: any;
   ctx1: any;
   chart: any = null;
+  mostrarGraficos : boolean = false;
 
-  constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService) {
+  constructor(private fb : FormBuilder, private userService : UserService, private fotoService : FotoService,
+              private pipe : ObtenerNombrePipe) {
     
     this.formRegistro = this.fb.group({
       nombre: ['', [Validators.required]],
@@ -35,20 +41,25 @@ export class AdminUsuariosComponent implements OnInit {
       password: ['', Validators.required],
       captcha:[false,Validators.requiredTrue]
 
-    });
+    }); 
 
-    this.cargarTurnosDia();
-    this.generateChart();
+
+    this.CargarTurnosDia();
+    this.CargarTurnosEsp();
+    this.CargarTurnosPorMedico();
+    this.CargarTurnosPorMedicoFinalizado();
+    this.ActualizarGrafico();
    
   }
 
-  // ngAfterViewInit(){
-  //   this.ctx = document.getElementById('myChart') as any;
-  //   this.ctx1 = this.ctx.getContext('2d');
-  //   //console.log(likes, url, arrayDatos, this.contador);
-   
-  // }
-
+  Graficos(){
+    if(this.mostrarGraficos){
+      this.mostrarGraficos = false;
+    }else{
+      this.mostrarGraficos = true;
+    }
+    
+  }
 
   ngOnInit(): void {
   }
@@ -132,8 +143,8 @@ export class AdminUsuariosComponent implements OnInit {
 
   }
 
-  cargarTurnosDia(){
-    let cantidad = 0;
+  CargarTurnosDia(){
+    
     let flag;
 
     for(let turno of this.userService.todosLosTurnos)
@@ -159,8 +170,103 @@ export class AdminUsuariosComponent implements OnInit {
       }
     }
 
-    console.log(this.arrayTurnosPorDia);
+   
 
+  }
+
+  CargarTurnosEsp(){
+    let flag;
+
+    for(let turno of this.userService.todosLosTurnos)
+    {
+      flag = false;
+      let objeto = {
+        especialidad: turno.especialidad,
+        cantidad: 1,
+      }
+
+      for(let item of this.arrayTurnosPorEsp)
+      {
+        if(item.especialidad === turno.especialidad)
+        {
+          flag = true;
+          item.cantidad++;
+        }
+      }
+
+      if(!flag)
+      {
+        this.arrayTurnosPorEsp.push(objeto);
+      }
+    }
+
+    
+  }
+
+  CargarTurnosPorMedico(){
+
+    let flag;
+
+    for(let turno of this.userService.todosLosTurnos)
+    {
+      flag = false;
+      let objeto = {
+        especialista: this.pipe.transform(turno.especialista),
+        cantidad: 1,
+      }
+
+      for(let item of this.arrayTurnosPorDoc)
+      {
+        if(item.especialista === this.pipe.transform(turno.especialista))
+        {
+          flag = true;
+          item.cantidad++;
+        }
+      }
+
+      if(!flag)
+      {
+        this.arrayTurnosPorDoc.push(objeto);
+      }
+    }
+
+    console.log('arrayTurnosPorDoc' , this.arrayTurnosPorDoc);
+
+  }
+
+  CargarTurnosPorMedicoFinalizado(){
+
+    let arrayTurnosFinalizados = this.userService.todosLosTurnos.filter((turno : any)=>{
+      return turno.estado == 'finalizado';
+    });
+    
+    console.log('arrayTurnosFINALIZados, ' , arrayTurnosFinalizados);
+    let flag;
+
+    for(let turno of arrayTurnosFinalizados)
+    {
+      flag = false;
+      let objeto = {
+        especialista: this.pipe.transform(turno.especialista),
+        cantidad: 1,
+      }
+
+      for(let item of this.arrayTurnosFinalizadosDoc)
+      {
+        if(item.especialista === this.pipe.transform(turno.especialista))
+        {
+          flag = true;
+          item.cantidad++;
+        }
+      }
+
+      if(!flag)
+      {
+        this.arrayTurnosFinalizadosDoc.push(objeto);
+      }
+    }
+
+    console.log('arrayTurnosFinalizadosDoc' , this.arrayTurnosFinalizadosDoc);
   }
 
   // downloadPdf(){
@@ -178,44 +284,43 @@ export class AdminUsuariosComponent implements OnInit {
   //   })
   // }
 
-  generateChart(){
+  ActualizarGrafico(){
 
     let dias  = this.arrayTurnosPorDia.map((turno : any)=>{ return turno.dia});
     let cantidad  = this.arrayTurnosPorDia.map((turno : any)=>{ return turno.cantidad});
+
+    let especialidades = this.arrayTurnosPorEsp.map((turno : any)=> { return turno.especialidad});
+    let cantidadEsp = this.arrayTurnosPorEsp.map((turno : any)=> { return turno.cantidad});
+
+    let especialistas = this.arrayTurnosPorDoc.map((turno: any)=>{return turno.especialista});
+    let cantidadDoc = this.arrayTurnosPorDoc.map((turno : any)=> { return turno.cantidad});
+
+    let especialistasFin = this.arrayTurnosFinalizadosDoc.map((turno: any)=>{return turno.especialista});
+    let cantidadFin = this.arrayTurnosFinalizadosDoc.map((turno : any)=> { return turno.cantidad});
+
+   
 
     this.chart = {
       primero:{
         pieChartLabels: dias,
         pieChartData: cantidad,
         pieChartType: 'pie',
-      }/*,
+      },
       segundo:{
-        pieChartLabels: ['excelente', 'bien', 'pesimo'],
-        pieChartData: [
-          this.obtenerCantidad(encuestas,'excelente','trato'), 
-          this.obtenerCantidad(encuestas,'bien','trato'),
-          this.obtenerCantidad(encuestas,'pesimo','trato')
-        ],
+        pieChartLabels: especialidades,
+        pieChartData: cantidadEsp,
         pieChartType: 'pie',
       },
       tercero:{
-        pieChartLabels: ['Si', 'no'],
-        pieChartData: [
-          this.obtenerCantidad(encuestas,true,'visitar'), 
-          this.obtenerCantidad(encuestas,false,'visitar'),
-        ],
+        pieChartLabels: especialistas,
+        pieChartData: cantidadDoc,
         pieChartType: 'pie',
       },
       cuarto:{
-        pieChartLabels: ['Cocteles', 'Postres', 'Ambos', 'Ninguno'],
-        pieChartData: [
-          this.obtenerCantidad(encuestas,'cocteles','productoConsumido'), 
-          this.obtenerCantidad(encuestas,'postres','productoConsumido'),
-          this.obtenerCantidad(encuestas,'ambos','productoConsumido'),
-          this.obtenerCantidad(encuestas,'ninguno','productoConsumido'),
-        ],
+        pieChartLabels: especialistasFin,
+        pieChartData: cantidadFin,
         pieChartType: 'pie',
-      },*/
+      },
     }
   }
 
