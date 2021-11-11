@@ -10,6 +10,7 @@ import { MarcadoDirective } from 'src/app/directives/marcado.directive';
 import { ChartsModule } from 'ng2-charts';
 import { ObtenerNombrePipe } from 'src/app/pipes/obtener-nombre.pipe';
 import { HabilitarDeshabilitarDirective } from 'src/app/directives/habilitar-deshabilitar.directive';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 
 
@@ -18,14 +19,15 @@ import { HabilitarDeshabilitarDirective } from 'src/app/directives/habilitar-des
     AdminComponent,
     AdminUsuariosComponent,
     ListadoTodosUsuariosComponent,
-    MarcadoDirective
+  
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    SharedModuleModule
   ],
   providers: [ObtenerNombrePipe],
 })
