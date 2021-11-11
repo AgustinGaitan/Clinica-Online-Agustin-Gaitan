@@ -26,10 +26,26 @@ export class ListadoTodosUsuariosComponent implements OnInit {
 
   DeshabilitarEspecialista(especialista : Especialista){
     this.userService.DeshabilitarEspecialista(especialista);
+    Swal.fire({
+      title:'Deshabilitado',
+      text:'Especialista deshabilitado',
+      timer:2000,
+      timerProgressBar:true,
+      toast:true,
+      position:'bottom'
+    });
   }
   
   HabilitarEspecialista(especialista : Especialista){
     this.userService.HabilitarEspecialista(especialista);
+    Swal.fire({
+      title:'Habilitado',
+      text:'Especialista habilitado',
+      timer:2000,
+      timerProgressBar:true,
+      toast:true,
+      position:'bottom'
+    });
   }
 
   VerHistorial(paciente : any){

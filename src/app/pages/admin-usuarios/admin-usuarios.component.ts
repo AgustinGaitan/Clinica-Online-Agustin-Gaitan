@@ -258,7 +258,7 @@ export class AdminUsuariosComponent implements OnInit {
       return turno.estado == 'finalizado';
     });
     
-    console.log('arrayTurnosFINALIZados, ' , arrayTurnosFinalizados);
+   
     let flag;
 
     for(let turno of arrayTurnosFinalizados)
@@ -304,6 +304,7 @@ export class AdminUsuariosComponent implements OnInit {
 
   ActualizarGrafico(){
 
+    
     let dias  = this.arrayTurnosPorDia.map((turno : any)=>{ return turno.dia});
     let cantidad  = this.arrayTurnosPorDia.map((turno : any)=>{ return turno.cantidad});
 
@@ -311,12 +312,12 @@ export class AdminUsuariosComponent implements OnInit {
     let cantidadEsp = this.arrayTurnosPorEsp.map((turno : any)=> { return turno.cantidad});
 
     let especialistas = this.arrayTurnosPorDoc.map((turno: any)=>{return turno.especialista});
-    let cantidadDoc = this.arrayTurnosPorDoc.map((turno : any)=> { return turno.cantidad});
+    let cantidadDoc = this.arrayTurnosPorDoc.map((turno : any)=> { return  turno.cantidad});
 
     let especialistasFin = this.arrayTurnosFinalizadosDoc.map((turno: any)=>{return turno.especialista});
     let cantidadFin = this.arrayTurnosFinalizadosDoc.map((turno : any)=> { return turno.cantidad});
 
-   
+    
 
     this.chart = {
       primero:{
@@ -325,9 +326,10 @@ export class AdminUsuariosComponent implements OnInit {
         pieChartType: 'pie',
       },
       segundo:{
-        pieChartLabels: especialidades,
-        pieChartData: cantidadEsp,
-        pieChartType: 'pie',
+        barChartLabels: especialidades,
+        barChartData: cantidadEsp,
+        barChartType: 'bar',
+        legend : false
       },
       tercero:{
         pieChartLabels: especialistas,

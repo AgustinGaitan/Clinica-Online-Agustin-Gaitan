@@ -49,9 +49,11 @@
           </tbody>
         </table>
         <canvas style="height: 100px;width: 100px;" baseChart
-          [data]="chart.segundo.pieChartData"
-          [labels]="chart.segundo.pieChartLabels"
-          [chartType]="chart.segundo.pieChartType">
+          [data]="chart.segundo.barChartData"
+          [labels]="chart.segundo.barChartLabels"
+          [chartType]="chart.segundo.barChartType"
+          [legend]='chart.segundo.legend'
+         >
         </canvas>
         
         <h4 class="text-center">Cantidad de turnos por especialista</h4>
