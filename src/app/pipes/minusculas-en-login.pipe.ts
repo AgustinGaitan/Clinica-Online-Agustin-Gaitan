@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class MinusculasEnLoginPipe implements PipeTransform {
 
-  transform(value : string): string { // Pipe usado en Login linea 67 y 68
+  transform(value : string): string { // Pipe usado en Login linea 67 
     return value.toLocaleLowerCase();
   }
 

@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
 
   LoguearseUsuario(email : string, password : string){
     this.email= this.pipe.transform(email);
-    this.password= this.pipe.transform(password);
+    this.password= password;
    
     this.Loguearse();
   
