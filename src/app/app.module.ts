@@ -37,7 +37,8 @@ import { SeccionPacientesComponent } from './pages/seccion-pacientes/seccion-pac
 import { MarcadoDirective } from './directives/marcado.directive';
 import { EstadosDirective } from './directives/estados.directive';
 import { ObtenerNombrePipe } from './pipes/obtener-nombre.pipe';
-import { HabilitarDeshabilitarDirective } from './directives/habilitar-deshabilitar.directive'
+import { HabilitarDeshabilitarDirective } from './directives/habilitar-deshabilitar.directive';
+import { MinusculasEnLoginPipe } from './pipes/minusculas-en-login.pipe'
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { HabilitarDeshabilitarDirective } from './directives/habilitar-deshabili
     HistorialMedicoComponent,
     EstadosDirective,
     ObtenerNombrePipe,
-    HabilitarDeshabilitarDirective
+    HabilitarDeshabilitarDirective,
+    MinusculasEnLoginPipe
     
   ],
   imports: [
@@ -78,7 +80,7 @@ import { HabilitarDeshabilitarDirective } from './directives/habilitar-deshabili
     SweetAlert2Module.forRoot(),
   
   ],
-  providers: [FechaEspPipe],
+  providers: [FechaEspPipe, MinusculasEnLoginPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

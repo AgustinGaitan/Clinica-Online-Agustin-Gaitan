@@ -22,7 +22,7 @@ export class EstadosDirective {
     
   }
   
-  constructor(private element : ElementRef) { 
+  constructor(private element : ElementRef) { //Directiva usada en lista-turnos-component.html linea 33, cambia el fondo del card
     
   }
 

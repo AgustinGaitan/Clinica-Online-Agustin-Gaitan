@@ -3,8 +3,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'fechaEsp'
 })
-export class FechaEspPipe implements PipeTransform {
-
+export class FechaEspPipe implements PipeTransform {  //Pipe usado en solicitar-turno-components.ts linea 64
+ 
   transform(arrayFechas: string[], dias : string[]) {
     let arrayRetorno = [];
     console.log(dias.includes('lunes'));

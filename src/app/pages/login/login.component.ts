@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MinusculasEnLoginPipe } from 'src/app/pipes/minusculas-en-login.pipe';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
   administradoresDePrueba : any;
   
 
-  constructor(private userSevice : UserService, private router : Router) {
+  constructor(private userSevice : UserService, private router : Router, private pipe : MinusculasEnLoginPipe) {
     this.userSevice.pacientes
     .subscribe((data)=>{
       this.pacientesDePrueba = data.filter((paciente : any)=>{
@@ -63,8 +64,8 @@ export class LoginComponent implements OnInit {
   }
 
   LoguearseUsuario(email : string, password : string){
-    this.email= email;
-    this.password=password;
+    this.email= this.pipe.transform(email);
+    this.password= this.pipe.transform(password);
    
     this.Loguearse();
   

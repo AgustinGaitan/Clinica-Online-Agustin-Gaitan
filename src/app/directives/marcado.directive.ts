@@ -6,7 +6,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 export class MarcadoDirective {
 
 
-  constructor(private element : ElementRef) { 
+  constructor(private element : ElementRef) {  //Directiva usada en listado-todos-usuarios-component.html linea 23
     
   }
 

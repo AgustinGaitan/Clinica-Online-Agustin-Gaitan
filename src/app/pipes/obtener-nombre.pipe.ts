@@ -4,7 +4,7 @@ import { UserService } from '../services/user.service';
 @Pipe({
   name: 'obtenerNombre'
 })
-export class ObtenerNombrePipe implements PipeTransform {
+export class ObtenerNombrePipe implements PipeTransform { //Pipe usado en admin-usuarios-component.ts lineas 232 y 238
   
   constructor(private user : UserService){
 
