@@ -41,9 +41,6 @@ También puede cancelar turnos y dejar un comentario de por qué los cancela.
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fprincipalpaciente.png?alt=media&token=0c8944c7-88f0-467e-94aa-b5a64c7fe705)
 Asi ve la pagina principal un paciente
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fmi%20perfil%20paciente.png?alt=media&token=19b0e14f-ad50-45eb-8762-e7d65fabf2c3)
-Asi ve su perfil un paciente
-
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fpedir-turno.png?alt=media&token=ddb8bde4-aa9f-4244-bbca-1afadd465400)
 El paciente puede seleccionar la especialidad y al especialista para poder sacar un turno. Tambien puede hacerlo el administrador pero seleccionando primero la especialidad.
 
