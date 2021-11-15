@@ -39,6 +39,7 @@ import { EstadosDirective } from './directives/estados.directive';
 import { ObtenerNombrePipe } from './pipes/obtener-nombre.pipe';
 import { HabilitarDeshabilitarDirective } from './directives/habilitar-deshabilitar.directive';
 import { MinusculasEnLoginPipe } from './pipes/minusculas-en-login.pipe'
+import { SharedModuleModule } from './modules/shared-module/shared-module.module';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { MinusculasEnLoginPipe } from './pipes/minusculas-en-login.pipe'
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     SweetAlert2Module.forRoot(),
+    SharedModuleModule
   
   ],
   providers: [FechaEspPipe, MinusculasEnLoginPipe],

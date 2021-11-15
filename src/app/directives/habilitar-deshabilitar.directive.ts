@@ -22,7 +22,7 @@ export class HabilitarDeshabilitarDirective {
     
   }
   
-  constructor(private element : ElementRef) {  //Directiva usada en lista-turnos-component.html linea 41
+  constructor(private element : ElementRef) {  //Directiva usada en lista-turnos-component.html linea 33, cambia el fondo del card
     
   }
 

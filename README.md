@@ -23,22 +23,19 @@ Registro como especialista
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fregespeci.png?alt=media&token=143a0bc9-c809-41fd-91e1-da430af26f31)
 Registrarse como paciente
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Flogin.png?alt=media&token=510ef6a0-aa50-4b61-b473-e2bc3e273033)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Flogin.png?alt=media&token=55a31ffe-0b1c-4cb7-aebd-a01bff56917d)
 Página de inicio de sesión con sus respectivos inicios rapidos
 
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2FprincipalAdmin.png?alt=media&token=ae5a4c04-07e8-4708-ae51-65981c7054a0)
 Página principal que vería un administrador
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fmiperfiladmin.png?alt=media&token=217ccf7c-8341-45af-bda9-c8c84ef25a10)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fadminperfil.png?alt=media&token=b31b94c3-2332-4fb5-bcf8-78dd52b3fee3)
 Así ve su perfil el administrador
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fadminpediturno.png?alt=media&token=a2259215-91ad-4758-b885-599f7d4ec414)
-El administrador puede pedir turnos, eligiendo el paciente, especialidad y especialista.
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fusuariostodos.png?alt=media&token=ba309886-4b06-4215-82b7-6674cf748e52)
+El administrador tambien puede administrar a los usuarios, habilitando y deshabillitando a los especialistas, tambien puede generar nuevos usuarios incluyendo otros administradores. Puede ver informes en excel y gráficos en formato PDF.
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fseccionusuariosadminm.png?alt=media&token=bd333599-c0ab-4838-a4d0-35e07e577676)
-El administrador tambien puede administrar a los usuarios, habilitando y deshabillitando a los especialistas, tambien puede generar nuevos usuarios incluyendo otros administradores
-
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fturnosadmin.png?alt=media&token=ebd789f3-3774-403f-89e7-ae0ddf1c6d01)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fturnsadmin.png?alt=media&token=04374584-2322-4c2d-aed4-6b59586e6d7b)
 También puede cancelar turnos y dejar un comentario de por qué los cancela.
 
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fprincipalpaciente.png?alt=media&token=0c8944c7-88f0-467e-94aa-b5a64c7fe705)
@@ -47,22 +44,17 @@ Asi ve la pagina principal un paciente
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fmi%20perfil%20paciente.png?alt=media&token=19b0e14f-ad50-45eb-8762-e7d65fabf2c3)
 Asi ve su perfil un paciente
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fpacientepedirturno.png?alt=media&token=af209136-2af9-47ac-bf25-d183fb9f5e7f)
-El paciente puede seleccionar la especialidad y al especialista para poder sacar un turno
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fpedir-turno.png?alt=media&token=ddb8bde4-aa9f-4244-bbca-1afadd465400)
+El paciente puede seleccionar la especialidad y al especialista para poder sacar un turno. Tambien puede hacerlo el administrador pero seleccionando primero la especialidad.
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fturnospaciente.png?alt=media&token=9a3d9331-a2b6-413e-9e65-0a52b618545e)
-Asi ve un paciente sus turnos, pudiendo cancelarlos, ver su estado e incluso dejar una reseña si está finalizado
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fmisturnosac.png?alt=media&token=488b110c-5aa0-4076-9405-c9e1db2729b5)
+Asi ve un paciente sus turnos, pudiendo cancelarlos, ver su estado e incluso dejar una reseña si está finalizado. De la misma manera los ve el especialista. Ambos pueden filtrar para encontrar los que ellos desean más facilmente.
 
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fprincipalesp.png?alt=media&token=e37af76e-e865-4b27-9641-d01a6487b950)
-El especialista solamente puede ver su perfil y sus turnos
-
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fmisturnosespecialista.png?alt=media&token=ec008bae-b623-47d7-8cda-c8af03aafffd)
-Asi ve el especialista sus turnos, pudiendo cambiar su estado y dejar comentarios acerca del mismo.
-A su vez puede ver los comentarios que dejó el paciente en dicho turno si es que los hay.
-
-![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fmiperfilesp.png?alt=media&token=f670445b-3b9b-4856-9802-cf29f4ad9aa2)
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/clinica-online-c3c2c.appspot.com/o/fotosReadme%2Fperfilespecialista.png?alt=media&token=ce8e0f65-5716-4c86-bc47-4ccb3324ec3c)
 Perfil del especialista, mostrando sus dos fotos y debajo la sección donde puede elegir 
 dentro de qué horarios trabaja para asi, poder darle la seleccion de turnos a un paciente.
+
+
 
 
 
